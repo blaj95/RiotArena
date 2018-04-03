@@ -39,6 +39,7 @@ public class RightHandTracking : MonoBehaviour {
                 if (Input.GetButtonDown("RSelectTrigger"))
                 {
                     Debug.Log("Selecting Start!");
+                    PhotonNetwork.LoadLevel("PlayerLoadScene");
 
                 }
                 
