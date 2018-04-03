@@ -232,7 +232,7 @@ Transform:
   m_LocalScale: {x: 11.215289, y: 0.047621522, z: 11.368688}
   m_Children: []
   m_Father: {fileID: 448379028}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 90}
 --- !u!23 &310941394
 MeshRenderer:
@@ -422,7 +422,7 @@ Transform:
   m_LocalScale: {x: 10.453471, y: 0.047621492, z: 11.368684}
   m_Children: []
   m_Father: {fileID: 448379028}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &370028426
 MeshRenderer:
@@ -596,10 +596,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 10.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 370028425}
   - {fileID: 1101294096}
   - {fileID: 680310237}
   - {fileID: 310941393}
+  - {fileID: 370028425}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -919,6 +919,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcd0d9e8cc0f4149bd60ef8e392b2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tip: {fileID: 0}
+  start: {fileID: 0}
 --- !u!1 &680310236
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +950,7 @@ Transform:
   m_LocalScale: {x: 11.215289, y: 0.047621522, z: 11.368688}
   m_Children: []
   m_Father: {fileID: 448379028}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 90}
 --- !u!23 &680310238
 MeshRenderer:
@@ -1231,7 +1233,7 @@ Transform:
   m_LocalScale: {x: 10.511051, y: 0.047621522, z: 11.368688}
   m_Children: []
   m_Father: {fileID: 448379028}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!23 &1101294097
 MeshRenderer:
