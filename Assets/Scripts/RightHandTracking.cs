@@ -34,6 +34,11 @@ public class RightHandTracking : MonoBehaviour {
                 Debug.Log("Start!");
                 Renderer rend = start.GetComponent<Renderer>();
                 rend.material.color = Color.red;
+
+                if (Input.GetButtonDown("RSelectTrigger"))
+                {
+                    Debug.Log("Selecting Start!");
+                }
                 
             }
             else
