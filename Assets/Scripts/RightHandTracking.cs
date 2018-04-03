@@ -7,6 +7,7 @@ public class RightHandTracking : MonoBehaviour {
 
     public GameObject tip;
     public GameObject start;
+    public NetworkManager networkManager;
 
 	// Use this for initialization
 	void Start ()
@@ -22,7 +23,7 @@ public class RightHandTracking : MonoBehaviour {
         transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand);
 
         Vector3 fwd = tip.transform.forward;
-        Ray ray;
+       
         RaycastHit hit;
 
         if (Physics.Raycast(tip.transform.position, fwd, out hit, Mathf.Infinity))
@@ -38,6 +39,7 @@ public class RightHandTracking : MonoBehaviour {
                 if (Input.GetButtonDown("RSelectTrigger"))
                 {
                     Debug.Log("Selecting Start!");
+
                 }
                 
             }
