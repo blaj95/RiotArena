@@ -23,9 +23,9 @@ public class NetworkedRightTracking : Photon.MonoBehaviour
     void Update()
     {
         
-        rightController.transform.position = InputTracking.GetLocalPosition(XRNode.RightHand) + transform.position;
+        rightController.transform.position = InputTracking.GetLocalPosition(XRNode.RightHand);
         rightController.transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand);
-        rightController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.RightHand) + transform.position;
+        rightController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.RightHand);
         rightController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.RightHand);
 
 

@@ -14,7 +14,7 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour{
     {
         if (photonView.isMine)
         {
-            leftController = GameObject.Find("ControllerRight");
+            leftController = GameObject.Find("ControllerLeft");
 
         }
     }
@@ -23,9 +23,9 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour{
     void Update()
     {
         
-        leftController.transform.position = InputTracking.GetLocalPosition(XRNode.LeftHand) + transform.position;
+        leftController.transform.position = InputTracking.GetLocalPosition(XRNode.LeftHand);
         leftController.transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
-        leftController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.LeftHand) + transform.position;
+        leftController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.LeftHand);
         leftController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
     }
 
