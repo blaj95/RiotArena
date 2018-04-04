@@ -14,8 +14,8 @@ public class NetworkManager : Photon.PunBehaviour {
     #region Unity Callbacks
     void Start ()
     {
-		
-	}
+        PhotonNetwork.ConnectUsingSettings(connectionString);
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -25,7 +25,8 @@ public class NetworkManager : Photon.PunBehaviour {
 
     private void Awake()
     {
-        PhotonNetwork.ConnectUsingSettings(connectionString);
+        PhotonNetwork.autoJoinLobby = false;
+
     }
 
     #endregion
@@ -36,6 +37,7 @@ public class NetworkManager : Photon.PunBehaviour {
         base.OnConnectedToMaster();
         Debug.Log("Connected to Mastah!");
         connectingText.text = "Connected!";
+        
     }
     #endregion
 }
