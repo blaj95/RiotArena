@@ -7,19 +7,21 @@ public class RightHandTracking : MonoBehaviour {
 
     public GameObject tip;
     public GameObject start;
-    public NetworkManager networkManager;
+  
+    public GameObject player;
 
 	// Use this for initialization
 	void Start ()
     {
         tip = transform.Find("Rtip").gameObject;
         start = GameObject.Find("Start");
+        player = GameObject.Find("Player");
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        transform.position = InputTracking.GetLocalPosition(XRNode.RightHand);
+        transform.position = InputTracking.GetLocalPosition(XRNode.RightHand) + player.transform.position;
         transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand);
 
         Vector3 fwd = tip.transform.forward;

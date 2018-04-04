@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4330390280285370}
   - component: {fileID: 33774764629234896}
   - component: {fileID: 23504310461830830}
-  - component: {fileID: 114946302032207944}
+  - component: {fileID: 114088721242174628}
   m_Layer: 0
   m_Name: ControllerRight
   m_TagString: Untagged
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4496616387482390}
   - component: {fileID: 33508875913413208}
   - component: {fileID: 23239091616906458}
-  - component: {fileID: 114959152392700230}
+  - component: {fileID: 114184273168580540}
   m_Layer: 0
   m_Name: ControllerLeft
   m_TagString: Untagged
@@ -350,6 +350,18 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1635661751042838}
   m_Enabled: 1
+--- !u!114 &114088721242174628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344709970679638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ea161a552791e469998643f74e5659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &114142160390741576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,6 +380,18 @@ MonoBehaviour:
   AlternateRightController: {fileID: 0}
   TouchpadTouchedOverride: {fileID: 0}
   GLTFMaterial: {fileID: 2100000, guid: 2ac78523d661e954c83d799f582b22e8, type: 2}
+--- !u!114 &114184273168580540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862892388321742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255a370debaf23647b608b0d077c58f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &114379926506997014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -389,6 +413,10 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 114625028633862174}
+  - {fileID: 4330390280285370}
+  - {fileID: 4496616387482390}
+  - {fileID: 114088721242174628}
+  - {fileID: 114184273168580540}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
@@ -459,31 +487,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &114946302032207944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344709970679638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbcd0d9e8cc0f4149bd60ef8e392b2a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tip: {fileID: 0}
-  start: {fileID: 0}
-  networkManager: {fileID: 0}
---- !u!114 &114959152392700230
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1862892388321742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d66d00308c68242beb4a0b46d85972, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!124 &124439480538899724
 Behaviour:
   m_ObjectHideFlags: 1
