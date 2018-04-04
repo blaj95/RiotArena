@@ -22,10 +22,7 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
-        if (photonView.isMine)
-        {
-            player = GameObject.Find("LobbyPlayer(Clone)");
-        }
+        
         leftController.transform.position = InputTracking.GetLocalPosition(XRNode.LeftHand) + transform.position;
         leftController.transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
         leftController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.LeftHand) + transform.position;
