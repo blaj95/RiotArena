@@ -7,7 +7,7 @@ public class NetworkedRightTracking : Photon.MonoBehaviour
 
     
     public GameObject rightController;
-    public GameObject leftController;
+   
 
     // Use this for initialization
     void Start()
