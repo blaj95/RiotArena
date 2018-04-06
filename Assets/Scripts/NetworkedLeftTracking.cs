@@ -22,11 +22,13 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
-        
-        leftController.transform.position = InputTracking.GetLocalPosition(XRNode.LeftHand);
-        leftController.transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
-        leftController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.LeftHand);
-        leftController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
+        if (photonView.isMine){
+            leftController.transform.position = InputTracking.GetLocalPosition(XRNode.LeftHand);
+            leftController.transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
+            leftController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.LeftHand);
+            leftController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
+        }
+
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

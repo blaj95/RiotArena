@@ -22,11 +22,14 @@ public class NetworkedRightTracking : Photon.MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (photonView.isMine)
+        {
+            rightController.transform.position = InputTracking.GetLocalPosition(XRNode.RightHand);
+            rightController.transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand);
+            rightController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.RightHand);
+            rightController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.RightHand);
+        }   
         
-        rightController.transform.position = InputTracking.GetLocalPosition(XRNode.RightHand);
-        rightController.transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand);
-        rightController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.RightHand);
-        rightController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.RightHand);
 
 
     }
