@@ -19,12 +19,19 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour{
         }
     }
 
+    private Vector3 correctRightPos = Vector3.zero; //We lerp towards this
+    private Quaternion correctRightRot = Quaternion.identity; //We lerp towards this
+
+
     // Update is called once per frame
     void Update()
     {
-        if (photonView.isMine){
-            leftController.transform.position = InputTracking.GetLocalPosition(XRNode.LeftHand);
-            leftController.transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
+        if (photonView.isMine)
+        {
+            Vector3 curPos = InputTracking.GetLocalPosition(XRNode.LeftHand);
+            Quaternion curRot = InputTracking.GetLocalRotation(XRNode.LeftHand);
+            leftController.transform.position = Vector3.Lerp(curPos, correctRightPos, Time.deltaTime * 5);
+            leftController.transform.rotation = Quaternion.Lerp(curRot, correctRightRot, Time.deltaTime * 5);
             leftController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.LeftHand);
             leftController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
         }
