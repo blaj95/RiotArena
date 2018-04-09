@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MasterSpawn: {fileID: 1190220756}
   Spawn: {fileID: 639602791}
+  player: {fileID: 1553099672058840, guid: 6dafd2b9a4ad4af4d82b54e13e527445, type: 2}
 --- !u!114 &519098409
 MonoBehaviour:
   m_ObjectHideFlags: 0
