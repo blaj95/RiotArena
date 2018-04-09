@@ -19,8 +19,8 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour{
         }
     }
 
-    private Vector3 correctRightPos = Vector3.zero; //We lerp towards this
-    private Quaternion correctRightRot = Quaternion.identity; //We lerp towards this
+    private Vector3 correctLeftPos = Vector3.zero; //We lerp towards this
+    private Quaternion correctLeftRot = Quaternion.identity; //We lerp towards this
 
 
     // Update is called once per frame
@@ -30,12 +30,17 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour{
         {
             Vector3 curPos = InputTracking.GetLocalPosition(XRNode.LeftHand);
             Quaternion curRot = InputTracking.GetLocalRotation(XRNode.LeftHand);
-            leftController.transform.position = Vector3.Lerp(curPos, correctRightPos, Time.deltaTime * 5);
-            leftController.transform.rotation = Quaternion.Lerp(curRot, correctRightRot, Time.deltaTime * 5);
+            leftController.transform.position = Vector3.Lerp(curPos, correctLeftPos, Time.deltaTime * 5);
+            leftController.transform.rotation = Quaternion.Lerp(curRot, correctLeftRot, Time.deltaTime * 5);
             leftController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.LeftHand);
             leftController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
         }
-
+        if (!photonView.isMine)
+        {
+            //Update remote player (smooth this, this looks good, at the cost of some accuracy)
+            transform.position = Vector3.Lerp(transform.position, correctLeftPos, Time.deltaTime * 5);
+            transform.rotation = Quaternion.Lerp(transform.rotation, correctLeftRot, Time.deltaTime * 5);
+        }
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
