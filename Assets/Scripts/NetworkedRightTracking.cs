@@ -38,8 +38,8 @@ public class NetworkedRightTracking : Photon.MonoBehaviour
         if (!photonView.isMine)
         {
             //Update remote player 
-            transform.position = Vector3.Lerp(transform.position, correctRightPos, Time.deltaTime * 5);
-            transform.rotation = Quaternion.Lerp(transform.rotation, correctRightRot, Time.deltaTime * 5);
+            rightController.transform.position = Vector3.Lerp(transform.position, correctRightPos, Time.deltaTime * 5);
+            rightController.transform.rotation = Quaternion.Lerp(transform.rotation, correctRightRot, Time.deltaTime * 5);
         }
 
     }

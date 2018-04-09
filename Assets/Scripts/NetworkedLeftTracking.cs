@@ -30,16 +30,16 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour{
         {
             Vector3 curPos = InputTracking.GetLocalPosition(XRNode.LeftHand);
             Quaternion curRot = InputTracking.GetLocalRotation(XRNode.LeftHand);
-            //leftController.transform.position = Vector3.Lerp(curPos, correctLeftPos, Time.deltaTime * 5);
-            //leftController.transform.rotation = Quaternion.Lerp(curRot, correctLeftRot, Time.deltaTime * 5);
+            leftController.transform.position = Vector3.Lerp(curPos, correctLeftPos, Time.deltaTime * 5);
+            leftController.transform.rotation = Quaternion.Lerp(curRot, correctLeftRot, Time.deltaTime * 5);
             leftController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.LeftHand);
             leftController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
         }
         if (!photonView.isMine)
         {
             //Update remote player 
-            transform.position = Vector3.Lerp(transform.position, correctLeftPos, Time.deltaTime * 5);
-            transform.rotation = Quaternion.Lerp(transform.rotation, correctLeftRot, Time.deltaTime * 5);
+            leftController.transform.position = Vector3.Lerp(transform.position, correctLeftPos, Time.deltaTime * 5);
+            leftController.transform.rotation = Quaternion.Lerp(transform.rotation, correctLeftRot, Time.deltaTime * 5);
         }
     }
 
