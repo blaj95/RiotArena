@@ -50,7 +50,7 @@ public class GunScript : MonoBehaviour {
 
     }
 
-    void FireProjectile()
+    public void FireProjectile()
     {
         GameObject newBullet = Instantiate(bullet, muzzlePoint.position, Quaternion.Euler(muzzlePoint.transform.forward));
         newBullet.GetComponent<NormalBullet>().FireBullet(gameObject, damage, ownerID);
