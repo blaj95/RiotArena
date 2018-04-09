@@ -10,8 +10,8 @@ public class LobbyManager : Photon.PunBehaviour
 	void Start ()
     {
 
-        MasterSpawn = GameObject.Find("SpawnMaster");
-        Spawn = GameObject.Find("SpawnMaster");
+        //MasterSpawn = GameObject.Find("SpawnMaster");
+        //Spawn = GameObject.Find("SpawnMaster");
 
         PhotonNetwork.JoinRandomRoom();
         
@@ -49,7 +49,7 @@ public class LobbyManager : Photon.PunBehaviour
         }
         else
         {
-            PhotonNetwork.Instantiate("LobbyPlayer", Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
+            PhotonNetwork.Instantiate("LobbyPlayer", Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
 
         }
 
