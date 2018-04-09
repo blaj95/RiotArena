@@ -22,11 +22,11 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour, IPunObservable
             leftController = GameObject.Find("ControllerLeft");
         }
 
-        correctLeftPos = leftController.transform.position;
-        onUpdateLeftPos = leftController.transform.position;
+        correctLeftPos = leftController.transform.localPosition;
+        onUpdateLeftPos = leftController.transform.localPosition;
 
-        correctLeftRot = leftController.transform.rotation;
-        onUpdateLeftRot = leftController.transform.rotation;
+        correctLeftRot = leftController.transform.localRotation;
+        onUpdateLeftRot = leftController.transform.localRotation;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -35,8 +35,8 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour, IPunObservable
         {
             Vector3 pos = leftController.transform.position;
             Quaternion rot = leftController.transform.rotation;
-            //stream.SendNext(rightController.transform.position);
-            //stream.SendNext(rightController.transform.rotation);
+            stream.SendNext(leftController.transform.position);
+            stream.SendNext(leftController.transform.rotation);
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
 
@@ -67,8 +67,8 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour, IPunObservable
             leftController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
             Vector3 curPos = InputTracking.GetLocalPosition(XRNode.LeftHand);
             Quaternion curRot = InputTracking.GetLocalRotation(XRNode.LeftHand);
-            leftController.transform.position = Vector3.Lerp(curPos, correctLeftPos, Time.deltaTime * 5);
-            leftController.transform.rotation = Quaternion.Lerp(curRot, correctLeftRot, Time.deltaTime * 5);
+            //leftController.transform.position = Vector3.Lerp(curPos, correctLeftPos, Time.deltaTime * 5);
+            //leftController.transform.rotation = Quaternion.Lerp(curRot, correctLeftRot, Time.deltaTime * 5);
 
         }
 
