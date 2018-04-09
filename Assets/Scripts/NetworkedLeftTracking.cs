@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class NetworkedLeftTracking : Photon.MonoBehaviour{
+public class NetworkedLeftTracking : Photon.MonoBehaviour, IPunObservable
+{
 
     // Use this for initialization
     
