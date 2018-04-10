@@ -31,8 +31,8 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour, IPunObservable
     {
         if (stream.isWriting)
         {
-            Vector3 pos = transform.position;
-            Quaternion rot = transform.rotation;
+            Vector3 pos = transform.localPosition;
+            Quaternion rot = transform.localRotation;
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
             stream.Serialize(ref pos);
@@ -72,15 +72,15 @@ public class NetworkedLeftTracking : Photon.MonoBehaviour, IPunObservable
 
         }
 
-        this.fraction = this.fraction + Time.deltaTime * 9;
+       fraction = fraction + Time.deltaTime * 10;
         //transform.localPosition = Vector3.Lerp(onUpdateRightPos, correctRightPos, fraction);
         //transform.localRotation = Quaternion.Lerp(onUpdateRightRot, correctRightRot, fraction);
 
-        //if (!photonView.isMine)
-        //{
-        //    //Update remote player 
-        //    leftController.transform.position = Vector3.Lerp(transform.position, correctLeftPos, Time.deltaTime * 5);
-        //    leftController.transform.rotation = Quaternion.Lerp(transform.rotation, correctLeftRot, Time.deltaTime * 5);
-        //}
+        if (!photonView.isMine)
+        {
+            //Update remote player 
+            transform.localPosition = Vector3.Lerp(onUpdateLeftPos, correctLeftPos, fraction);
+            transform.localRotation = Quaternion.Lerp(onUpdateLeftRot, correctLeftRot, fraction);
+        }
     }
 }

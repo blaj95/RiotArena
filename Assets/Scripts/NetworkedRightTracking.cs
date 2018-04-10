@@ -33,8 +33,8 @@ public class NetworkedRightTracking : Photon.MonoBehaviour, IPunObservable
         {
             Vector3 pos = transform.localPosition;
             Quaternion rot = transform.localRotation;
-            //stream.SendNext(transform.position);
-           // stream.SendNext(transform.rotation);
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
 
@@ -73,7 +73,7 @@ public class NetworkedRightTracking : Photon.MonoBehaviour, IPunObservable
 
         }
 
-        fraction = fraction + Time.deltaTime * 9;
+        fraction = fraction + Time.deltaTime * 10;
         
 
         if (!photonView.isMine)
