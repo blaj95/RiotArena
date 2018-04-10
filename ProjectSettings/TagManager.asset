@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RightLocal
   - LeftLocal
+  - HeadLocal
   layers:
   - Default
   - TransparentFX

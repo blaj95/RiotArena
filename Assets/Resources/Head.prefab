@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 135394601132956632}
   - component: {fileID: 23091468919821994}
   - component: {fileID: 114424647458844018}
+  - component: {fileID: 114115694276398780}
+  - component: {fileID: 114355288982956396}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -169,6 +171,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114115694276398780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371011103233822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c243290750f51fa47848a110261de5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gos: []
+  rnd:
+  - {fileID: 23091468919821994}
+  - {fileID: 23506140663805444}
+--- !u!114 &114355288982956396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1371011103233822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a6c1d56c682a54caa5e7b1355c3c78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  netPlayer: {fileID: 0}
+  head: {fileID: 0}
 --- !u!114 &114424647458844018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,8 +222,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!135 &135394601132956632
