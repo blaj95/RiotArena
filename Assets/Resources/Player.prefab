@@ -70,44 +70,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4833627806674262}
-  - component: {fileID: 114078429994235856}
+  - component: {fileID: 114752895575308030}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1848393474344224
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4357310333686796}
-  - component: {fileID: 114671075186805468}
-  m_Layer: 0
-  m_Name: MotionControllers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!1 &1881452966751308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4593732168061974}
-  - component: {fileID: 20871803705616238}
-  - component: {fileID: 124385154418266114}
-  - component: {fileID: 81605152451148190}
-  m_Layer: 0
-  m_Name: LobbyCam
-  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,19 +93,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4357310333686796
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848393474344224}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4833627806674262}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4565362330295232
 Transform:
   m_ObjectHideFlags: 1
@@ -152,20 +105,7 @@ Transform:
   m_Children:
   - {fileID: 4945731008790876}
   m_Father: {fileID: 4833627806674262}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4593732168061974
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1881452966751308}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4833627806674262}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4651654253121122
 Transform:
@@ -179,7 +119,7 @@ Transform:
   m_Children:
   - {fileID: 4841118895638130}
   m_Father: {fileID: 4833627806674262}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4833627806674262
 Transform:
@@ -191,8 +131,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4593732168061974}
-  - {fileID: 4357310333686796}
   - {fileID: 4651654253121122}
   - {fileID: 4565362330295232}
   m_Father: {fileID: 0}
@@ -224,42 +162,6 @@ Transform:
   m_Father: {fileID: 4565362330295232}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &20871803705616238
-Camera:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1881452966751308}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.05
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!23 &23625006710096592
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -342,29 +244,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1425938557940746}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!81 &81605152451148190
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1881452966751308}
-  m_Enabled: 1
---- !u!114 &114078429994235856
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1553099672058840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a092c26acb4f98b40bb8a70438e82182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  disableGO:
-  - {fileID: 1881452966751308}
-  disableRend:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &114287638684122398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,28 +270,16 @@ MonoBehaviour:
   tip: {fileID: 1232819564917408}
   start: {fileID: 0}
   player: {fileID: 0}
---- !u!114 &114671075186805468
+--- !u!114 &114752895575308030
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1848393474344224}
+  m_GameObject: {fileID: 1553099672058840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03314f8008ae1ed4fbd45c95a7ed5182, type: 3}
+  m_Script: {fileID: 11500000, guid: cecb6f26b9081994f9bebba1a5d10e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimateControllerModel: 1
-  AlwaysUseAlternateLeftModel: 0
-  AlwaysUseAlternateRightModel: 0
-  AlternateLeftController: {fileID: 0}
-  AlternateRightController: {fileID: 0}
-  TouchpadTouchedOverride: {fileID: 0}
-  GLTFMaterial: {fileID: 2100000, guid: 2ac78523d661e954c83d799f582b22e8, type: 2}
---- !u!124 &124385154418266114
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1881452966751308}
-  m_Enabled: 1
+  disableGO:
+  - {fileID: 0}
