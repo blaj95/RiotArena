@@ -70,9 +70,24 @@ public class PlayerController : MonoBehaviour {
         newBullet.GetComponent<NormalBullet>().FireBullet(weapon, damage, playerID);
         blist.Add(newBullet);
         bulletsFired++;
-        bulletsLeft = maxBullets - bulletsFired;
-        
-        
+        bulletsLeft = maxBullets - blist.Count;
+    }
+
+    public void OnChildCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Bullet")
+        {
+            if (blist.Contains(collision.gameObject))
+            {
+                blist.Remove(collision.gameObject);
+                bulletsLeft++;
+                
+            }
+            else
+            {
+                maxBullets++;
+            }
+        }
     }
 }
  
