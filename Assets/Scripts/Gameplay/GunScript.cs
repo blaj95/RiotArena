@@ -59,6 +59,8 @@ public class GunScript : MonoBehaviour {
             bList = new List<GameObject>();
         }
         bList.Add(newBullet);
+        
+
 
     }
 }
