@@ -14,7 +14,7 @@ public class RightHandTracking : MonoBehaviour {
 	void Awake ()
     {
         tip = transform.Find("Rtip").gameObject;
-        start = GameObject.Find("Start");
+       
         player = gameObject.transform.parent.gameObject;
 	}
 	
