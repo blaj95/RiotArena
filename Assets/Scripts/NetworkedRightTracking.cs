@@ -6,7 +6,9 @@ public class NetworkedRightTracking : Photon.MonoBehaviour, IPunObservable
 {
 
 
-    public GameObject rightController;
+    public GameObject player;
+    public GameObject netPlayer;
+    public GameObject rightHand;
     private Vector3 correctRightPos;//We lerp towards this
     private Vector3 onUpdateRightPos;
     private Quaternion correctRightRot = Quaternion.identity; //We lerp towards this
@@ -16,26 +18,23 @@ public class NetworkedRightTracking : Photon.MonoBehaviour, IPunObservable
     // Use this for initialization
     void Start()
     {
-        if (photonView.isMine)
-        {
-            rightController = GameObject.Find("ControllerRight");
-        }
 
-        correctRightPos = rightController.transform.position;
-        onUpdateRightPos = rightController.transform.position;
+        correctRightPos = transform.position;
+        onUpdateRightPos = transform.position;
 
-        correctRightRot = rightController.transform.rotation;
-        onUpdateRightRot = rightController.transform.rotation;
+        correctRightRot = transform.rotation;
+        onUpdateRightRot = transform.rotation;
+        rightHand = GameObject.FindWithTag("RightLocal");
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
-            Vector3 pos = rightController.transform.position;
-            Quaternion rot = rightController.transform.rotation;
-            //stream.SendNext(rightController.transform.position);
-            //stream.SendNext(rightController.transform.rotation);
+            Vector3 pos = transform.localPosition;
+            Quaternion rot = transform.localRotation;
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
 
@@ -48,10 +47,10 @@ public class NetworkedRightTracking : Photon.MonoBehaviour, IPunObservable
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
 
-            correctRightPos = pos;                // save this to move towards it in FixedUpdate()
+            correctRightPos = pos;                
             correctRightRot = rot;
-            onUpdateRightPos = rightController.transform.localPosition;
-            onUpdateRightRot = rightController.transform.localRotation;
+            onUpdateRightPos = transform.localPosition;
+            onUpdateRightRot = transform.localRotation;
             fraction = 0;
 
         }
@@ -62,23 +61,26 @@ public class NetworkedRightTracking : Photon.MonoBehaviour, IPunObservable
     {
         if (photonView.isMine)
         {
-            rightController.transform.localPosition = InputTracking.GetLocalPosition(XRNode.RightHand);
-            rightController.transform.localRotation = InputTracking.GetLocalRotation(XRNode.RightHand);
-            Vector3 curPos = InputTracking.GetLocalPosition(XRNode.RightHand);
-            Quaternion curRot = InputTracking.GetLocalRotation(XRNode.RightHand);
-            rightController.transform.position = Vector3.Lerp(curPos, correctRightPos, Time.deltaTime * 5);
-            rightController.transform.rotation = Quaternion.Lerp(curRot, correctRightRot, Time.deltaTime * 5);
+
+            netPlayer = GameObject.Find("LobbyPlayer(Clone)");
+
+            transform.localPosition = rightHand.transform.localPosition + netPlayer.transform.localPosition;
+            transform.localRotation = rightHand.transform.localRotation;
+            Vector3 curPos = rightHand.transform.position;
+            Quaternion curRot = rightHand.transform.rotation;
+            //transform.position = Vector3.Lerp(curPos, correctRightPos, Time.deltaTime * 5);
+            //transform.rotation = Quaternion.Lerp(curRot, correctRightRot, Time.deltaTime * 5);
 
         }
 
-        this.fraction = this.fraction + Time.deltaTime * 9;
-        transform.localPosition = Vector3.Lerp(onUpdateRightPos, correctRightPos, fraction);
-        transform.localRotation = Quaternion.Lerp(onUpdateRightRot, correctRightRot, fraction);
-        //if (!photonView.isMine)
-        //{
-        //    //Update remote player 
-        //    leftController.transform.position = Vector3.Lerp(transform.position, correctLeftPos, Time.deltaTime * 5);
-        //    leftController.transform.rotation = Quaternion.Lerp(transform.rotation, correctLeftRot, Time.deltaTime * 5);
-        //}
+        fraction = fraction + Time.deltaTime * 10;
+        
+
+        if (!photonView.isMine)
+        {
+            //Update remote player 
+            transform.localPosition = Vector3.Lerp(onUpdateRightPos, correctRightPos, fraction);
+            transform.localRotation = Quaternion.Lerp(onUpdateRightRot, correctRightRot, fraction);
+        }
     }
 }

@@ -11,11 +11,11 @@ public class RightHandTracking : MonoBehaviour {
     public GameObject player;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         tip = transform.Find("Rtip").gameObject;
         start = GameObject.Find("Start");
-        player = GameObject.Find("Player");
+        player = gameObject.transform.parent.gameObject;
 	}
 	
 	// Update is called once per frame
