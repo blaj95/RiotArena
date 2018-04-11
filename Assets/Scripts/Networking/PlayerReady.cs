@@ -21,11 +21,14 @@ public class PlayerReady : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
+        if(other.tag == "RightNet")
         masterReady = true;
     }
 
     public void OnTriggerExit(Collider other)
     {
-        masterReady = false;
+
+        if (other.tag == "RightNet")
+            masterReady = false;
     }
 }
