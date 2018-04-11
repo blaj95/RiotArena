@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.XR;
 namespace Riot
 {
     public class PlayerController : MonoBehaviour
@@ -49,7 +49,7 @@ namespace Riot
             transform.Rotate(0, x, 0);
             transform.Translate(0, 0, z);
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) || (Input.GetButtonDown("Fire1")))
+            if (Input.GetKeyDown(KeyCode.Mouse0) || (Input.GetButtonDown("Fire1")) || Input.GetButtonDown("RSelectTrigger"))
             {
                 FireWeapon();
             }
@@ -98,11 +98,11 @@ namespace Riot
 
         public void updateControllers()
         {
-            weapon.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
-            weapon.transform.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
+            //weapon.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+            //weapon.transform.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
 
-            shield.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
-            shield.transform.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
+            //shield.transform.localPosition = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
+            //shield.transform.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
         }
     }
 }
