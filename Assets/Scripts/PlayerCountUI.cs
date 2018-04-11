@@ -16,7 +16,7 @@ public class PlayerCountUI : Photon.PunBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if(PhotonNetwork.countOfPlayers == 1)
+		if(PhotonNetwork.room.PlayerCount == 1)
         {
             countText.text = "1/2" + Environment.NewLine + "Players";
         }
