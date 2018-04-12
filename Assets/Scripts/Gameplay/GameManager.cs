@@ -28,9 +28,9 @@ public class GameManager : Photon.PunBehaviour
     {   
         if (PhotonNetwork.isMasterClient)
         {
-            GameObject theplayer = PhotonNetwork.Instantiate("LobbyPlayer", MasterSpawn.transform.position, MasterSpawn.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
-            PhotonNetwork.Instantiate("ControllerLeft", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
-            PhotonNetwork.Instantiate("ControllerRight", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
+            GameObject theplayer = PhotonNetwork.Instantiate("WeaponLobbyPlayer", MasterSpawn.transform.position, MasterSpawn.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
+            PhotonNetwork.Instantiate("ControllerLeftShield", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
+            PhotonNetwork.Instantiate("ControllerRightWeapon", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
             PhotonNetwork.Instantiate("Head", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
             Instantiate(player, MasterSpawn.transform.position, MasterSpawn.transform.rotation * Quaternion.Euler(0, 0, 0));
 
