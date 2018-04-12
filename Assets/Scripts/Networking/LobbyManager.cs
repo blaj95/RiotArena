@@ -26,7 +26,15 @@ public class LobbyManager : Photon.PunBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		
+        if(masterStart == true && player == true)
+        {
+            if (PhotonNetwork.isMasterClient)
+            {
+                PhotonNetwork.LoadLevel(0);
+            }
+        }	
+        
+
 	}
 
     void Awake()

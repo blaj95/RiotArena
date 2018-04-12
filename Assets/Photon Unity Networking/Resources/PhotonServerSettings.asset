@@ -37,4 +37,7 @@ MonoBehaviour:
   - RequestForPickupItems
   - RequestForPickupTimes
   - MasterisReady
+  - MasterisNotReady
+  - notMasterisNotReady
+  - notMasterisReady
   DisableAutoOpenWizard: 1

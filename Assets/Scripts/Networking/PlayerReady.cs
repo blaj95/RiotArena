@@ -13,8 +13,8 @@ public class PlayerReady : Photon.MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-		
-	}
+        lobbyMng = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -34,5 +34,18 @@ public class PlayerReady : Photon.MonoBehaviour {
         if (other.tag == "RightNet")
             notmasterReady = false;
         
+    }
+
+
+    [PunRPC]
+    public void notMasterisReady()
+    {
+        lobbyMng.playerStart = true;
+    }
+
+    [PunRPC]
+    public void notMasterisNotReady()
+    {
+        lobbyMng.playerStart = false;
     }
 }
