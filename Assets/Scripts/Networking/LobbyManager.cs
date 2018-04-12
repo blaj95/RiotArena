@@ -30,8 +30,11 @@ public class LobbyManager : Photon.PunBehaviour
     {
         if(masterStart == true && playerStart == true)
         {
+            if (PhotonNetwork.isMasterClient)
+            {
+                PhotonNetwork.LoadLevel(2);
+            }
 
-           PhotonNetwork.LoadLevel(2);
 
         }	
         
