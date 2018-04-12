@@ -92,5 +92,9 @@ public class BulletNeworked : Photon.MonoBehaviour {
             vel = Vector3.Reflect(vel, contact.normal);
         }
 
+        if(collision.transform.tag == "Wall")
+        {
+            bulletSpeed += 10;
+        }
     }
 }

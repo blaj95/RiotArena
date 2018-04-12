@@ -8,6 +8,7 @@ TagManager:
   - LeftLocal
   - HeadLocal
   - RightNet
+  - Wall
   layers:
   - Default
   - TransparentFX
