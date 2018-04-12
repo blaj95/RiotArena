@@ -77,7 +77,7 @@ namespace Riot
             isShooting = true;
 
             nextFire = Time.time + rateOfFire;
-            GameObject newBullet = Instantiate(bullet, weapon.transform.position + weapon.transform.forward, weapon.transform.rotation);
+            GameObject newBullet = Instantiate(bullet, weapon.transform.position, weapon.transform.rotation);
             newBullet.GetComponent<NormalBullet>().FireBullet(weapon, damage, playerID);
             blist.Add(newBullet);
             bulletsFired++;
