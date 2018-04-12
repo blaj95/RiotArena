@@ -113,48 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &121437936
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4427189000917670, guid: 7ffbae9672e183f4288826e8093bfd9a, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.282
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427189000917670, guid: 7ffbae9672e183f4288826e8093bfd9a, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.1047881
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427189000917670, guid: 7ffbae9672e183f4288826e8093bfd9a, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -0.044119358
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427189000917670, guid: 7ffbae9672e183f4288826e8093bfd9a, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427189000917670, guid: 7ffbae9672e183f4288826e8093bfd9a, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427189000917670, guid: 7ffbae9672e183f4288826e8093bfd9a, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427189000917670, guid: 7ffbae9672e183f4288826e8093bfd9a, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427189000917670, guid: 7ffbae9672e183f4288826e8093bfd9a, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 7ffbae9672e183f4288826e8093bfd9a, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &306280808
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9cfee9a987df6439038f44a3f2e25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  MasterSpawn: {fileID: 0}
-  Spawn: {fileID: 0}
+  player: {fileID: 1553099672058840, guid: 6dafd2b9a4ad4af4d82b54e13e527445, type: 2}
+  MasterSpawn: {fileID: 376997532}
+  Spawn: {fileID: 1160471868}
 --- !u!1 &376997532
 GameObject:
   m_ObjectHideFlags: 0
