@@ -7,6 +7,8 @@ public class LobbyManager : Photon.PunBehaviour
     public GameObject MasterSpawn;
     public GameObject Spawn;
     public GameObject player;
+    public bool masterStart = false;
+    public bool playerStart = false;
   
 	// Use this for initialization
 	void Start ()

@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerReady : MonoBehaviour {
+public class PlayerReady : Photon.MonoBehaviour {
 
-    public bool masterReady = false;
-    
+    public bool notmasterReady = false;
+
+    LobbyManager lobbyMng;
+
+
 
 	// Use this for initialization
 	void Start ()
@@ -22,13 +25,14 @@ public class PlayerReady : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
         if(other.tag == "RightNet")
-        masterReady = true;
+        notmasterReady = true;
     }
 
     public void OnTriggerExit(Collider other)
     {
 
         if (other.tag == "RightNet")
-            masterReady = false;
+            notmasterReady = false;
+        
     }
 }

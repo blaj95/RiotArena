@@ -1415,6 +1415,16 @@ Prefab:
       propertyPath: instantiationId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23091468919821994, guid: ef4f389ce0fa4bc4aa9f9f686d637768,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23506140663805444, guid: ef4f389ce0fa4bc4aa9f9f686d637768,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114424647458844018, guid: ef4f389ce0fa4bc4aa9f9f686d637768, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ef4f389ce0fa4bc4aa9f9f686d637768, type: 2}
