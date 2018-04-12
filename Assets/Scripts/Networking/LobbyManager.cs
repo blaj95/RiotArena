@@ -32,13 +32,9 @@ public class LobbyManager : Photon.PunBehaviour
         {
             if (PhotonNetwork.isMasterClient)
             {
-                PhotonNetwork.LeaveRoom();
                 PhotonNetwork.LoadLevel(2);
             }
-            else
-            {
-                PhotonNetwork.LeaveRoom();
-            }
+          
         }	
         
 
