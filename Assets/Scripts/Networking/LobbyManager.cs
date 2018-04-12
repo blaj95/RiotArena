@@ -9,10 +9,12 @@ public class LobbyManager : Photon.PunBehaviour
     public GameObject player;
     public bool masterStart = false;
     public bool playerStart = false;
+
   
 	// Use this for initialization
 	void Start ()
     {
+        PhotonNetwork.automaticallySyncScene = true;
 
         //MasterSpawn = GameObject.Find("SpawnMaster");
         //Spawn = GameObject.Find("SpawnMaster");
