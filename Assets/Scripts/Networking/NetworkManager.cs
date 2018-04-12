@@ -14,7 +14,7 @@ public class NetworkManager : Photon.PunBehaviour {
     #region Unity Callbacks
     void Start ()
     {
-        PhotonNetwork.ConnectUsingSettings(connectionString);
+        
     }
 	
 	// Update is called once per frame
@@ -25,6 +25,7 @@ public class NetworkManager : Photon.PunBehaviour {
 
     private void Awake()
     {
+        PhotonNetwork.ConnectUsingSettings(connectionString);
         PhotonNetwork.autoJoinLobby = false;
 
     }

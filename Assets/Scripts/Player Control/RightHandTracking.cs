@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class RightHandTracking : MonoBehaviour {
+public class RightHandTracking : Photon.MonoBehaviour {
 
     public GameObject tip;
     public GameObject start;
@@ -34,15 +34,23 @@ public class RightHandTracking : MonoBehaviour {
 
             if(hit.transform.gameObject.name == "Start")
             {
-                Debug.Log("Start!");
-                Renderer rend = start.GetComponent<Renderer>();
-                rend.material.color = Color.red;
-
-                if (Input.GetButtonDown("RSelectTrigger"))
+                if (PhotonNetwork.connected)
                 {
-                    Debug.Log("Selecting Start!");
-                    PhotonNetwork.LoadLevel("PlayerLoadScene");
+                    Debug.Log("Start!");
+                    Renderer rend = start.GetComponent<Renderer>();
+                    rend.material.color = Color.green;
 
+                    if (Input.GetButtonDown("RSelectTrigger"))
+                    {
+                        Debug.Log("Selecting Start!");
+                        PhotonNetwork.LoadLevel("PlayerLoadScene");
+
+                    }
+                }
+                else
+                {
+                    Renderer rend = start.GetComponent<Renderer>();
+                    rend.material.color = Color.red;
                 }
                 
             }
