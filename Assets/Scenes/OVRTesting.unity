@@ -1029,11 +1029,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4651654253121122, guid: 6dafd2b9a4ad4af4d82b54e13e527445, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4284094800866830, guid: 6dafd2b9a4ad4af4d82b54e13e527445, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1553099672058840, guid: 6dafd2b9a4ad4af4d82b54e13e527445, type: 2}
       propertyPath: m_IsActive

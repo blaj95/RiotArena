@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class NetworkedHeadTracking : Photon.MonoBehaviour
+public class NetworkedGameHeadTracking : Photon.MonoBehaviour
 {
 
 
@@ -63,7 +63,7 @@ public class NetworkedHeadTracking : Photon.MonoBehaviour
         if (photonView.isMine)
         {
 
-            netPlayer = GameObject.Find("LobbyPlayer(Clone)");
+            netPlayer = GameObject.Find("WeaponLobbyPlayer(Clone)");
 
             transform.localPosition = head.transform.localPosition + netPlayer.transform.localPosition;
             transform.localRotation = head.transform.localRotation;

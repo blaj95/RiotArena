@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.UI;
 
-namespace Riot
-{
+
     public class PlayerController : MonoBehaviour
     {
 
@@ -45,6 +44,8 @@ namespace Riot
         {
 
         }
+
+     
 
         // Update is called once per frames
         void Update()
@@ -112,5 +113,5 @@ namespace Riot
             //shield.transform.localRotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
         }
     }
-}
+
  
