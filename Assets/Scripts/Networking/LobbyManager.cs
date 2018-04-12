@@ -28,7 +28,7 @@ public class LobbyManager : Photon.PunBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(masterStart == true )
+        if(masterStart == true && playerStart == true)
         {
 
            PhotonNetwork.LoadLevel(2);
