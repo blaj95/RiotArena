@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using UnityEngine.UI;
+
 namespace Riot
 {
     public class PlayerController : MonoBehaviour
@@ -16,6 +18,9 @@ namespace Riot
         [SerializeField]
         GameObject bullet = null;
 
+        [SerializeField]
+        Text txtammo = null;
+
 
         int bulletsLeft = -1;
         int bulletsFired = -1;
@@ -29,6 +34,8 @@ namespace Riot
 
         public float rateOfFire = -1.0f;
         float nextFire = 1.0f;
+
+        
 
 
 
