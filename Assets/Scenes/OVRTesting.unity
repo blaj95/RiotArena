@@ -1234,12 +1234,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1817371131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbcd0d9e8cc0f4149bd60ef8e392b2a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 9efc2bfb15bb5d448980829457d4b26a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tip: {fileID: 0}
   start: {fileID: 0}
   player: {fileID: 0}
+  OffsetRotation: {x: 45, y: 0, z: 0}
 --- !u!23 &1817371133
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1300,7 +1301,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1817371131}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.89}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.125, y: 0.125, z: 0.3}
   m_Children:
   - {fileID: 826810115}

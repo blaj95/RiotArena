@@ -24,7 +24,7 @@ public class IanRightHand : MonoBehaviour {
     void Update()
     {
         transform.position = InputTracking.GetLocalPosition(XRNode.RightHand) + player.transform.position;
-        transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand);
+        transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand) * Quaternion.Euler(OffsetRotation);
 
         Vector3 fwd = tip.transform.forward;
 
