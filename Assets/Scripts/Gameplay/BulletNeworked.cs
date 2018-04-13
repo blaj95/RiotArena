@@ -16,6 +16,7 @@ public class BulletNeworked : Photon.MonoBehaviour {
 
     private float fraction;
 
+    public float bulletSpeedIncrease;
     public float bulletSpeed = 1000f;
     private Vector3 vel = new Vector3();
 
@@ -125,7 +126,7 @@ public class BulletNeworked : Photon.MonoBehaviour {
 
         if(collision.transform.tag == "Wall")
         {
-            bulletSpeed += 1;
+            bulletSpeed += bulletSpeedIncrease;
         }
     }
 }
