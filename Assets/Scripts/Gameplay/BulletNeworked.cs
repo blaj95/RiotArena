@@ -22,6 +22,12 @@ public class BulletNeworked : Photon.MonoBehaviour {
     private Quaternion correctRgbRot;
     private Quaternion updatedRgbRot;
 
+    private float lastSynchronizationTime = 0f;
+    private float syncDelay = 0f;
+    private float syncTime = 0f;
+    private Vector3 syncStartPosition = Vector3.zero;
+    private Vector3 syncEndPosition = Vector3.zero;
+
 
     Rigidbody rigidB;
 
@@ -68,11 +74,11 @@ public class BulletNeworked : Photon.MonoBehaviour {
         {
 
             //Update remote player 
-            rigidB.position = Vector3.Lerp(updatedBulletPos, correctRgbPos, fraction);
+            rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime/syncDelay);
             rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
 
-            transform.localPosition = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
-            transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
+            //transform.localPosition = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
+            //transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
            
             rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
            
@@ -113,6 +119,13 @@ public class BulletNeworked : Photon.MonoBehaviour {
         }
         else
         {
+            correctBulletPos = (Vector3)stream.ReceiveNext();
+            correctBulletRot = (Quaternion)stream.ReceiveNext();
+            correctRgbPos = (Vector3)stream.ReceiveNext();
+            correctRgbRot = (Quaternion)stream.ReceiveNext();
+            correctRgbVel = (Vector3)stream.ReceiveNext();
+            correctRgbAng = (Vector3)stream.ReceiveNext();
+
             Vector3 pos = transform.localPosition;
             Quaternion rot = transform.localRotation;
             Vector3 rigPos = rigidB.position;
@@ -128,12 +141,6 @@ public class BulletNeworked : Photon.MonoBehaviour {
             stream.Serialize(ref rigVel);
             stream.Serialize(ref rigAng);
 
-            correctBulletPos = (Vector3)stream.ReceiveNext();
-            correctBulletRot = (Quaternion)stream.ReceiveNext(); 
-            correctRgbPos = (Vector3)stream.ReceiveNext();
-            correctRgbRot = (Quaternion)stream.ReceiveNext();
-            correctRgbVel = (Vector3)stream.ReceiveNext();
-            correctRgbAng = (Vector3)stream.ReceiveNext();
 
             updatedBulletPos = transform.localPosition;
             updatedBulletRot = transform.localRotation;
@@ -142,6 +149,13 @@ public class BulletNeworked : Photon.MonoBehaviour {
             updatedRgbPos = rigidB.position;
             updatedRgbRot = rigidB.rotation;
 
+            syncTime = 0f;
+            lastSynchronizationTime = Time.time;
+            syncDelay = Time.time - lastSynchronizationTime;
+
+
+            syncEndPosition = correctBulletPos + correctRgbVel * syncDelay;
+            syncStartPosition = rigidB.position;
 
             fraction = 0;
 
