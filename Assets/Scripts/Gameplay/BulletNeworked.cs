@@ -108,7 +108,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
             Vector3 rigVel = rigidB.velocity;
             Vector3 rigAng = rigidB.angularVelocity;
 
-           
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
             stream.SendNext(rigidB.position);
             stream.SendNext(rigidB.rotation);
             stream.SendNext(rigidB.velocity);
@@ -138,12 +139,12 @@ public class BulletNeworked : Photon.MonoBehaviour {
             stream.Serialize(ref rigVel);
             stream.Serialize(ref rigAng);
 
-            correctBulletPos = pos;
-            correctBulletRot = rot;
-            correctRgbVel = rigVel;
-            correctRgbAng = rigAng;
-            correctRgbPos = rigPos;
-            correctRgbRot = rigRot;
+            correctBulletPos = (Vector3)stream.ReceiveNext();
+            correctBulletRot = (Quaternion)stream.ReceiveNext(); 
+            correctRgbPos = (Vector3)stream.ReceiveNext();
+            correctRgbRot = (Quaternion)stream.ReceiveNext();
+            correctRgbVel = (Vector3)stream.ReceiveNext();
+            correctRgbAng = (Vector3)stream.ReceiveNext();
 
             updatedBulletPos = transform.position;
             updatedBulletRot = transform.rotation;
