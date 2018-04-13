@@ -49,12 +49,13 @@ public class BulletNeworked : Photon.MonoBehaviour {
         }
        
 
-        fraction = fraction + Time.deltaTime * 10;
+        fraction = fraction + Time.deltaTime * 100;
+
         if (!photonView.isMine)
         {
             //Update remote player 
-            transform.localPosition = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
-            transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
+            transform.position = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
+            transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
         }
     }
 
