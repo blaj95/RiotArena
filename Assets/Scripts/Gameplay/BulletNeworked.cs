@@ -75,14 +75,14 @@ public class BulletNeworked : Photon.MonoBehaviour {
             syncTime += Time.deltaTime;
             //Update remote player 
             rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime/syncDelay));
-            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
+            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, (syncTime / syncDelay));
 
             transform.position = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime/syncDelay));
-            transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
+            transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, (syncTime / syncDelay));
            
-            rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
+            rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, (syncTime / syncDelay));
            
-            rigidB.angularVelocity = Vector3.Lerp(updatedRbgAng, correctRgbAng, fraction);
+            rigidB.angularVelocity = Vector3.Lerp(updatedRbgAng, correctRgbAng, (syncTime / syncDelay));
         }
    
     }
