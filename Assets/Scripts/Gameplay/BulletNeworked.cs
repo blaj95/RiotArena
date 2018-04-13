@@ -41,6 +41,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
         updatedBulletRot = transform.rotation;
 
         vel = transform.forward;
+
+        
     }
 
     void Awake()
@@ -124,8 +126,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
             stream.Serialize(ref realVelocity1);
             stream.Serialize(ref realVelocity2);
 
-            updatedBulletPos = realPosition;
-            updatedBulletRot = realRotation;
+            correctBulletPos = realPosition;
+            correctBulletRot = realRotation;
            
             fraction = 0;
 
