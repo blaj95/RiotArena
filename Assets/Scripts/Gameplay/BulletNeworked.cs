@@ -77,7 +77,7 @@ public class BulletNeworked : Photon.MonoBehaviour {
             //transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
             gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + vel * bulletSpeed * Time.deltaTime);
         }
-        fraction = fraction + Time.deltaTime * 10;
+        fraction = fraction + Time.deltaTime * 100;
         if (!photonView.isMine)
         {
             gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + vel * bulletSpeed * Time.deltaTime);
