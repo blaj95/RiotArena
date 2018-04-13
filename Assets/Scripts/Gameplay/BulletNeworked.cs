@@ -6,14 +6,27 @@ public class BulletNeworked : Photon.MonoBehaviour {
 
     private Vector3 correctBulletPos;
     private Vector3 updatedBulletPos;
+
+    private Vector3 correctRgbVel;
+    private Vector3 updatedRbgVel;
+
+    private Vector3 correctRgbAng;
+    private Vector3 updatedRbgAng;
+
+    private Vector3 correctRgbPos;
+    private Vector3 updatedRgbPos;
+
     private Quaternion correctBulletRot; 
     private Quaternion updatedBulletRot;
 
-    Vector3 realPosition = Vector3.zero;
+    private Quaternion correctRgbRot;
+    private Quaternion updatedRgbRot;
+
+    Vector3 realPosition;
     Quaternion realRotation = Quaternion.identity;
 
-    Vector3 realPosition1 = Vector3.zero;
-    Vector3 realVelocity1 = Vector3.zero;
+    Vector3 realPosition1;
+    Vector3 realVelocity1;
     Quaternion realRotation1 = Quaternion.identity;
 
     bool m_SynchronizeVelocity = true;
@@ -37,12 +50,11 @@ public class BulletNeworked : Photon.MonoBehaviour {
     {
         correctBulletPos = transform.position;
         updatedBulletPos = transform.position;
+
         correctBulletRot = transform.rotation;
         updatedBulletRot = transform.rotation;
 
-        vel = transform.forward;
-
-        
+        vel = transform.forward;  
     }
 
     void Awake()
@@ -61,8 +73,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
         if (!photonView.isMine)
         {
             //Update remote player 
-            transform.position = Vector3.Lerp(updatedBulletPos, realPosition, fraction);
-            transform.rotation = Quaternion.Lerp(updatedBulletRot, realRotation, fraction);
+            transform.position = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
+            transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
         }
     }
 
@@ -76,10 +88,10 @@ public class BulletNeworked : Photon.MonoBehaviour {
         fraction = fraction + Time.deltaTime * 9;
         if (!photonView.isMine)
         {
-            rigidB.position = Vector3.Lerp(rigidB.position, realPosition1, fraction);
-            rigidB.velocity = Vector3.Lerp(rigidB.velocity, realVelocity1, fraction);
-            rigidB.rotation = Quaternion.Lerp(rigidB.rotation, realRotation1, fraction);
-            rigidB.angularVelocity = Vector3.Lerp(rigidB.angularVelocity, realVelocity2, fraction);
+            rigidB.position = Vector3.Lerp(updatedBulletPos, correctRgbPos, fraction);
+            rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
+            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
+            rigidB.angularVelocity = Vector3.Lerp(updatedRbgAng, correctRgbAng, fraction);
         }
     }
 
@@ -87,48 +99,58 @@ public class BulletNeworked : Photon.MonoBehaviour {
     {
         if (stream.isWriting)
         {
+            Vector3 pos = transform.position;
+            Quaternion rot = transform.rotation;
+            Vector3 rigPos = rigidB.position;
+            Quaternion rigRot = rigidB.rotation;
+            Vector3 rigVel = rigidB.velocity;
+            Vector3 rigAng = rigidB.angularVelocity;
+
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
-
             stream.SendNext(rigidB.position);
             stream.SendNext(rigidB.rotation);
             stream.SendNext(rigidB.velocity);
             stream.SendNext(rigidB.angularVelocity);
 
+            stream.Serialize(ref pos);
+            stream.Serialize(ref rot);
+            stream.Serialize(ref rigPos);
+            stream.Serialize(ref rigRot);
+            stream.Serialize(ref rigVel);
+            stream.Serialize(ref rigAng);
+        }
+        else
+        {
             Vector3 pos = transform.position;
             Quaternion rot = transform.rotation;
             Vector3 rigPos = rigidB.position;
             Quaternion rigRot = rigidB.rotation;
+            Vector3 rigVel = rigidB.velocity;
             Vector3 rigAng = rigidB.angularVelocity;
 
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
             stream.Serialize(ref rigPos);
             stream.Serialize(ref rigRot);
+            stream.Serialize(ref rigVel);
             stream.Serialize(ref rigAng);
-        }
-        else
-        {
-            realPosition = (Vector3)stream.ReceiveNext();
-            realRotation = (Quaternion)stream.ReceiveNext();
+
+            correctBulletPos = pos;
+            correctBulletRot = rot;
+            correctRgbVel = rigVel;
+            correctRgbAng = rigAng;
+            correctRgbPos = rigPos;
+            correctRgbRot = rigRot;
+
+            updatedBulletPos = transform.localPosition;
+            updatedBulletRot = transform.localRotation;
+            updatedRbgVel = rigidB.velocity;
+            updatedRbgAng = rigidB.angularVelocity;
+            updatedRgbPos = rigidB.position;
+            updatedRgbRot = rigidB.rotation;
 
 
-            realPosition1 = (Vector3)stream.ReceiveNext();
-            realRotation1 = (Quaternion)stream.ReceiveNext();
-            realVelocity1 = (Vector3)stream.ReceiveNext();
-
-            realVelocity2 = (Vector3)stream.ReceiveNext();
-
-            stream.Serialize(ref realPosition);
-            stream.Serialize(ref realRotation);
-            stream.Serialize(ref realPosition1);
-            stream.Serialize(ref realRotation1);
-            stream.Serialize(ref realVelocity1);
-            stream.Serialize(ref realVelocity2);
-
-            correctBulletPos = realPosition;
-            correctBulletRot = realRotation;
-           
             fraction = 0;
 
         }
