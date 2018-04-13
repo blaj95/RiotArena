@@ -74,6 +74,12 @@ public class BulletNeworked : Photon.MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+       
+   
+    }
+
+    private void FixedUpdate()
+    {
         if (fired)
         {
 
@@ -86,22 +92,15 @@ public class BulletNeworked : Photon.MonoBehaviour {
         {
             syncTime += Time.deltaTime;
             //Update remote player 
-            transform.localPosition = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime / syncDelay));
-            transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, (syncTime / syncDelay));
-
-            rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime/syncDelay));
-            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, (syncTime / syncDelay));
-  
-            rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, (syncTime / syncDelay));
            
+
+            rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime / syncDelay));
+            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, (syncTime / syncDelay));
+
+            rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, (syncTime / syncDelay));
+
             rigidB.angularVelocity = Vector3.Lerp(updatedRbgAng, correctRgbAng, (syncTime / syncDelay));
         }
-   
-    }
-
-    private void FixedUpdate()
-    {
-       
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
