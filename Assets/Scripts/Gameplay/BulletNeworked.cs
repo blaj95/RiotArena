@@ -66,13 +66,16 @@ public class BulletNeworked : Photon.MonoBehaviour {
         fraction = fraction + Time.deltaTime * 100;
         if (!photonView.isMine)
         {
-            gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + vel * bulletSpeed * Time.deltaTime);
+
             //Update remote player 
+            rigidB.position = Vector3.Lerp(updatedBulletPos, correctRgbPos, fraction);
+            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
+
             transform.localPosition = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
             transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
-            rigidB.position = Vector3.Lerp(updatedBulletPos, correctRgbPos, fraction);
+           
             rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
-            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
+           
             rigidB.angularVelocity = Vector3.Lerp(updatedRbgAng, correctRgbAng, fraction);
         }
    
@@ -80,21 +83,7 @@ public class BulletNeworked : Photon.MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (fired)
-        {
-            
-            //transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
-            gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + vel * bulletSpeed * Time.deltaTime);
-        }
-        fraction = fraction + Time.deltaTime * 100;
-        if (!photonView.isMine)
-        {
-            gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + vel * bulletSpeed * Time.deltaTime);
-            rigidB.position = Vector3.Lerp(updatedBulletPos, correctRgbPos, fraction);
-            rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
-            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
-            rigidB.angularVelocity = Vector3.Lerp(updatedRbgAng, correctRgbAng, fraction);
-        }
+       
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
