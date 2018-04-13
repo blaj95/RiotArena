@@ -94,7 +94,7 @@ public class BulletNeworked : Photon.MonoBehaviour {
 
         if(collision.transform.tag == "Wall")
         {
-            bulletSpeed += 10;
+            bulletSpeed += 1;
         }
     }
 }
