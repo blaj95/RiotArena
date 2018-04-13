@@ -72,8 +72,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
                 stream.SendNext(this.m_Body.angularVelocity);
             }
 
-            Vector3 pos = transform.localPosition;
-            Quaternion rot = transform.localRotation;
+            Vector3 pos = transform.position;
+            Quaternion rot = transform.rotation;
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
             stream.Serialize(ref pos);
@@ -99,8 +99,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
 
             correctBulletPos = pos;
             correctBulletRot = rot;
-            updatedBulletPos = transform.localPosition;
-            updatedBulletRot = transform.localRotation;
+            updatedBulletPos = transform.position;
+            updatedBulletRot = transform.rotation;
             fraction = 0;
 
         }
