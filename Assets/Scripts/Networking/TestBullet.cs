@@ -52,7 +52,7 @@ public class TestBullet : Photon.MonoBehaviour {
         if (!photonView.isMine)
         {
             syncTime += Time.deltaTime;
-            rigidB.localPosition = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
+            rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
 
         }
 
