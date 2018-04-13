@@ -89,8 +89,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
         if (!photonView.isMine)
         {
             //rigidB.position = Vector3.Lerp(updatedBulletPos, correctRgbPos, fraction);
-            rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
-            //rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
+            //rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
+            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
             rigidB.angularVelocity = Vector3.Lerp(updatedRbgAng, correctRgbAng, fraction);
         }
     }
