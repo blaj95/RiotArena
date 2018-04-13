@@ -267,7 +267,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 417395910}
   m_LocalRotation: {x: 0.38268322, y: -0, z: -0, w: 0.9238797}
-  m_LocalPosition: {x: 0, y: 0, z: -0.03164}
+  m_LocalPosition: {x: 0, y: 0, z: -0.03139}
   m_LocalScale: {x: 0.00013020425, y: 0.00013020425, z: 0.00013020425}
   m_Children:
   - {fileID: 535595401}
@@ -276,7 +276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 45.000004, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.00005, y: 0.00766}
+  m_AnchoredPosition: {x: -0.00005, y: 0.00726}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417395912
@@ -592,7 +592,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 581208342}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0.75}
   m_LocalScale: {x: 50.930878, y: 50.930798, z: 21.827497}
   m_Children:
   - {fileID: 482143671}
@@ -745,7 +745,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 605806090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.11, z: 2.335}
+  m_LocalPosition: {x: 0, y: 0.11, z: 2.254}
   m_LocalScale: {x: 0.4947794, y: 0.39603415, z: 0.08107492}
   m_Children: []
   m_Father: {fileID: 1817371136}
@@ -1292,7 +1292,7 @@ MonoBehaviour:
   weapon: {fileID: 605806090}
   shield: {fileID: 0}
   bullet: {fileID: 1032816311626042, guid: a3d1c1f08409287479c00b916825e1fa, type: 2}
-  txtammo: {fileID: 0}
+  txtammo: {fileID: 535595402}
   maxBullets: 1000
   damage: -1
   playerID: 1
