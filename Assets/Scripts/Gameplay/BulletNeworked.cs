@@ -77,8 +77,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
             rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime/syncDelay);
             rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
 
-            transform.localPosition = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
-            transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
+            transform.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime/syncDelay);
+            transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
            
             rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
            
@@ -96,15 +96,15 @@ public class BulletNeworked : Photon.MonoBehaviour {
     {
         if (stream.isWriting)
         {
-            Vector3 pos = transform.localPosition;
-            Quaternion rot = transform.localRotation;
+            Vector3 pos = transform.position;
+            Quaternion rot = transform.rotation;
             Vector3 rigPos = rigidB.position;
             Quaternion rigRot = rigidB.rotation;
             Vector3 rigVel = rigidB.velocity;
             Vector3 rigAng = rigidB.angularVelocity;
 
-            stream.SendNext(transform.localPosition);
-            stream.SendNext(transform.localRotation);
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
             stream.SendNext(rigidB.position);
             stream.SendNext(rigidB.rotation);
             stream.SendNext(rigidB.velocity);
@@ -126,8 +126,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
             correctRgbVel = (Vector3)stream.ReceiveNext();
             correctRgbAng = (Vector3)stream.ReceiveNext();
 
-            Vector3 pos = transform.localPosition;
-            Quaternion rot = transform.localRotation;
+            Vector3 pos = transform.position;
+            Quaternion rot = transform.rotation;
             Vector3 rigPos = rigidB.position;
             Quaternion rigRot = rigidB.rotation;
             Vector3 rigVel = rigidB.velocity;
@@ -142,8 +142,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
             stream.Serialize(ref rigAng);
 
 
-            updatedBulletPos = transform.localPosition;
-            updatedBulletRot = transform.localRotation;
+            updatedBulletPos = transform.position;
+            updatedBulletRot = transform.rotation;
             updatedRbgVel = rigidB.velocity;
             updatedRbgAng = rigidB.angularVelocity;
             updatedRgbPos = rigidB.position;
