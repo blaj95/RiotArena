@@ -73,7 +73,7 @@ public class BulletNeworked : Photon.MonoBehaviour {
             //transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
             gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + vel * bulletSpeed * Time.deltaTime);
         }
-        fraction = fraction + Time.deltaTime * 100;
+        fraction = fraction + Time.deltaTime * 9;
         if (!photonView.isMine)
         {
             rigidB.position = Vector3.Lerp(rigidB.position, realPosition1, fraction);
