@@ -73,8 +73,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
         if (!photonView.isMine)
         {
             //Update remote player 
-            transform.position = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
-            transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
+            //transform.position = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
+            //transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
         }
     }
 
