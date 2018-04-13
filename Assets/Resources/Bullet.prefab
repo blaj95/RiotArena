@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeedIncrease: 1
-  bulletSpeed: 100
+  bulletSpeed: 10
 --- !u!114 &114557321319355138
 MonoBehaviour:
   m_ObjectHideFlags: 1
