@@ -842,7 +842,7 @@ MonoBehaviour:
   player: {fileID: 0}
   netPlayer: {fileID: 0}
   rightHand: {fileID: 0}
-  OffsetRotation: {x: 45, y: 0, z: 0}
+  OffsetRotation: {x: 0, y: 0, z: 0}
 --- !u!222 &222282979508946656
 CanvasRenderer:
   m_ObjectHideFlags: 1

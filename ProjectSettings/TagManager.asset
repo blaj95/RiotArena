@@ -9,6 +9,8 @@ TagManager:
   - HeadLocal
   - RightNet
   - Wall
+  - Bullet
+  - Head
   layers:
   - Default
   - TransparentFX
