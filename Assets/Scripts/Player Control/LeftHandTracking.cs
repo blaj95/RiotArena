@@ -8,9 +8,10 @@ public class LeftHandTracking : MonoBehaviour
 {
     public GameObject player;
 
+    public Vector3 OffsetRotation;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         player = gameObject.transform.parent.gameObject;
     }
@@ -19,6 +20,6 @@ public class LeftHandTracking : MonoBehaviour
 	void Update ()
     {
         transform.position = InputTracking.GetLocalPosition(XRNode.LeftHand) + player.transform.position;
-        transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand);
+        transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand) * Quaternion.Euler(OffsetRotation);
     }
 }
