@@ -103,8 +103,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
             Vector3 rigVel = rigidB.velocity;
             Vector3 rigAng = rigidB.angularVelocity;
 
-            stream.SendNext(transform.position);
-            stream.SendNext(transform.rotation);
+            stream.SendNext(transform.localPosition);
+            stream.SendNext(transform.localRotation);
             stream.SendNext(rigidB.position);
             stream.SendNext(rigidB.rotation);
             stream.SendNext(rigidB.velocity);
