@@ -73,8 +73,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
         if (!photonView.isMine)
         {
             //Update remote player 
-            //transform.position = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
-            //transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
+            transform.position = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
+            transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
         }
     }
 
@@ -88,9 +88,9 @@ public class BulletNeworked : Photon.MonoBehaviour {
         fraction = fraction + Time.deltaTime * 9;
         if (!photonView.isMine)
         {
-            rigidB.position = Vector3.Lerp(updatedBulletPos, correctRgbPos, fraction);
+            //rigidB.position = Vector3.Lerp(updatedBulletPos, correctRgbPos, fraction);
             rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
-            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
+            //rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
             rigidB.angularVelocity = Vector3.Lerp(updatedRbgAng, correctRgbAng, fraction);
         }
     }
