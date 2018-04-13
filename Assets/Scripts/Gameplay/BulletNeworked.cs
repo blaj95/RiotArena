@@ -69,10 +69,10 @@ public class BulletNeworked : Photon.MonoBehaviour {
             gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + vel * bulletSpeed * Time.deltaTime);
         }
 
-        fraction = fraction + Time.deltaTime * 100;
+        fraction = fraction + Time.deltaTime * 10;
         if (!photonView.isMine)
         {
-
+            syncTime += Time.deltaTime;
             //Update remote player 
             rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime/syncDelay));
             rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
