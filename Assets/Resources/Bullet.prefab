@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23826968118354000}
   - component: {fileID: 54924876569702758}
   - component: {fileID: 114557321319355138}
-  - component: {fileID: 114008865484653324}
+  - component: {fileID: 114022030052841888}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -101,7 +101,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114008865484653324
+--- !u!114 &114022030052841888
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,11 +109,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1784763736437710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d95757764963474ebcd9f01f549eafb, type: 3}
+  m_Script: {fileID: 11500000, guid: 8461538872f97984a9b00b23e98a5e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeedIncrease: 1
   bulletSpeed: 10
+  bulletSpeedIncrease: 1
 --- !u!114 &114557321319355138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,7 +135,7 @@ MonoBehaviour:
   ownershipTransfer: 0
   ObservedComponents:
   - {fileID: 4020761546162260}
-  - {fileID: 114008865484653324}
+  - {fileID: 114022030052841888}
   - {fileID: 54924876569702758}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
