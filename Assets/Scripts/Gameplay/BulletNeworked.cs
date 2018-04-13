@@ -77,8 +77,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
             rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime/syncDelay);
             rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
 
-            //transform.localPosition = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
-            //transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
+            transform.localPosition = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
+            transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
            
             rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
            
