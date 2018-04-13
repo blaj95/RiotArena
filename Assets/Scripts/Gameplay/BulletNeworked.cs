@@ -74,10 +74,10 @@ public class BulletNeworked : Photon.MonoBehaviour {
         {
 
             //Update remote player 
-            rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime/syncDelay);
+            rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime/syncDelay));
             rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
 
-            transform.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime/syncDelay);
+            transform.position = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime/syncDelay));
             transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
            
             rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
