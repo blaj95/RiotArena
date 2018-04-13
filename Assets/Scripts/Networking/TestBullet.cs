@@ -35,14 +35,7 @@ public class TestBullet : Photon.MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-       
-       
-    }
 
-  
-
-    private void FixedUpdate()
-    {
         if (fired)
         {
             //transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
@@ -55,6 +48,13 @@ public class TestBullet : Photon.MonoBehaviour {
             rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
 
         }
+    }
+
+  
+
+    private void FixedUpdate()
+    {
+    
 
     }
 

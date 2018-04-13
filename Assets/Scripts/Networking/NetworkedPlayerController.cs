@@ -84,7 +84,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
             nextFire = Time.time + rateOfFire;
             GameObject newBullet = PhotonNetwork.Instantiate("Bullet", weaponTip.transform.position + weaponTip.transform.forward, weaponTip.transform.rotation, 0);
-            newBullet.GetComponent<BulletNeworked>().FireBullet(weapon, damage, playerID);
+            newBullet.GetComponent<TestBullet>().FireBullet(weapon, damage, playerID);
             blist.Add(newBullet);
             bulletsFired++;
             bulletsLeft = maxBullets - blist.Count;
