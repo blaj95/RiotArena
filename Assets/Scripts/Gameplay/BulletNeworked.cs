@@ -63,5 +63,12 @@ public class BulletNeworked : Photon.MonoBehaviour
         {
             bulletSpeed += bulletSpeedIncrease;
         }
+
+        if(collision.transform.tag == "Shield")
+        {
+            Debug.Log("ADD BULLET COLLECT LOGIC");
+        }
+
+        
     }
 }
