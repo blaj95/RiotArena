@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeedIncrease: 1
-  bulletSpeed: 10
+  bulletSpeed: 100
 --- !u!114 &114557321319355138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35144820bcc25444bb8f0fd767d9423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SmoothingDelay: 5
+  SmoothingDelay: 10
 --- !u!135 &135574366344338636
 SphereCollider:
   m_ObjectHideFlags: 1

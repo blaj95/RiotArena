@@ -38,7 +38,8 @@ public class BulletNeworked : Photon.MonoBehaviour
         if (fired)
         {
             //transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
-            gameObject.GetComponent<Rigidbody>().MovePosition(transform.localPosition + vel * bulletSpeed * Time.deltaTime);
+           rigidB.MovePosition(transform.localPosition + vel * bulletSpeed * Time.deltaTime);
+           rigidB.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         }
     }
 
