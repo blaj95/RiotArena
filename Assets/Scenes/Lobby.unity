@@ -221,7 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d66d00308c68242beb4a0b46d85972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1189257086}
+  OffsetRotation: {x: 0, y: 0, z: 0}
 --- !u!23 &141611950
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -397,7 +398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tip: {fileID: 1513858228}
   start: {fileID: 928760649}
-  player: {fileID: 0}
+  player: {fileID: 1189257086}
+  OffsetRotation: {x: 0, y: 0, z: 0}
 --- !u!23 &311270054
 MeshRenderer:
   m_ObjectHideFlags: 0
