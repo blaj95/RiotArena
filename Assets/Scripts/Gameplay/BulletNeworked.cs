@@ -8,6 +8,12 @@ public class BulletNeworked : Photon.MonoBehaviour {
     private Vector3 updatedBulletPos;
     private Quaternion correctBulletRot; 
     private Quaternion updatedBulletRot;
+
+    bool m_SynchronizeVelocity = true;
+    bool m_SynchronizeAngularVelocity = true;
+
+    Rigidbody m_Body;
+
     private float fraction;
 
     public float bulletSpeed = 1000f;
@@ -27,9 +33,14 @@ public class BulletNeworked : Photon.MonoBehaviour {
 
         vel = transform.forward;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    void Awake()
+    {
+        this.m_Body = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         if (fired)
         {
@@ -51,16 +62,35 @@ public class BulletNeworked : Photon.MonoBehaviour {
     {
         if (stream.isWriting)
         {
+            if (this.m_SynchronizeVelocity == true)
+            {
+                stream.SendNext(this.m_Body.velocity);
+            }
+
+            if (this.m_SynchronizeAngularVelocity == true)
+            {
+                stream.SendNext(this.m_Body.angularVelocity);
+            }
+
             Vector3 pos = transform.localPosition;
             Quaternion rot = transform.localRotation;
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
             stream.Serialize(ref pos);
             stream.Serialize(ref rot);
-
         }
         else
         {
+            if (this.m_SynchronizeVelocity == true)
+            {
+                this.m_Body.velocity = (Vector3)stream.ReceiveNext();
+            }
+
+            if (this.m_SynchronizeAngularVelocity == true)
+            {
+                this.m_Body.angularVelocity = (Vector3)stream.ReceiveNext();
+            }
+
             Vector3 pos = Vector3.zero;
             Quaternion rot = Quaternion.identity;
 
