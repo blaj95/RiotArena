@@ -45,11 +45,23 @@ public class BulletNeworked : Photon.MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        correctBulletPos = transform.position;
-        updatedBulletPos = transform.position;
+        correctBulletPos = transform.localPosition;
+        updatedBulletPos = transform.localPosition;
 
-        correctBulletRot = transform.rotation;
-        updatedBulletRot = transform.rotation;
+        correctBulletRot = transform.localRotation;
+        updatedBulletRot = transform.localRotation;
+
+        correctRgbPos = rigidB.position;
+        updatedRgbPos = rigidB.position;
+
+        correctRgbRot = rigidB.rotation;
+        updatedRgbRot = rigidB.rotation;
+
+        correctRgbVel = rigidB.velocity;
+        updatedRbgVel = rigidB.velocity;
+
+        correctRgbAng = rigidB.angularVelocity;
+        updatedRbgAng = rigidB.angularVelocity;
 
         vel = transform.forward;  
     }
@@ -66,7 +78,7 @@ public class BulletNeworked : Photon.MonoBehaviour {
         {
 
             //transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
-            gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + vel * bulletSpeed * Time.deltaTime);
+            gameObject.GetComponent<Rigidbody>().MovePosition(transform.localPosition + vel * bulletSpeed * Time.deltaTime);
         }
 
         fraction = fraction + Time.deltaTime * 10;
@@ -74,12 +86,12 @@ public class BulletNeworked : Photon.MonoBehaviour {
         {
             syncTime += Time.deltaTime;
             //Update remote player 
+            transform.localPosition = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime / syncDelay));
+            transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, (syncTime / syncDelay));
+
             rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime/syncDelay));
             rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, (syncTime / syncDelay));
-
-            transform.position = Vector3.Lerp(syncStartPosition, syncEndPosition, (syncTime/syncDelay));
-            transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, (syncTime / syncDelay));
-           
+  
             rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, (syncTime / syncDelay));
            
             rigidB.angularVelocity = Vector3.Lerp(updatedRbgAng, correctRgbAng, (syncTime / syncDelay));
@@ -96,8 +108,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
     {
         if (stream.isWriting)
         {
-            Vector3 pos = transform.position;
-            Quaternion rot = transform.rotation;
+            Vector3 pos = transform.localPosition;
+            Quaternion rot = transform.localRotation;
             Vector3 rigPos = rigidB.position;
             Quaternion rigRot = rigidB.rotation;
             Vector3 rigVel = rigidB.velocity;
@@ -126,12 +138,12 @@ public class BulletNeworked : Photon.MonoBehaviour {
             correctRgbVel = (Vector3)stream.ReceiveNext();
             correctRgbAng = (Vector3)stream.ReceiveNext();
 
-            Vector3 pos = transform.position;
-            Quaternion rot = transform.rotation;
-            Vector3 rigPos = rigidB.position;
-            Quaternion rigRot = rigidB.rotation;
-            Vector3 rigVel = rigidB.velocity;
-            Vector3 rigAng = rigidB.angularVelocity;
+            Vector3 pos = Vector3.zero;
+            Quaternion rot = Quaternion.identity;
+            Vector3 rigPos = Vector3.zero;
+            Quaternion rigRot = Quaternion.identity;
+            Vector3 rigVel = Vector3.zero;
+            Vector3 rigAng = Vector3.zero;
 
 
             stream.Serialize(ref pos);
@@ -142,8 +154,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
             stream.Serialize(ref rigAng);
 
 
-            updatedBulletPos = transform.position;
-            updatedBulletRot = transform.rotation;
+            updatedBulletPos = transform.localPosition;
+            updatedBulletRot = transform.localRotation;
             updatedRbgVel = rigidB.velocity;
             updatedRbgAng = rigidB.angularVelocity;
             updatedRgbPos = rigidB.position;
