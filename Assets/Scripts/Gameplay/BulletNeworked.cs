@@ -56,17 +56,26 @@ public class BulletNeworked : Photon.MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-      
-       
+        if (fired)
+        {
 
-        fraction = fraction + Time.deltaTime * 10;
+            //transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
+            gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + vel * bulletSpeed * Time.deltaTime);
+        }
 
+        fraction = fraction + Time.deltaTime * 100;
         if (!photonView.isMine)
         {
+            gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + vel * bulletSpeed * Time.deltaTime);
             //Update remote player 
             transform.localPosition = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
             transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
+            rigidB.position = Vector3.Lerp(updatedBulletPos, correctRgbPos, fraction);
+            rigidB.velocity = Vector3.Lerp(updatedRbgVel, correctRgbVel, fraction);
+            rigidB.rotation = Quaternion.Lerp(updatedRgbRot, correctBulletRot, fraction);
+            rigidB.angularVelocity = Vector3.Lerp(updatedRbgAng, correctRgbAng, fraction);
         }
+   
     }
 
     private void FixedUpdate()
