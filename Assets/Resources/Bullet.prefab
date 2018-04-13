@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 54924876569702758}
   - component: {fileID: 114557321319355138}
   - component: {fileID: 114419403980959632}
+  - component: {fileID: 114153426466384512}
+  - component: {fileID: 114568790742876700}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -39,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784763736437710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.282, y: 1.1047881, z: -0.044119358}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,6 +103,19 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114153426466384512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784763736437710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
 --- !u!114 &114419403980959632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,14 +149,26 @@ MonoBehaviour:
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 4020761546162260}
   - {fileID: 114419403980959632}
-  - {fileID: 54924876569702758}
+  - {fileID: 114153426466384512}
+  - {fileID: 114568790742876700}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
+--- !u!114 &114568790742876700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1784763736437710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35144820bcc25444bb8f0fd767d9423e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmoothingDelay: 5
 --- !u!135 &135574366344338636
 SphereCollider:
   m_ObjectHideFlags: 1
