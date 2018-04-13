@@ -22,15 +22,6 @@ public class BulletNeworked : Photon.MonoBehaviour {
     private Quaternion correctRgbRot;
     private Quaternion updatedRgbRot;
 
-    Vector3 realPosition;
-    Quaternion realRotation = Quaternion.identity;
-
-    Vector3 realPosition1;
-    Vector3 realVelocity1;
-    Quaternion realRotation1 = Quaternion.identity;
-
-    bool m_SynchronizeVelocity = true;
-    bool m_SynchronizeAngularVelocity = true;
 
     Rigidbody rigidB;
 
@@ -73,8 +64,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
         if (!photonView.isMine)
         {
             //Update remote player 
-            transform.position = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
-            transform.rotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
+            transform.localPosition = Vector3.Lerp(updatedBulletPos, correctBulletPos, fraction);
+            transform.localRotation = Quaternion.Lerp(updatedBulletRot, correctBulletRot, fraction);
         }
     }
 
@@ -101,8 +92,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
     {
         if (stream.isWriting)
         {
-            Vector3 pos = transform.position;
-            Quaternion rot = transform.rotation;
+            Vector3 pos = transform.localPosition;
+            Quaternion rot = transform.localRotation;
             Vector3 rigPos = rigidB.position;
             Quaternion rigRot = rigidB.rotation;
             Vector3 rigVel = rigidB.velocity;
@@ -124,8 +115,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
         }
         else
         {
-            Vector3 pos = transform.position;
-            Quaternion rot = transform.rotation;
+            Vector3 pos = transform.localPosition;
+            Quaternion rot = transform.localRotation;
             Vector3 rigPos = rigidB.position;
             Quaternion rigRot = rigidB.rotation;
             Vector3 rigVel = rigidB.velocity;
@@ -146,8 +137,8 @@ public class BulletNeworked : Photon.MonoBehaviour {
             correctRgbVel = (Vector3)stream.ReceiveNext();
             correctRgbAng = (Vector3)stream.ReceiveNext();
 
-            updatedBulletPos = transform.position;
-            updatedBulletRot = transform.rotation;
+            updatedBulletPos = transform.localPosition;
+            updatedBulletRot = transform.localRotation;
             updatedRbgVel = rigidB.velocity;
             updatedRbgAng = rigidB.angularVelocity;
             updatedRgbPos = rigidB.position;

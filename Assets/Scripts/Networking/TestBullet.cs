@@ -52,7 +52,7 @@ public class TestBullet : Photon.MonoBehaviour {
         if (!photonView.isMine)
         {
             syncTime += Time.deltaTime;
-            rigidB.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
+            rigidB.localPosition = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
 
         }
 
@@ -71,6 +71,7 @@ public class TestBullet : Photon.MonoBehaviour {
         {
             Vector3 syncPosition = (Vector3)stream.ReceiveNext();
             Vector3 syncVelocity = (Vector3)stream.ReceiveNext();
+            Vector3 syncAng = (Vector3)stream.ReceiveNext();
 
            syncTime = 0f;
            lastSynchronizationTime = Time.time;
@@ -81,6 +82,12 @@ public class TestBullet : Photon.MonoBehaviour {
             syncStartPosition = rigidB.position;
 
         }
+    }
+
+    [PunRPC]
+    public void MoveBullet()
+    {
+
     }
 
     public void FireBullet(GameObject parent, int damage, int ownerID)
