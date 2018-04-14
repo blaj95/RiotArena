@@ -14,6 +14,7 @@ public class NetworkShieldTracking : Photon.MonoBehaviour, IPunObservable
     private Quaternion correctLeftRot = Quaternion.identity; //We lerp towards this
     private Quaternion onUpdateLeftRot;
     private float fraction;
+    public Vector3 OffsetRotation;
 
     // Use this for initialization
     void Start()
@@ -64,7 +65,7 @@ public class NetworkShieldTracking : Photon.MonoBehaviour, IPunObservable
 
             netPlayer = GameObject.Find("WeaponLobbyPlayer(Clone)");
             transform.localPosition = leftHand.transform.localPosition + netPlayer.transform.localPosition;
-            transform.localRotation = leftHand.transform.localRotation;
+            transform.localRotation = leftHand.transform.localRotation * Quaternion.Euler(OffsetRotation);
             Vector3 curPos = leftHand.transform.position;
             Quaternion curRot = leftHand.transform.rotation;
             //transform.position = Vector3.Lerp(curPos, correctRightPos, Time.deltaTime * 5);

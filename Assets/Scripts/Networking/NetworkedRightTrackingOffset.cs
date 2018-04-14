@@ -16,6 +16,8 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
     private float fraction;
 
     public Vector3 OffsetRotation;
+    public GameObject weaponTip;
+
 
     // Use this for initialization
     void Start()
@@ -65,9 +67,9 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
         {
 
             netPlayer = GameObject.Find("WeaponLobbyPlayer(Clone)");
-
+            weaponTip = GameObject.Find("ControllerRightWeapon(Clone)/Rtip");
             transform.localPosition = rightHand.transform.localPosition + netPlayer.transform.localPosition;
-            transform.localRotation = rightHand.transform.localRotation * Quaternion.Euler(OffsetRotation); 
+            transform.localRotation = rightHand.transform.localRotation * Quaternion.Euler(OffsetRotation);
             Vector3 curPos = rightHand.transform.position;
             Quaternion curRot = rightHand.transform.rotation;
             //transform.position = Vector3.Lerp(curPos, correctRightPos, Time.deltaTime * 5);
@@ -84,6 +86,22 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
             transform.localPosition = Vector3.Lerp(onUpdateRightPos, correctRightPos, fraction);
             transform.localRotation = Quaternion.Lerp(onUpdateRightRot, correctRightRot, fraction);
         }
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(weaponTip.transform.position, weaponTip.transform.forward, out hit, Mathf.Infinity))
+        {
+            Debug.Log(hit.transform.gameObject.name);
+            if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
+            {
+                if (Input.GetButtonDown("RTouchPress"))
+                {
+                    netPlayer.transform.position = hit.transform.position;
+                }
+              
+            }
+        }
+
     }
 }
 
