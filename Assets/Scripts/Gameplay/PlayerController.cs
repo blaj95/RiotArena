@@ -5,20 +5,23 @@ using UnityEngine.XR;
 using UnityEngine.UI;
 
 
-    public class PlayerController : MonoBehaviour
-    {
+public class PlayerController : MonoBehaviour
+{
 
-        [SerializeField]
-        GameObject weapon = null;
+    [SerializeField]
+    GameObject weapon = null;
 
-        [SerializeField]
-        GameObject shield = null;
+    [SerializeField]
+    GameObject shield = null;
 
-        [SerializeField]
-        GameObject bullet = null;
+    [SerializeField]
+    GameObject bullet = null;
 
-        [SerializeField]
-        Text txtammo = null;
+    [SerializeField]
+    Text txtammo = null;
+
+    [SerializeField]
+    bool basicMovement = false; 
 
 
         int bulletsLeft = -1;
@@ -51,11 +54,16 @@ using UnityEngine.UI;
         void Update()
         {
             updateControllers();
+
+        if(basicMovement)
+        {
             var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
             var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
 
             transform.Rotate(0, x, 0);
             transform.Translate(0, 0, z);
+        }
+            
 
             if (Input.GetKeyDown(KeyCode.Mouse0) || (Input.GetButtonDown("Fire1")) || Input.GetButtonDown("RSelectTrigger"))
             {
@@ -83,6 +91,7 @@ using UnityEngine.UI;
             blist.Add(newBullet);
             bulletsFired++;
             bulletsLeft = maxBullets - blist.Count;
+            txtammo.text = bulletsLeft.ToString();
         }
 
         public void OnChildCollisionEnter(Collision collision)
@@ -93,6 +102,7 @@ using UnityEngine.UI;
                 {
                     blist.Remove(collision.gameObject);
                     bulletsLeft++;
+                    txtammo.text = bulletsLeft.ToString();
                     Destroy(collision.gameObject);
 
                 }
