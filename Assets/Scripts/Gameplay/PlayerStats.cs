@@ -15,4 +15,9 @@ public class PlayerStats : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }

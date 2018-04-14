@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 
@@ -19,11 +20,12 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     [SerializeField]
     GameObject bullet = null;
 
+    public Text bulletCount;
 
-    int bulletsLeft = -1;
-    int bulletsFired = -1;
-    public int maxBullets = -1;
-    public int damage = -1;
+    public int bulletsLeft;
+    public int bulletsFired;
+    public int maxBullets;
+    public int damage;
 
 
     public int playerID = 1;
@@ -35,8 +37,8 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
 
 
-    List<GameObject> blist = new List<GameObject>(); //Holds a list of all bullets for that player
-                                                     // Use this for initialization
+    public List<GameObject> blist = new List<GameObject>(); //Holds a list of all bullets for that player
+                                                    
     void Start()
     {
 
@@ -44,7 +46,9 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
     private void Awake()
     {
-       
+        bulletsLeft = maxBullets;
+
+        
     }
 
     // Update is called once per frame
@@ -56,12 +60,16 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
             weaponTip = GameObject.Find("ControllerRightWeapon(Clone)/Rtip");
 
+            bulletCount = GameObject.Find("ControllerRightWeapon(Clone)/gun/Canvas/Text").gameObject.GetComponent<Text>();
+
         }
 
         if (Input.GetButtonDown("RSelectTrigger") && photonView.isMine)
         {
             photonView.RPC("FireWeapon", PhotonTargets.All, null);
         }
+
+        bulletCount.text = bulletsLeft.ToString();
     }
 
 
@@ -84,10 +92,10 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
             nextFire = Time.time + rateOfFire;
             GameObject newBullet = PhotonNetwork.Instantiate("Bullet", weaponTip.transform.position + weaponTip.transform.forward, weaponTip.transform.rotation, 0);
-            newBullet.GetComponent<BulletNeworked>().FireBullet(weapon, damage, playerID);
+            newBullet.GetComponent<BulletNeworked>().FireBullet(weaponTip, damage, playerID);
             blist.Add(newBullet);
             bulletsFired++;
-            bulletsLeft = maxBullets - blist.Count;
+            bulletsLeft -= 1;
         }
     }
 
