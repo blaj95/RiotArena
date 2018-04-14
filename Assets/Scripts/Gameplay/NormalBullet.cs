@@ -5,11 +5,16 @@ using UnityEngine;
 public class NormalBullet : MonoBehaviour
 {
     public float bulletSpeed = 1000f;
-    
-    
+
+
     bool fired = false;
     int _damage = 1;
     int _ownerID = -1;
+
+    [SerializeField]
+    int damageIncrementor = -1;
+    [SerializeField]
+    float speedMultiplyer = -1;
 
     private Vector3 vel = new Vector3();
 
@@ -43,6 +48,13 @@ public class NormalBullet : MonoBehaviour
         transform.Rotate(Vector3.forward);
         _ownerID = ownerID;
         _damage = damage;
+    }
+
+    public void LVLUpBullet()
+    {
+        _damage = _damage + damageIncrementor;
+        bulletSpeed = bulletSpeed * speedMultiplyer;
+        
     }
 
     private void OnCollisionEnter(Collision collision)
