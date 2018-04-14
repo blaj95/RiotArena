@@ -37,7 +37,10 @@ namespace Riot
             {
                 reflect = false;
             }
-            
+            else
+            {
+                reflect = true;
+            }
         }
     }
 }
