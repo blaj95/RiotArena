@@ -43,4 +43,6 @@ MonoBehaviour:
   - FireWeapon
   - MoveBullet
   - collectBullet
+  - DoDamage
+  - maxBulletPlus
   DisableAutoOpenWizard: 1

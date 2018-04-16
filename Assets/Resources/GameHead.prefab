@@ -20,14 +20,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4501672114669044}
   - component: {fileID: 33114794408340010}
-  - component: {fileID: 135776358982891978}
   - component: {fileID: 23838256001005816}
   - component: {fileID: 114130311314432150}
   - component: {fileID: 114449654484765204}
   - component: {fileID: 114211882605371008}
+  - component: {fileID: 136031696858278662}
   m_Layer: 0
   m_Name: GameHead
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,8 +227,8 @@ MonoBehaviour:
   rnd:
   - {fileID: 23838256001005816}
   - {fileID: 23048491534984556}
---- !u!135 &135776358982891978
-SphereCollider:
+--- !u!136 &136031696858278662
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -236,6 +236,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.83
+  m_Height: 4.8
+  m_Direction: 1
+  m_Center: {x: 0, y: -1.87, z: -0.2}

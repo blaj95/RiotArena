@@ -127,10 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d95757764963474ebcd9f01f549eafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeedIncrease: 1
+  pstats: {fileID: 0}
+  player: {fileID: 0}
+  bulletSpeedIncrease: 0
   bulletSpeed: 10
-  damageIncrementor: -1
-  speedMultiplyer: -1
+  damageIncrementor: 1
+  speedMultiplyer: 1
+  _damage: 2
 --- !u!114 &114557321319355138
 MonoBehaviour:
   m_ObjectHideFlags: 1

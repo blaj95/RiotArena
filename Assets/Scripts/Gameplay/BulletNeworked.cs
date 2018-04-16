@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BulletNeworked : Photon.MonoBehaviour
 {
-
+    public PlayerStats pstats;
     Rigidbody rigidB;
+
+    public GameObject player;
 
     private float fraction;
 
@@ -15,12 +17,12 @@ public class BulletNeworked : Photon.MonoBehaviour
     private Vector3 vel = new Vector3();
 
     [SerializeField]
-    int damageIncrementor = -1;
+    int damageIncrementor = 1;
     [SerializeField]
-    float speedMultiplyer = -1;
+    float speedMultiplyer = 1;
 
     bool fired = false;
-    int _damage = 1;
+    public int _damage = 2;
     int _ownerID = -1;
 
     // Use this for initialization
@@ -34,8 +36,17 @@ public class BulletNeworked : Photon.MonoBehaviour
         rigidB = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        if (photonView.isMine)
+        {
+            player = GameObject.Find("WeaponLobbyPlayer(Clone)");
+            pstats = player.GetComponent<PlayerStats>();
+        }
+    }
+
     // Update is called once per frame
-  
+
 
     private void FixedUpdate()
     {
@@ -58,9 +69,21 @@ public class BulletNeworked : Photon.MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        foreach (ContactPoint contact in collision.contacts)
+        if (collision.transform.tag == "Head")
         {
-            vel = Vector3.Reflect(vel, contact.normal);
+            Debug.Log("GOTCHA");
+            if (photonView.isMine)
+            {
+                photonView.RPC("DoDamage", PhotonTargets.All, _damage);
+            }
+        }
+        else
+        {
+            _damage = _damage + damageIncrementor;
+            foreach (ContactPoint contact in collision.contacts)
+            {
+                vel = Vector3.Reflect(vel, contact.normal);
+            }
         }
     }
 
@@ -69,5 +92,11 @@ public class BulletNeworked : Photon.MonoBehaviour
         _damage = _damage + damageIncrementor;
         bulletSpeed = bulletSpeed * speedMultiplyer;
 
+    }
+
+    [PunRPC]
+    public void DoDamage(int dmg)
+    {
+        pstats.playerHealth = pstats.playerHealth - dmg;
     }
 }
