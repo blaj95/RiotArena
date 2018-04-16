@@ -86,12 +86,15 @@ public class BulletNeworked : Photon.MonoBehaviour
         }
         else
         {
-            _damage = _damage + damageIncrementor;
+            
             foreach (ContactPoint contact in collision.contacts)
             {
                 vel = Vector3.Reflect(vel, contact.normal);
             }
+            _damage = _damage + damageIncrementor;
+            bulletSpeed = bulletSpeed + bulletSpeedIncrease;
         }
+       
     }
 
     public void LVLUpBullet()

@@ -129,11 +129,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pstats: {fileID: 0}
   player: {fileID: 0}
-  bulletSpeedIncrease: 0
+  bulletSpeedIncrease: 1
   bulletSpeed: 10
+  speedCap: 50
   damageIncrementor: 1
   speedMultiplyer: 1
-  _damage: 2
+  _damage: 0
 --- !u!114 &114557321319355138
 MonoBehaviour:
   m_ObjectHideFlags: 1
