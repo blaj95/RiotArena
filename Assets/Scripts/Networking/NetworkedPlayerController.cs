@@ -70,6 +70,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
         }
 
         bulletCount.text = bulletsLeft.ToString();
+        bullet = GameObject.Find("Bullet(Clone)");
     }
 
 

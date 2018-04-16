@@ -66,8 +66,7 @@ public class NetworkShieldTracking : Photon.MonoBehaviour, IPunObservable
             netPlayer = GameObject.Find("WeaponLobbyPlayer(Clone)");
             transform.localPosition = leftHand.transform.localPosition + netPlayer.transform.localPosition;
             transform.localRotation = leftHand.transform.localRotation * Quaternion.Euler(OffsetRotation);
-            Vector3 curPos = leftHand.transform.position;
-            Quaternion curRot = leftHand.transform.rotation;
+            transform.Rotate(0, 180, 0);
             //transform.position = Vector3.Lerp(curPos, correctRightPos, Time.deltaTime * 5);
             //transform.rotation = Quaternion.Lerp(curRot, correctRightRot, Time.deltaTime * 5);
 

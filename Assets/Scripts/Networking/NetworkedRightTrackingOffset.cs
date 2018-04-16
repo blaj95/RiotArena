@@ -91,7 +91,7 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
 
         if (Physics.Raycast(weaponTip.transform.position, weaponTip.transform.forward, out hit, Mathf.Infinity))
         {
-            Debug.Log(hit.transform.gameObject.name);
+            //Debug.Log(hit.transform.gameObject.name);
             if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
             {
                 if (Input.GetKey("joystick button 17"))
