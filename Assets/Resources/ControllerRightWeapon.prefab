@@ -276,7 +276,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1913187054250996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.08, z: 1.42}
+  m_LocalPosition: {x: 0, y: 0.08, z: 1.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4888700408653484}
@@ -808,8 +808,8 @@ MonoBehaviour:
   - {fileID: 4870698119952070}
   - {fileID: 4218427013156670}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 1
+  instantiationId: 1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114832331438840028
@@ -843,6 +843,7 @@ MonoBehaviour:
   netPlayer: {fileID: 0}
   rightHand: {fileID: 0}
   OffsetRotation: {x: 45, y: 0, z: 0}
+  weaponTip: {fileID: 0}
 --- !u!222 &222282979508946656
 CanvasRenderer:
   m_ObjectHideFlags: 1

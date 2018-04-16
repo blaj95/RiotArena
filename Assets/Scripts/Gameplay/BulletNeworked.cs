@@ -13,13 +13,15 @@ public class BulletNeworked : Photon.MonoBehaviour
 
     public float bulletSpeedIncrease;
     public float bulletSpeed = 10f;
-
+    public float speedCap;
     private Vector3 vel = new Vector3();
 
     [SerializeField]
     int damageIncrementor = 1;
     [SerializeField]
     float speedMultiplyer = 1;
+
+
 
     bool fired = false;
     public int _damage = 2;
@@ -42,6 +44,11 @@ public class BulletNeworked : Photon.MonoBehaviour
         {
             player = GameObject.Find("WeaponLobbyPlayer(Clone)");
             pstats = player.GetComponent<PlayerStats>();
+        }
+
+        if(bulletSpeed > speedCap)
+        {
+            bulletSpeed = speedCap;
         }
     }
 

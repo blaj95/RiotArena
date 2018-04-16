@@ -25,7 +25,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     public int bulletsLeft;
     public int bulletsFired;
     public int maxBullets;
-    public int damage;
+    public int damage =1;
 
 
     public int playerID = 1;
