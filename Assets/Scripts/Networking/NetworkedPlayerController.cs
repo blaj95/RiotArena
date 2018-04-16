@@ -95,7 +95,8 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
             newBullet.GetComponent<BulletNeworked>().FireBullet(weaponTip, damage, playerID);
             blist.Add(newBullet);
             bulletsFired++;
-            bulletsLeft -= 1;
+            bulletsLeft = maxBullets - blist.Count;
+            bulletCount.text = bulletsLeft.ToString();
         }
     }
 
@@ -107,8 +108,10 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
             {
                 blist.Remove(collision.gameObject);
                 bulletsLeft++;
+                bulletCount.text = bulletsLeft.ToString();
                 Destroy(collision.gameObject);
-
+                PhotonNetwork.Destroy(collision.gameObject);
+                PhotonNetwork.Destroy(collision.gameObject.GetPhotonView());
             }
             else
             {

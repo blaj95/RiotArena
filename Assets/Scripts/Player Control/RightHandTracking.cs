@@ -38,7 +38,7 @@ public class RightHandTracking : Photon.MonoBehaviour {
 
         if (Physics.Raycast(tip.transform.position, fwd, out hit, Mathf.Infinity))
         {
-            Debug.Log(hit.transform.gameObject.name);
+            //Debug.Log(hit.transform.gameObject.name);
 
             if(hit.transform.gameObject.name == "Start")
             {

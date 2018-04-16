@@ -13,7 +13,11 @@ public class BulletNeworked : Photon.MonoBehaviour
     public float bulletSpeed = 10f;
 
     private Vector3 vel = new Vector3();
-   
+
+    [SerializeField]
+    int damageIncrementor = -1;
+    [SerializeField]
+    float speedMultiplyer = -1;
 
     bool fired = false;
     int _damage = 1;
@@ -58,17 +62,12 @@ public class BulletNeworked : Photon.MonoBehaviour
         {
             vel = Vector3.Reflect(vel, contact.normal);
         }
+    }
 
-        if(collision.transform.tag == "Wall")
-        {
-            bulletSpeed += bulletSpeedIncrease;
-        }
+    public void LVLUpBullet()
+    {
+        _damage = _damage + damageIncrementor;
+        bulletSpeed = bulletSpeed * speedMultiplyer;
 
-        if(collision.transform.tag == "Shield")
-        {
-            Debug.Log("ADD BULLET COLLECT LOGIC");
-        }
-
-        
     }
 }
