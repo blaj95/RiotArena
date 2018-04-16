@@ -95,7 +95,7 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
             //Debug.Log(hit.transform.gameObject.name);
             if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
             {
-                if (Input.GetKey("joystick button 17"))
+                if (Input.GetKeyUp("joystick button 17"))
                 {
                     Debug.Log("Teleport!");
                     netPlayer.transform.position = hit.point;
