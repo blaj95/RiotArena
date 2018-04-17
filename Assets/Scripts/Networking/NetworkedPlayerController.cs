@@ -21,6 +21,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     GameObject bullet = null;
 
     public Text bulletCount;
+   
 
     public int bulletsLeft;
     public int bulletsFired;
@@ -62,6 +63,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
             bulletCount = GameObject.Find("ControllerRightWeapon(Clone)/gun/Canvas/Text").gameObject.GetComponent<Text>();
 
+
         }
 
         if (Input.GetButtonDown("RSelectTrigger") && photonView.isMine)
@@ -71,6 +73,11 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
         bulletCount.text = bulletsLeft.ToString();
         bullet = GameObject.Find("Bullet(Clone)");
+
+        if(maxBullets < 0)
+        {
+            maxBullets = 0;
+        }
     }
 
 

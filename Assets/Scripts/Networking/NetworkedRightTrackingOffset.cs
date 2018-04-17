@@ -70,10 +70,7 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
             weaponTip = GameObject.Find("ControllerRightWeapon(Clone)/Rtip");
             transform.localPosition = rightHand.transform.localPosition + netPlayer.transform.localPosition;
             transform.localRotation = rightHand.transform.localRotation * Quaternion.Euler(OffsetRotation);
-            Vector3 curPos = rightHand.transform.position;
-            Quaternion curRot = rightHand.transform.rotation;
-            //transform.position = Vector3.Lerp(curPos, correctRightPos, Time.deltaTime * 5);
-            //transform.rotation = Quaternion.Lerp(curRot, correctRightRot, Time.deltaTime * 5);
+           
 
         }
 
