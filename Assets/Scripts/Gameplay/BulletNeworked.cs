@@ -56,6 +56,7 @@ public class BulletNeworked : Photon.MonoBehaviour
         }
         else
         {
+            player = GameObject.Find("WeaponLobbyPlayer(Clone)");
             otherStats = player.GetComponent<PlayerStats>();
             otherPlayer = player.GetComponent<NetworkedPlayerController>();
             otherShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
@@ -94,74 +95,68 @@ public class BulletNeworked : Photon.MonoBehaviour
                 photonView.RPC("DamageYou", PhotonTargets.All, _damage);
             }
         }
-        else if (collision.transform.tag == "Shield") //if the bullet hits the  local clients shield
+        else if (collision.transform.tag == "Shield" && collision.gameObject.GetPhotonView().isMine) //if the bullet hits the  local clients shield
         {
-            if (collision.gameObject.GetPhotonView().isMine) //if the bullet was fired from the local client
+
+            if (myShield.reflect == true) //if the local clients shield is reflecting 
             {
-                if (myShield.reflect == true) //if the local clients shield is reflecting 
+                foreach (ContactPoint contact in collision.contacts)
                 {
-                    foreach (ContactPoint contact in collision.contacts)
-                    {
-                        vel = Vector3.Reflect(collision.transform.forward, contact.normal);
-                    }
-                }
-                else if (myShield.reflect == false) //if the local clients shield isnt reflecting
-                {
-                    if (collision.gameObject.GetPhotonView().isMine) // checking again if its the local client shield
-                    {
-                        photonView.RPC("collectBulletMe", PhotonTargets.All, null);
-                        if (photonView.isMine)// if the bullet was fired from the local client
-                        {
-                            photonView.RPC("myBulletCaught", PhotonTargets.All, null);
-                        }
-                        else // if the bullet wasnt fired from the local client
-                        {
-                            photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
-                        }
-
-                        if (myPlayer.bulletsLeft >= myPlayer.maxBullets)
-                        {
-                            photonView.RPC("MaxBulletsPlusMe", PhotonTargets.All, null);
-                        }
-
-                        PhotonNetwork.Destroy(gameObject);
-                        Destroy(gameObject);
-                    }
+                    vel = Vector3.Reflect(collision.transform.forward, contact.normal);
                 }
             }
-            else // if the bullet hits the other clients shield
+            else if (myShield.reflect == false) //if the local clients shield isnt reflecting
             {
-                if (otherShield.reflect == true) // if the other clients shield is reflecting
-                {
-                    foreach (ContactPoint contact in collision.contacts)
-                    {
-                        vel = Vector3.Reflect(collision.transform.forward, contact.normal);
-                    }
-                }
-                else if (otherShield.reflect == false) //if the other clients shield isnt reflecting
-                {
-                    if (!collision.gameObject.GetPhotonView().isMine) // checking again if its not the local client shield
-                    {
-                        photonView.RPC("collectBulletYou", PhotonTargets.All, null); //RPC to send bullet info to player
-                        if (photonView.isMine)// if the bullet was fired from the local client
-                        {
-                            photonView.RPC("myBulletCaught", PhotonTargets.All, null);
-                        }
-                        else // if the bullet wasnt fired from the local client
-                        {
-                            photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
-                        }
-                        if (otherPlayer.bulletsLeft >= otherPlayer.maxBullets)
-                        {
-                            photonView.RPC("MaxBulletsPlusYou", PhotonTargets.All, null);
-                        }
 
-                        PhotonNetwork.Destroy(gameObject);
-                        Destroy(gameObject);
-                    }
+                photonView.RPC("collectBulletMe", PhotonTargets.All, null);
+                if (photonView.isMine)// if the bullet was fired from the local client
+                {
+                    photonView.RPC("myBulletCaught", PhotonTargets.All, null);
+                }
+                else
+                {
+                    photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
+                }
+
+                if (myPlayer.bulletsLeft >= myPlayer.maxBullets)
+                {
+                    photonView.RPC("MaxBulletsPlusMe", PhotonTargets.All, null);
+                }
+
+                PhotonNetwork.Destroy(gameObject);
+                Destroy(gameObject);
+
+            }
+        }
+        else if (collision.transform.tag == "Shield" && !collision.gameObject.GetPhotonView().isMine) // if the bullet hits the other clients shield
+        {
+            if (otherShield.reflect == true) // if the other clients shield is reflecting
+            {
+                foreach (ContactPoint contact in collision.contacts)
+                {
+                    vel = Vector3.Reflect(collision.transform.forward, contact.normal);
                 }
             }
+            else if (otherShield.reflect == false) //if the other clients shield isnt reflecting
+            {
+                photonView.RPC("collectBulletYou", PhotonTargets.All, null); //RPC to send bullet info to player
+                if (photonView.isMine)// if the bullet was fired from the local client
+                {
+                    photonView.RPC("myBulletCaught", PhotonTargets.All, null);
+                }
+                else // if the bullet wasnt fired from the local client
+                {
+                    photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
+                }
+                if (otherPlayer.bulletsLeft >= otherPlayer.maxBullets)
+                {
+                    photonView.RPC("MaxBulletsPlusYou", PhotonTargets.All, null);
+                }
 
+                PhotonNetwork.Destroy(gameObject);
+                Destroy(gameObject);
+
+            }
         }
         else //if the bullet hits anything else
         {
@@ -174,8 +169,8 @@ public class BulletNeworked : Photon.MonoBehaviour
             bulletSpeed = bulletSpeed + bulletSpeedIncrease;
         }
 
-    }
 
+    }
     #endregion
 
     #region My Functions
