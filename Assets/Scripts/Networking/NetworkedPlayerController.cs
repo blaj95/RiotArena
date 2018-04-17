@@ -61,7 +61,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
             weaponTip = GameObject.Find("ControllerRightWeapon(Clone)/Rtip");
 
-            bulletCount = GameObject.Find("ControllerRightWeapon(Clone)/gun/Canvas/Text").gameObject.GetComponent<Text>();
+            bulletCount = GameObject.Find("ControllerRightWeapon(Clone)/Canvas/Text").gameObject.GetComponent<Text>();
 
 
         }

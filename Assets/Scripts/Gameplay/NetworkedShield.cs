@@ -11,9 +11,9 @@ namespace Riot
         public GameObject bullet;
         public bool reflect = true;
 
-        private void OnCollisionEnter(Collision collision)
+        public void OnCollisionEnter(Collision collision)
         {
-            if (!reflect && collision.transform.tag == "Bullet")    //If Not in reflect mode
+            if (!reflect && photonView.isMine && collision.transform.tag == "Bullet")    //If Not in reflect mode
             {
                 Debug.Log("ThanksfortheBUllet");
                 photonView.RPC("collectBullet", PhotonTargets.All, null); //RPC to send bullet info to player

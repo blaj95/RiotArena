@@ -78,15 +78,18 @@ public class BulletNeworked : Photon.MonoBehaviour
     {
         if (collision.transform.tag == "Head")
         {
-            Debug.Log("GOTCHA");
+           
             if (photonView.isMine)
             {
                 photonView.RPC("DoDamage", PhotonTargets.All, _damage);
             }
         }
+        else if (collision.transform.tag == "Shield")
+        {
+        }
         else
         {
-            
+
             foreach (ContactPoint contact in collision.contacts)
             {
                 vel = Vector3.Reflect(vel, contact.normal);
