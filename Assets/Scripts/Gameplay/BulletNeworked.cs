@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class BulletNeworked : Photon.MonoBehaviour
 {
-    public PlayerStats pstats;
+    public PlayerStats myStats;
+    public PlayerStats otherStats;
+    public NetworkedShield myShield;
+    public NetworkedShield otherShield;
+    public NetworkedPlayerController myPlayer;
+    public NetworkedPlayerController otherPlayer;
+
     Rigidbody rigidB;
 
     public GameObject player;
@@ -43,7 +49,15 @@ public class BulletNeworked : Photon.MonoBehaviour
         if (photonView.isMine)
         {
             player = GameObject.Find("WeaponLobbyPlayer(Clone)");
-            pstats = player.GetComponent<PlayerStats>();
+            myStats = player.GetComponent<PlayerStats>();
+            myPlayer = player.GetComponent<NetworkedPlayerController>();
+            myShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
+        }
+        else
+        {
+            otherStats = player.GetComponent<PlayerStats>();
+            otherPlayer = player.GetComponent<NetworkedPlayerController>();
+            otherShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
         }
 
         if(bulletSpeed > speedCap)
@@ -80,9 +94,82 @@ public class BulletNeworked : Photon.MonoBehaviour
         {
            
             if (photonView.isMine)
-            {
-                photonView.RPC("DoDamage", PhotonTargets.All, _damage);
+            { 
+                photonView.RPC("DamageMe", PhotonTargets.All, _damage);
             }
+            else
+            {
+                photonView.RPC("DamageYou", PhotonTargets.All, _damage);
+            }
+        }
+        else if(collision.transform.tag == "Shield")
+        {
+            if (collision.gameObject.GetPhotonView().isMine)
+            {
+                if (myShield.reflect == true)
+                {
+                    foreach (ContactPoint contact in collision.contacts)
+                    {
+                        vel = Vector3.Reflect(collision.transform.forward, contact.normal);
+                    }
+                }
+                else if(myShield.reflect == false)
+                {
+                    if (collision.gameObject.GetPhotonView().isMine)
+                    {
+                        photonView.RPC("collectBulletMe", PhotonTargets.All, null); //RPC to send bullet info to player
+                        if (photonView.isMine)
+                        {
+                            photonView.RPC("myBulletCaught", PhotonTargets.All, null);
+                        }
+                        else
+                        {
+                            photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
+                        }
+
+                        if(myPlayer.bulletsLeft >= myPlayer.maxBullets)
+                        {
+                            photonView.RPC("MaxBulletsPlusMe", PhotonTargets.All, null);
+                        }
+                       
+                        PhotonNetwork.Destroy(gameObject);
+                        Destroy(gameObject);
+                    }
+                }
+            }
+            else
+            {
+                if (otherShield.reflect == true)
+                {
+                    foreach (ContactPoint contact in collision.contacts)
+                    {
+                        vel = Vector3.Reflect(collision.transform.forward, contact.normal);
+                    }
+                }
+                else if (otherShield.reflect == false)
+                {
+                    if (collision.gameObject.GetPhotonView().isMine)
+                    {
+                        photonView.RPC("collectBulletYou", PhotonTargets.All, null); //RPC to send bullet info to player
+                        if (photonView.isMine)
+                        {
+                            photonView.RPC("myBulletCaught", PhotonTargets.All, null);
+                        }
+                        else
+                        {
+                            photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
+                        }
+                        if (otherPlayer.bulletsLeft >= otherPlayer.maxBullets)
+                        {
+                          photonView.RPC("MaxBulletsPlusYou", PhotonTargets.All, null);
+                        }
+                        
+                        PhotonNetwork.Destroy(gameObject);
+                        Destroy(gameObject);
+                    }
+                }
+            }
+           
         }
         else
         {
@@ -104,9 +191,52 @@ public class BulletNeworked : Photon.MonoBehaviour
 
     }
 
+    #region PUN RPCs
     [PunRPC]
-    public void DoDamage(int dmg)
+    public void DamageMe(int dmg)
     {
-        pstats.playerHealth = pstats.playerHealth - dmg;
+        myStats.playerHealth = myStats.playerHealth - dmg;
     }
+
+    [PunRPC]
+    public void DamageYou(int dmg)
+    {
+        otherStats.playerHealth = otherStats.playerHealth - dmg;
+    }
+
+    [PunRPC]
+    private void collectBulletMe() //function to change playerscript bullet stats
+    {
+        myPlayer.bulletsLeft++;
+    }
+
+    [PunRPC]
+    private void collectBulletYou() //function to change playerscript bullet stats
+    {
+        otherPlayer.bulletsLeft++;
+    }
+
+    [PunRPC]
+    private void maxBulletsPlusMe()
+    {
+        myPlayer.maxBullets++;
+    }
+
+    [PunRPC]
+    private void maxBulletsPlusYou()
+    {
+        otherPlayer.maxBullets++;
+    }
+
+    [PunRPC]
+    private void myBulletCaught()
+    {
+        myPlayer.currentBulletsOut--;
+    }
+
+    private void yourBulletCaught()
+    {
+        otherPlayer.currentBulletsOut--;
+    }
+    #endregion
 }

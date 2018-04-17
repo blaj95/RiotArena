@@ -21,12 +21,14 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     GameObject bullet = null;
 
     public Text bulletCount;
-   
 
-    public int bulletsLeft;
+    public int currentBulletsOut;
+    public int bulletsLeft =-1;
     public int bulletsFired;
     public int maxBullets;
     public int damage =1;
+
+    
 
 
     public int playerID = 1;
@@ -35,11 +37,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
     public float rateOfFire = -1.0f;
     float nextFire = 1.0f;
-
-
-
-    public List<GameObject> blist = new List<GameObject>(); //Holds a list of all bullets for that player
-                                                    
+    
     void Start()
     {
 
@@ -48,8 +46,6 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     private void Awake()
     {
         bulletsLeft = maxBullets;
-
-        
     }
 
     // Update is called once per frame
@@ -74,9 +70,9 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
         bulletCount.text = bulletsLeft.ToString();
         bullet = GameObject.Find("Bullet(Clone)");
 
-        if(maxBullets < 0)
+        if(bulletsLeft <= 0)
         {
-            maxBullets = 0;
+            bulletsLeft = 0;
         }
     }
 
@@ -101,31 +97,10 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
             nextFire = Time.time + rateOfFire;
             GameObject newBullet = PhotonNetwork.Instantiate("Bullet", weaponTip.transform.position + weaponTip.transform.forward, weaponTip.transform.rotation, 0);
             newBullet.GetComponent<BulletNeworked>().FireBullet(weaponTip, damage, playerID);
-            blist.Add(newBullet);
+
             bulletsFired++;
-            bulletsLeft = maxBullets - blist.Count;
-            bulletCount.text = bulletsLeft.ToString();
+            currentBulletsOut++;
+            bulletsLeft = maxBullets - currentBulletsOut;
         }
     }
-    //This go has no child to colide with
-    //public void OnChildCollisionEnter(Collision collision)
-    //{
-    //    if (collision.transform.tag == "Bullet")
-    //    {
-    //        if (blist.Contains(collision.gameObject))
-    //        {
-    //            blist.Remove(collision.gameObject);
-    //            bulletsLeft++;
-    //            bulletCount.text = bulletsLeft.ToString();
-    //            Destroy(collision.gameObject);
-    //            PhotonNetwork.Destroy(collision.gameObject);
-    //            PhotonNetwork.Destroy(collision.gameObject.GetPhotonView());
-    //        }
-    //        else
-    //        {
-    //            maxBullets++;
-    //            Destroy(collision.gameObject);
-    //        }
-    //    }
-    //}
     }

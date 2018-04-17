@@ -45,4 +45,11 @@ MonoBehaviour:
   - collectBullet
   - DoDamage
   - maxBulletPlus
+  - collectBulletMe
+  - collectBulletYou
+  - DamageMe
+  - DamageYou
+  - maxBulletsPlusMe
+  - maxBulletsPlusYou
+  - myBulletCaught
   DisableAutoOpenWizard: 1

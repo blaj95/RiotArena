@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114180079179309122}
   m_Layer: 0
   m_Name: ControllerLeftShieldNew
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 0}
+  otherPlayerScript: {fileID: 0}
   player: {fileID: 0}
   bullet: {fileID: 0}
   reflect: 1
