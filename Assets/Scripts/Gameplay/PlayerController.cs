@@ -37,6 +37,10 @@ public class PlayerController : MonoBehaviour
         public float rateOfFire = -1.0f;
         float nextFire = 1.0f;
 
+        bool mTeleport = false;
+
+        
+
         
 
 
@@ -68,6 +72,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0) || (Input.GetButtonDown("Fire1")) || Input.GetButtonDown("RSelectTrigger"))
             {
                 FireWeapon();
+            }
+
+            if(Input.GetButtonDown("Button 8"))
+            {
+                //Switch gun code here
             }
         }
 
