@@ -13,7 +13,7 @@ namespace Riot
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (!reflect && photonView.isMine && collision.transform.tag == "Bullet")    //If Not in reflect mode
+            if (!reflect && collision.transform.tag == "Bullet")    //If Not in reflect mode
             {
                 Debug.Log("ThanksfortheBUllet");
                 photonView.RPC("collectBullet", PhotonTargets.All, null); //RPC to send bullet info to player
@@ -25,18 +25,15 @@ namespace Riot
             {           //If if am in reflect mode
                 if (collision.transform.tag == "Bullet")     //And I collided with a bullet
                 {
-                    Debug.Log("HUH");
+                   
                     BulletNeworked bullet = collision.gameObject.GetComponent<BulletNeworked>();  //Then Tell the bullet to speeed up
                     if (bullet != null)
                     {
                         bullet.LVLUpBullet();
-                        Debug.Log("HHHM");
+                       
                     }
                 }
-                Debug.Log("wut");
-
             }
-
         }
 
         private void Update()
