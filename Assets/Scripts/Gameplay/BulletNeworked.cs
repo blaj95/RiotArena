@@ -102,7 +102,7 @@ public class BulletNeworked : Photon.MonoBehaviour
         }
         else if (photonView.isMine)
         {
-            if (collision.gameObject.GetPhotonView().isMine)
+            if (collision.gameObject.GetPhotonView().isMine && collision.transform.tag == "Shield")
             {
                 if (myShieldReflecting == true)
                 {
@@ -143,7 +143,7 @@ public class BulletNeworked : Photon.MonoBehaviour
                 }
             }
         }
-        else if (!photonView.isMine)
+        else if (!photonView.isMine && collision.transform.tag == "Shield")
         {
             if (collision.gameObject.GetPhotonView().isMine)
             {
@@ -186,6 +186,16 @@ public class BulletNeworked : Photon.MonoBehaviour
                 }
             }
         }
+        else //if the bullet hits anything else
+        {
+
+            foreach (ContactPoint contact in collision.contacts)
+            {
+                vel = Vector3.Reflect(vel, contact.normal);
+            }
+            _damage = _damage + damageIncrementor;
+            bulletSpeed = bulletSpeed + bulletSpeedIncrease;
+        }
         //else if(collision.transform.tag == "Shield") //if the bullet hits the  local clients shield
         //{
         //    if (collision.gameObject.GetPhotonView().isMine) //if the bullet was fired from the local client
@@ -199,7 +209,7 @@ public class BulletNeworked : Photon.MonoBehaviour
         //        }
         //        else if(myShieldReflecting == false) //if the local clients shield isnt reflecting
         //        {
-                    
+
         //                photonView.RPC("collectBulletMe", PhotonTargets.All, null); 
         //                if (photonView.isMine)// if the bullet was fired from the local client
         //                {
@@ -214,10 +224,10 @@ public class BulletNeworked : Photon.MonoBehaviour
         //                {
         //                    photonView.RPC("MaxBulletsPlusMe", PhotonTargets.All, null);
         //                }
-                       
+
         //                PhotonNetwork.Destroy(gameObject);
         //                Destroy(gameObject);
-                    
+
         //        }
         //    }
         //    else // if the bullet hits the other clients shield
@@ -244,25 +254,16 @@ public class BulletNeworked : Photon.MonoBehaviour
         //                {
         //                  photonView.RPC("MaxBulletsPlusYou", PhotonTargets.All, null);
         //                }
-                        
+
         //                PhotonNetwork.Destroy(gameObject);
         //                Destroy(gameObject);
-                    
+
         //        }
         //    }
-           
-        //}
-        else //if the bullet hits anything else
-        {
 
-            foreach (ContactPoint contact in collision.contacts)
-            {
-                vel = Vector3.Reflect(vel, contact.normal);
-            }
-            _damage = _damage + damageIncrementor;
-            bulletSpeed = bulletSpeed + bulletSpeedIncrease;
-        }
-       
+        //}
+
+
     }
 
     #endregion
