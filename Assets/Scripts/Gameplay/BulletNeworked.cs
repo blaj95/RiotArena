@@ -33,6 +33,7 @@ public class BulletNeworked : Photon.MonoBehaviour
     public int _damage = 2;
     int _ownerID = -1;
 
+    #region Unity CallBacks
     // Use this for initialization
     void Start ()
     {
@@ -78,19 +79,10 @@ public class BulletNeworked : Photon.MonoBehaviour
            rigidB.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         }
     }
-
-    public void FireBullet(GameObject parent, int damage, int ownerID)
-    {
-        fired = true;
-        transform.rotation = parent.transform.rotation;
-        transform.Rotate(Vector3.forward);
-        _ownerID = ownerID;
-        _damage = damage;
-    }
-
+    
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Head")
+        if (collision.transform.tag == "Head")   // Checking for damaging from head collision where the players hit box is
         {
            
             if (photonView.isMine)
@@ -102,27 +94,27 @@ public class BulletNeworked : Photon.MonoBehaviour
                 photonView.RPC("DamageYou", PhotonTargets.All, _damage);
             }
         }
-        else if(collision.transform.tag == "Shield")
+        else if(collision.transform.tag == "Shield") //if the bullet hits the  local clients shield
         {
-            if (collision.gameObject.GetPhotonView().isMine)
+            if (collision.gameObject.GetPhotonView().isMine) //if the bullet was fired from the local client
             {
-                if (myShield.reflect == true)
+                if (myShield.reflect == true) //if the local clients shield is reflecting 
                 {
                     foreach (ContactPoint contact in collision.contacts)
                     {
                         vel = Vector3.Reflect(collision.transform.forward, contact.normal);
                     }
                 }
-                else if(myShield.reflect == false)
+                else if(myShield.reflect == false) //if the local clients shield isnt reflecting
                 {
-                    if (collision.gameObject.GetPhotonView().isMine)
+                    if (collision.gameObject.GetPhotonView().isMine) // checking again if its the local client shield
                     {
-                        photonView.RPC("collectBulletMe", PhotonTargets.All, null); //RPC to send bullet info to player
-                        if (photonView.isMine)
+                        photonView.RPC("collectBulletMe", PhotonTargets.All, null); 
+                        if (photonView.isMine)// if the bullet was fired from the local client
                         {
                             photonView.RPC("myBulletCaught", PhotonTargets.All, null);
                         }
-                        else
+                        else // if the bullet wasnt fired from the local client
                         {
                             photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
                         }
@@ -137,25 +129,25 @@ public class BulletNeworked : Photon.MonoBehaviour
                     }
                 }
             }
-            else
+            else // if the bullet hits the other clients shield
             {
-                if (otherShield.reflect == true)
+                if (otherShield.reflect == true) // if the other clients shield is reflecting
                 {
                     foreach (ContactPoint contact in collision.contacts)
                     {
                         vel = Vector3.Reflect(collision.transform.forward, contact.normal);
                     }
                 }
-                else if (otherShield.reflect == false)
+                else if (otherShield.reflect == false) //if the other clients shield isnt reflecting
                 {
-                    if (collision.gameObject.GetPhotonView().isMine)
+                    if (!collision.gameObject.GetPhotonView().isMine) // checking again if its not the local client shield
                     {
                         photonView.RPC("collectBulletYou", PhotonTargets.All, null); //RPC to send bullet info to player
-                        if (photonView.isMine)
+                        if (photonView.isMine)// if the bullet was fired from the local client
                         {
                             photonView.RPC("myBulletCaught", PhotonTargets.All, null);
                         }
-                        else
+                        else // if the bullet wasnt fired from the local client
                         {
                             photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
                         }
@@ -171,7 +163,7 @@ public class BulletNeworked : Photon.MonoBehaviour
             }
            
         }
-        else
+        else //if the bullet hits anything else
         {
 
             foreach (ContactPoint contact in collision.contacts)
@@ -184,12 +176,25 @@ public class BulletNeworked : Photon.MonoBehaviour
        
     }
 
+    #endregion
+
+    #region My Functions
+    public void FireBullet(GameObject parent, int damage, int ownerID)
+    {
+        fired = true;
+        transform.rotation = parent.transform.rotation;
+        transform.Rotate(Vector3.forward);
+        _ownerID = ownerID;
+        _damage = damage;
+    }
+
     public void LVLUpBullet()
     {
         _damage = _damage + damageIncrementor;
         bulletSpeed = bulletSpeed * speedMultiplyer;
 
     }
+    #endregion
 
     #region PUN RPCs
     [PunRPC]
