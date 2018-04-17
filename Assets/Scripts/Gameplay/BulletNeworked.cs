@@ -20,7 +20,7 @@ public class BulletNeworked : Photon.MonoBehaviour
     public float bulletSpeedIncrease;
     public float bulletSpeed = 10f;
     public float speedCap;
-    private Vector3 vel = new Vector3();
+    public Vector3 vel = new Vector3();
 
     [SerializeField]
     int damageIncrementor = 1;
@@ -54,13 +54,13 @@ public class BulletNeworked : Photon.MonoBehaviour
             myPlayer = player.GetComponent<NetworkedPlayerController>();
             myShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
         }
-        else
-        {
-            player = GameObject.Find("WeaponLobbyPlayer(Clone)");
-            otherStats = player.GetComponent<PlayerStats>();
-            otherPlayer = player.GetComponent<NetworkedPlayerController>();
-            otherShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
-        }
+        //else
+        //{
+        //    player = GameObject.Find("WeaponLobbyPlayer(Clone)");
+        //    otherStats = player.GetComponent<PlayerStats>();
+        //    otherPlayer = player.GetComponent<NetworkedPlayerController>();
+        //    otherShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
+        //}
 
         if (bulletSpeed > speedCap)
         {
@@ -86,77 +86,15 @@ public class BulletNeworked : Photon.MonoBehaviour
         if (collision.transform.tag == "Head")   // Checking for damaging from head collision where the players hit box is
         {
 
-            if (photonView.isMine)
+            if (collision.gameObject.GetPhotonView())
             {
                 photonView.RPC("DamageMe", PhotonTargets.All, _damage);
             }
-            else
-            {
-                photonView.RPC("DamageYou", PhotonTargets.All, _damage);
-            }
+           
         }
-        else if (collision.transform.tag == "Shield" && collision.gameObject.GetPhotonView().isMine) //if the bullet hits the  local clients shield
+        else if(collision.transform.tag == "Shield")
         {
-
-            if (myShield.reflect == true) //if the local clients shield is reflecting 
-            {
-                foreach (ContactPoint contact in collision.contacts)
-                {
-                    vel = Vector3.Reflect(collision.transform.forward, contact.normal);
-                }
-            }
-            else if (myShield.reflect == false) //if the local clients shield isnt reflecting
-            {
-
-                photonView.RPC("collectBulletMe", PhotonTargets.All, null);
-                if (photonView.isMine)// if the bullet was fired from the local client
-                {
-                    photonView.RPC("myBulletCaught", PhotonTargets.All, null);
-                }
-                else
-                {
-                    photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
-                }
-
-                if (myPlayer.bulletsLeft >= myPlayer.maxBullets)
-                {
-                    photonView.RPC("MaxBulletsPlusMe", PhotonTargets.All, null);
-                }
-
-                PhotonNetwork.Destroy(gameObject);
-                Destroy(gameObject);
-
-            }
-        }
-        else if (collision.transform.tag == "Shield" && !collision.gameObject.GetPhotonView().isMine) // if the bullet hits the other clients shield
-        {
-            if (otherShield.reflect == true) // if the other clients shield is reflecting
-            {
-                foreach (ContactPoint contact in collision.contacts)
-                {
-                    vel = Vector3.Reflect(collision.transform.forward, contact.normal);
-                }
-            }
-            else if (otherShield.reflect == false) //if the other clients shield isnt reflecting
-            {
-                photonView.RPC("collectBulletYou", PhotonTargets.All, null); //RPC to send bullet info to player
-                if (photonView.isMine)// if the bullet was fired from the local client
-                {
-                    photonView.RPC("myBulletCaught", PhotonTargets.All, null);
-                }
-                else // if the bullet wasnt fired from the local client
-                {
-                    photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
-                }
-                if (otherPlayer.bulletsLeft >= otherPlayer.maxBullets)
-                {
-                    photonView.RPC("MaxBulletsPlusYou", PhotonTargets.All, null);
-                }
-
-                PhotonNetwork.Destroy(gameObject);
-                Destroy(gameObject);
-
-            }
+            return;
         }
         else //if the bullet hits anything else
         {
@@ -168,6 +106,70 @@ public class BulletNeworked : Photon.MonoBehaviour
             _damage = _damage + damageIncrementor;
             bulletSpeed = bulletSpeed + bulletSpeedIncrease;
         }
+        //else if (collision.transform.tag == "Shield" && collision.gameObject.GetPhotonView().isMine) //if the bullet hits the  local clients shield
+        //{
+
+        //    if (myShield.reflect == true) //if the local clients shield is reflecting 
+        //    {
+        //        foreach (ContactPoint contact in collision.contacts)
+        //        {
+        //            vel = Vector3.Reflect(collision.transform.forward, contact.normal);
+        //        }
+        //    }
+        //    else if (myShield.reflect == false) //if the local clients shield isnt reflecting
+        //    {
+
+        //        photonView.RPC("collectBulletMe", PhotonTargets.All, null);
+        //        if (photonView.isMine)// if the bullet was fired from the local client
+        //        {
+        //            photonView.RPC("myBulletCaught", PhotonTargets.All, null);
+        //        }
+        //        else
+        //        {
+        //            photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
+        //        }
+
+        //        if (myPlayer.bulletsLeft >= myPlayer.maxBullets)
+        //        {
+        //            photonView.RPC("MaxBulletsPlusMe", PhotonTargets.All, null);
+        //        }
+
+        //        PhotonNetwork.Destroy(gameObject);
+        //        Destroy(gameObject);
+
+        //    }
+        //}
+        //else if (collision.transform.tag == "Shield" && !collision.gameObject.GetPhotonView().isMine) // if the bullet hits the other clients shield
+        //{
+        //    if (otherShield.reflect == true) // if the other clients shield is reflecting
+        //    {
+        //        foreach (ContactPoint contact in collision.contacts)
+        //        {
+        //            vel = Vector3.Reflect(collision.transform.forward, contact.normal);
+        //        }
+        //    }
+        //    else if (otherShield.reflect == false) //if the other clients shield isnt reflecting
+        //    {
+        //        photonView.RPC("collectBulletYou", PhotonTargets.All, null); //RPC to send bullet info to player
+        //        if (photonView.isMine)// if the bullet was fired from the local client
+        //        {
+        //            photonView.RPC("myBulletCaught", PhotonTargets.All, null);
+        //        }
+        //        else // if the bullet wasnt fired from the local client
+        //        {
+        //            photonView.RPC("yourBulletCaught", PhotonTargets.All, null);
+        //        }
+        //        if (otherPlayer.bulletsLeft >= otherPlayer.maxBullets)
+        //        {
+        //            photonView.RPC("MaxBulletsPlusYou", PhotonTargets.All, null);
+        //        }
+
+        //        PhotonNetwork.Destroy(gameObject);
+        //        Destroy(gameObject);
+
+        //    }
+        //}
+
 
 
     }
@@ -198,11 +200,7 @@ public class BulletNeworked : Photon.MonoBehaviour
         myStats.playerHealth = myStats.playerHealth - dmg;
     }
 
-    [PunRPC]
-    public void DamageYou(int dmg)
-    {
-        otherStats.playerHealth = otherStats.playerHealth - dmg;
-    }
+  
 
     [PunRPC]
     private void collectBulletMe() //function to change playerscript bullet stats
