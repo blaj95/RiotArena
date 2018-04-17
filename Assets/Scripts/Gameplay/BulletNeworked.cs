@@ -84,9 +84,6 @@ public class BulletNeworked : Photon.MonoBehaviour
                 photonView.RPC("DoDamage", PhotonTargets.All, _damage);
             }
         }
-        else if (collision.transform.tag == "Shield")
-        {
-        }
         else
         {
 

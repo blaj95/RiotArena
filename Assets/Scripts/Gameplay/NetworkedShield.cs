@@ -7,19 +7,25 @@ namespace Riot
     public class NetworkedShield : Photon.MonoBehaviour
     {
         public NetworkedPlayerController playerScript;
+        public NetworkedPlayerController otherPlayerScript;
         public GameObject player;
         public GameObject bullet;
         public bool reflect = true;
 
         public void OnCollisionEnter(Collision collision)
         {
-            if (!reflect && photonView.isMine && collision.transform.tag == "Bullet")    //If Not in reflect mode
+            if (!reflect && collision.transform.tag == "Bullet")    //If Not in reflect mode
             {
-                Debug.Log("ThanksfortheBUllet");
-                photonView.RPC("collectBullet", PhotonTargets.All, null); //RPC to send bullet info to player
+                if (photonView.isMine)
+                {
+                    photonView.RPC("collectBullet", PhotonTargets.All, null); //RPC to send bullet info to player
+                    playerScript.blist.Remove(collision.gameObject);
+                }
+                otherPlayerScript.blist.Remove(collision.gameObject);
                 Destroy(collision.gameObject);
                 PhotonNetwork.Destroy(collision.gameObject);
                 PhotonNetwork.Destroy(collision.gameObject.GetPhotonView());
+                Destroy(collision.gameObject);
             }
             else
             {           //If if am in reflect mode
@@ -51,7 +57,13 @@ namespace Riot
             {
                 player = GameObject.Find("WeaponLobbyPlayer(Clone)");
                 playerScript = player.GetComponent<NetworkedPlayerController>();
+                
             }
+            else
+            {
+                otherPlayerScript = player.GetComponent<NetworkedPlayerController>();
+            }
+                   
 
             bullet = GameObject.Find("Bullet(Clone)");
         }
@@ -59,7 +71,7 @@ namespace Riot
         [PunRPC]
         private void collectBullet() //function to change playerscript bullet stats
         {
-            playerScript.blist.Remove(bullet.gameObject);
+           
             playerScript.bulletsLeft++;
             playerScript.bulletCount.text = playerScript.bulletsLeft.ToString();
 

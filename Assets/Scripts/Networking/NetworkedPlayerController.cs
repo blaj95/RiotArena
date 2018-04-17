@@ -107,25 +107,25 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
             bulletCount.text = bulletsLeft.ToString();
         }
     }
-
-    public void OnChildCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "Bullet")
-        {
-            if (blist.Contains(collision.gameObject))
-            {
-                blist.Remove(collision.gameObject);
-                bulletsLeft++;
-                bulletCount.text = bulletsLeft.ToString();
-                Destroy(collision.gameObject);
-                PhotonNetwork.Destroy(collision.gameObject);
-                PhotonNetwork.Destroy(collision.gameObject.GetPhotonView());
-            }
-            else
-            {
-                maxBullets++;
-                Destroy(collision.gameObject);
-            }
-        }
-    }
+    //This go has no child to colide with
+    //public void OnChildCollisionEnter(Collision collision)
+    //{
+    //    if (collision.transform.tag == "Bullet")
+    //    {
+    //        if (blist.Contains(collision.gameObject))
+    //        {
+    //            blist.Remove(collision.gameObject);
+    //            bulletsLeft++;
+    //            bulletCount.text = bulletsLeft.ToString();
+    //            Destroy(collision.gameObject);
+    //            PhotonNetwork.Destroy(collision.gameObject);
+    //            PhotonNetwork.Destroy(collision.gameObject.GetPhotonView());
+    //        }
+    //        else
+    //        {
+    //            maxBullets++;
+    //            Destroy(collision.gameObject);
+    //        }
+    //    }
+    //}
     }
