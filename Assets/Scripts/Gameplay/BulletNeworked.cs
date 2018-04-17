@@ -11,6 +11,9 @@ public class BulletNeworked : Photon.MonoBehaviour
     public NetworkedPlayerController myPlayer;
     public NetworkedPlayerController otherPlayer;
 
+    public bool myShieldReflecting;
+    public bool otherShieldReflecting;
+
     Rigidbody rigidB;
 
     public GameObject player;
@@ -53,12 +56,15 @@ public class BulletNeworked : Photon.MonoBehaviour
             myStats = player.GetComponent<PlayerStats>();
             myPlayer = player.GetComponent<NetworkedPlayerController>();
             myShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
+            myShieldReflecting = myShield.reflect;
         }
         else
         {
+            player = GameObject.Find("WeaponLobbyPlayer(Clone)");
             otherStats = player.GetComponent<PlayerStats>();
             otherPlayer = player.GetComponent<NetworkedPlayerController>();
             otherShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
+            otherShieldReflecting = otherShield.reflect;
         }
 
         if(bulletSpeed > speedCap)
@@ -98,17 +104,16 @@ public class BulletNeworked : Photon.MonoBehaviour
         {
             if (collision.gameObject.GetPhotonView().isMine) //if the bullet was fired from the local client
             {
-                if (myShield.reflect == true) //if the local clients shield is reflecting 
+                if (myShieldReflecting == true) //if the local clients shield is reflecting 
                 {
                     foreach (ContactPoint contact in collision.contacts)
                     {
                         vel = Vector3.Reflect(collision.transform.forward, contact.normal);
                     }
                 }
-                else if(myShield.reflect == false) //if the local clients shield isnt reflecting
+                else if(myShieldReflecting == false) //if the local clients shield isnt reflecting
                 {
-                    if (collision.gameObject.GetPhotonView().isMine) // checking again if its the local client shield
-                    {
+                    
                         photonView.RPC("collectBulletMe", PhotonTargets.All, null); 
                         if (photonView.isMine)// if the bullet was fired from the local client
                         {
@@ -126,22 +131,22 @@ public class BulletNeworked : Photon.MonoBehaviour
                        
                         PhotonNetwork.Destroy(gameObject);
                         Destroy(gameObject);
-                    }
+                    
                 }
             }
             else // if the bullet hits the other clients shield
             {
-                if (otherShield.reflect == true) // if the other clients shield is reflecting
+                if (otherShieldReflecting == true) // if the other clients shield is reflecting
                 {
                     foreach (ContactPoint contact in collision.contacts)
                     {
                         vel = Vector3.Reflect(collision.transform.forward, contact.normal);
                     }
                 }
-                else if (otherShield.reflect == false) //if the other clients shield isnt reflecting
+                else if (otherShieldReflecting == false) //if the other clients shield isnt reflecting
                 {
-                    if (!collision.gameObject.GetPhotonView().isMine) // checking again if its not the local client shield
-                    {
+                    
+                    
                         photonView.RPC("collectBulletYou", PhotonTargets.All, null); //RPC to send bullet info to player
                         if (photonView.isMine)// if the bullet was fired from the local client
                         {
@@ -158,7 +163,7 @@ public class BulletNeworked : Photon.MonoBehaviour
                         
                         PhotonNetwork.Destroy(gameObject);
                         Destroy(gameObject);
-                    }
+                    
                 }
             }
            
