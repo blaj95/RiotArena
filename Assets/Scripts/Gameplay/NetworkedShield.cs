@@ -56,6 +56,9 @@ using UnityEngine;
                         playerScript.currentBulletsOut = 0;
                     }
                 }
+
+            Destroy(collision.gameObject);
+            PhotonNetwork.Destroy(collision.gameObject);
             }
         }
 
