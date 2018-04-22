@@ -83,33 +83,11 @@ public class BulletNeworked : Photon.MonoBehaviour
     {
         if (collision.transform.tag == "Head")   // Checking for damaging from head collision where the players hit box is
         {
-
-            //if (collision.gameObject.GetPhotonView())
-            //{
-            //    photonView.RPC("DamageMe", PhotonTargets.All, _damage);
-            //}
-           
+            OnPlayerHit(collision);
         }
         else if(collision.transform.tag == "Shield")
         {
-           shieldScript = collision.gameObject.GetComponent<NetworkedShield>();
-           if(shieldScript.reflect == true)
-           {
-                foreach (ContactPoint contact in collision.contacts)
-                {
-                    vel = Vector3.Reflect(vel, contact.normal);
-                }
-            }
-           else if(shieldScript.reflect == false)
-           {
-                shieldScript.AddBullet();
-                Destroy(gameObject);
-           }
-           else
-           {
-                Destroy(gameObject);
-           }
-                   
+            OnShieldHit(collision);
         }
         else //if the bullet hits anything else
         {
@@ -150,50 +128,49 @@ public class BulletNeworked : Photon.MonoBehaviour
         myPlayer = _shooter.GetComponent<NetworkedPlayerController>();
       
     }
+
+    protected virtual void OnPlayerHit(Collision hitPlayer)
+    {
+        GameObject hit = hitPlayer.gameObject;
+        PhotonView hitView = hit.GetPhotonView();
+        PlayerStats hitStats = hit.GetComponent<PlayerStats>();
+
+        if (hitPlayer.gameObject != _shooter && hitStats)
+        {
+            print("Player hit!");
+            // Only deal damage on shooter client
+            if (PhotonNetwork.isMasterClient)
+                hitStats.TakeDamage(_damage, _shooter);
+            
+            Destroy(gameObject);
+        }
+
+    }
+    protected virtual void OnShieldHit(Collision hitShield)
+    {
+        GameObject hit = hitShield.gameObject;
+        PhotonView hitView = hit.GetPhotonView();
+       
+        shieldScript = hitShield.gameObject.GetComponent<NetworkedShield>();
+        if (shieldScript.reflect == true)
+        {
+            foreach (ContactPoint contact in hitShield.contacts)
+            {
+                vel = Vector3.Reflect(vel, contact.normal);
+            }
+        }
+        else if (shieldScript.reflect == false)
+        {
+            shieldScript.AddBullet();
+            Destroy(gameObject);
+            if (!hitView.isMine)
+            {
+                Destroy(gameObject);
+            }
+        }
+        
+    }
     #endregion
 
-    #region PUN RPCs
-    [PunRPC]
-    public void DamageMe(int dmg)
-    {
-        myStats.playerHealth = myStats.playerHealth - dmg;
-    }
-
-  
-
-    [PunRPC]
-    private void collectBulletMe() //function to change playerscript bullet stats
-    {
-        myPlayer.bulletsLeft++;
-    }
-
-    //[PunRPC]
-    //private void collectBulletYou() //function to change playerscript bullet stats
-    //{
-    //    otherPlayer.bulletsLeft++;
-    //}
-
-    [PunRPC]
-    private void maxBulletsPlusMe()
-    {
-        myPlayer.maxBullets++;
-    }
-
-    //[PunRPC]
-    //private void maxBulletsPlusYou()
-    //{
-    //    otherPlayer.maxBullets++;
-    //}
-
-    [PunRPC]
-    private void myBulletCaught()
-    {
-        myPlayer.currentBulletsOut--;
-    }
-
-    //private void yourBulletCaught()
-    //{
-    //    otherPlayer.currentBulletsOut--;
-    //}
-    #endregion
+    
 }
