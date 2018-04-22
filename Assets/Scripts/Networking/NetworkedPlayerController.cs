@@ -17,8 +17,6 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     [SerializeField]
     GameObject shield = null;
 
-    [SerializeField]
-    GameObject bullet;
 
     [SerializeField]
     public GameObject bulletPrefab;
@@ -67,15 +65,16 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
         if (Input.GetButtonDown("RSelectTrigger") && photonView.isMine)
         {
             photonView.RPC("FireWeapon", PhotonTargets.All, null);
+            bulletCount.text = bulletsLeft.ToString();
+            
+
+            if (bulletsLeft <= 0)
+            {
+                bulletsLeft = 0;
+            }
         }
 
-        bulletCount.text = bulletsLeft.ToString();
-        bullet = GameObject.Find("Bullet(Clone)");
-
-        if(bulletsLeft <= 0)
-        {
-            bulletsLeft = 0;
-        }
+        
     }
 
 
