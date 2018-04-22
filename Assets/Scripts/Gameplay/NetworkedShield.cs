@@ -25,7 +25,7 @@ using UnityEngine;
             else
             {
                 reflect = true;
-                if (photonView.isMine)
+                
                 photonView.RPC("SetReflectTrue", PhotonTargets.All);
         }
 
@@ -47,13 +47,15 @@ using UnityEngine;
     [PunRPC]
     void SetReflectTrue()
     {
-        reflect = true;
+        if (photonView.isMine)
+            reflect = true;
     }
 
     [PunRPC]
     void SetReflectFalse()
     {
-        reflect = false;
+        if (photonView.isMine)
+            reflect = false;
     }
 }
 

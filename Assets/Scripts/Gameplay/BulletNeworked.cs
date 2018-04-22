@@ -83,7 +83,7 @@ public class BulletNeworked : Photon.MonoBehaviour
     {
         if (collision.transform.tag == "Head")   // Checking for damaging from head collision where the players hit box is
         {
-            OnPlayerHit(collision);
+            //OnPlayerHit(collision);
         }
         else if(collision.transform.tag == "Shield")
         {
@@ -166,10 +166,7 @@ public class BulletNeworked : Photon.MonoBehaviour
         {
             shieldScript.AddBullet();
             Destroy(gameObject);
-            if (!hitView.isMine)
-            {
-                Destroy(gameObject);
-            }
+            
         }
     }
     #endregion
