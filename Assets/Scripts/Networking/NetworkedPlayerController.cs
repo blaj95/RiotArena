@@ -14,8 +14,9 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     public GameObject rightHand;
     public GameObject weaponTip;
 
-    [SerializeField]
-    GameObject shield = null;
+
+
+    public GameObject shield;
 
 
     [SerializeField]
@@ -58,12 +59,10 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
             weaponTip = GameObject.Find("ControllerRightWeapon(Clone)/Rtip");
 
+            shield = GameObject.Find("ControllerLeftShieldNew(Clone)");
+
             bulletCount = GameObject.Find("ControllerRightWeapon(Clone)/Canvas/Text").gameObject.GetComponent<Text>();
-            if (Time.time < nextFire)
-            {
-                Debug.Log("Whoa there Partner, its not like the bullets are teleporting into the chamber");
-                return;
-            }
+           
             if (Input.GetButtonDown("RSelectTrigger"))
             {
                 if (Time.time < nextFire)
