@@ -59,48 +59,52 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
             weaponTip = GameObject.Find("ControllerRightWeapon(Clone)/Rtip");
 
             bulletCount = GameObject.Find("ControllerRightWeapon(Clone)/Canvas/Text").gameObject.GetComponent<Text>();
-
-
-        }
-        if (Input.GetButtonDown("RSelectTrigger") && photonView.isMine)
-        {
-            photonView.RPC("FireWeapon", PhotonTargets.All, null);
+            if (Time.time < nextFire)
+            {
+                Debug.Log("Whoa there Partner, its not like the bullets are teleporting into the chamber");
+                return;
+            }
+            if (Input.GetButtonDown("RSelectTrigger"))
+            {
+                if (Time.time < nextFire)
+                {
+                    Debug.Log("Whoa there Partner, its not like the bullets are teleporting into the chamber");
+                    return;
+                }
+                else if (bulletsLeft == 0)
+                {
+                    Debug.Log("You have already shot all your bullets, Catch some more with your shield");
+                    return;
+                }
+                else
+                {
+                    photonView.RPC("FireWeapon", PhotonTargets.All, weaponTip.transform.forward, weaponTip.transform.rotation);
+                    isShooting = true;
+                    nextFire = Time.time + rateOfFire;
+                    bulletsFired++;
+                    currentBulletsOut++;
+                    
+                }
+                
+            }
+            bulletsLeft = maxBullets - currentBulletsOut;
             bulletCount.text = bulletsLeft.ToString();
-            
-
             if (bulletsLeft <= 0)
             {
                 bulletsLeft = 0;
             }
         }
+      
 
         
     }
 
 
     [PunRPC]
-    void FireWeapon()
+    void FireWeapon(Vector3 shootPos, Vector3 shootRot)
     {
-            if (Time.time < nextFire)
-            {
-                Debug.Log("Whoa there Partner, its not like the bullets are teleporting into the chamber");
-                return;
-            }
-            else if (bulletsLeft == 0)
-            {
-                Debug.Log("You have already shot all your bullets, Catch some more with your shield");
-                return;
-            }
-            isShooting = true;
-
-            nextFire = Time.time + rateOfFire;
-            GameObject newBullet = Instantiate(bulletPrefab, weaponTip.transform.position + weaponTip.transform.forward, weaponTip.transform.rotation);
+            GameObject newBullet = Instantiate(bulletPrefab, shootPos, Quaternion.Euler(shootRot));
             newBullet.GetComponent<BulletNeworked>().FireBullet(weaponTip, damage, playerID);
-            newBullet.GetComponent<BulletNeworked>().GetShooter(gameObject);
-
-            bulletsFired++;
-            currentBulletsOut++;
-            bulletsLeft = maxBullets - currentBulletsOut;
-        
+            newBullet.GetComponent<BulletNeworked>().GetShooter(gameObject);   
     }
 }
