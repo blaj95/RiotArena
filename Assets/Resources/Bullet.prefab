@@ -23,10 +23,7 @@ GameObject:
   - component: {fileID: 135574366344338636}
   - component: {fileID: 23826968118354000}
   - component: {fileID: 54924876569702758}
-  - component: {fileID: 114557321319355138}
   - component: {fileID: 114419403980959632}
-  - component: {fileID: 114153426466384512}
-  - component: {fileID: 114568790742876700}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -103,19 +100,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114153426466384512
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1784763736437710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 1
 --- !u!114 &114419403980959632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,54 +111,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d95757764963474ebcd9f01f549eafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pstats: {fileID: 0}
+  myStats: {fileID: 0}
+  otherStats: {fileID: 0}
+  myShield: {fileID: 0}
+  otherShield: {fileID: 0}
+  myPlayer: {fileID: 0}
+  otherPlayer: {fileID: 0}
   player: {fileID: 0}
   bulletSpeedIncrease: 1
   bulletSpeed: 10
   speedCap: 20
+  vel: {x: 0, y: 0, z: 0}
   damageIncrementor: 1
   speedMultiplyer: 1
   _damage: 0
---- !u!114 &114557321319355138
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1784763736437710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerId: 0
-  group: 0
-  OwnerShipWasTransfered: 0
-  prefixBackup: -1
-  synchronization: 3
-  onSerializeTransformOption: 3
-  onSerializeRigidBodyOption: 2
-  ownershipTransfer: 0
-  ObservedComponents:
-  - {fileID: 114419403980959632}
-  - {fileID: 114153426466384512}
-  - {fileID: 114568790742876700}
-  ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
-  currentMasterID: -1
-  isRuntimeInstantiated: 0
---- !u!114 &114568790742876700
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1784763736437710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35144820bcc25444bb8f0fd767d9423e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SmoothingDelay: 10
 --- !u!135 &135574366344338636
 SphereCollider:
   m_ObjectHideFlags: 1
