@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-    public class NetworkedShield : Photon.MonoBehaviour
-    {
+ public class NetworkedShield : Photon.MonoBehaviour
+ {
         public NetworkedPlayerController playerScript;
         public GameObject player;
        
-        public bool reflect = true;
+        public bool reflect;
 
         public void OnCollisionEnter(Collision collision)
         {
@@ -20,11 +19,15 @@ using UnityEngine;
             if (Input.GetButton("LSelectTrigger"))
             {
                 reflect = false;
+                if(photonView.isMine)
+                photonView.RPC("SetReflectFalse",PhotonTargets.All);
             }
             else
             {
                 reflect = true;
-            }
+                if (photonView.isMine)
+                photonView.RPC("SetReflectTrue", PhotonTargets.All);
+        }
 
             if (photonView.isMine)
             {
@@ -38,5 +41,17 @@ using UnityEngine;
     {
         playerScript.currentBulletsOut--;
     }
+
+    [PunRPC]
+    void SetReflectTrue()
+    {
+        reflect = true;
     }
+
+    [PunRPC]
+    void SetReflectFalse()
+    {
+        reflect = false;
+    }
+}
 

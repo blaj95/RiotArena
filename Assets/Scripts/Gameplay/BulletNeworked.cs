@@ -168,6 +168,10 @@ public class BulletNeworked : Photon.MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        else
+        {
+            Destroy(gameObject);
+        }
         
     }
     #endregion
