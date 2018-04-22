@@ -35,11 +35,7 @@ using UnityEngine;
                 playerScript = player.GetComponent<NetworkedPlayerController>();
                 
             }
-            else
-            {
-            player = GameObject.Find("WeaponLobbyPlayer(Clone)");
-            playerScript = player.GetComponent<NetworkedPlayerController>();
-            }
+           
                 
         }
 
