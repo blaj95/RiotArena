@@ -9,7 +9,7 @@ using UnityEngine;
         public NetworkedPlayerController otherPlayerScript;
         public BulletNeworked bulletNet;
         public GameObject player;
-        public GameObject bullet;
+       
         public bool reflect = true;
 
         public void OnCollisionEnter(Collision collision)
@@ -79,13 +79,10 @@ using UnityEngine;
                 playerScript = player.GetComponent<NetworkedPlayerController>();
                 
             }
-            else
-            {
-                playerScript = player.GetComponent<NetworkedPlayerController>();
-            }
+          
                    
             
-            bullet = GameObject.Find("Bullet(Clone)");
+            
         }
     
 

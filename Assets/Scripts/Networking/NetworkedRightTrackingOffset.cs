@@ -85,7 +85,7 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
         }
 
         RaycastHit hit;
-        Debug.DrawRay(weaponTip.transform.position, weaponTip.transform.forward,  Color.green);
+        //Debug.DrawRay(weaponTip.transform.position, weaponTip.transform.forward,  Color.green);
         if (Physics.Raycast(weaponTip.transform.position, weaponTip.transform.forward, out hit, Mathf.Infinity))
         {
             
