@@ -770,7 +770,7 @@ MonoBehaviour:
   rightHand: {fileID: 0}
   OffsetRotation: {x: 45, y: 0, z: 0}
   weaponTip: {fileID: 0}
-  offsetPos: {x: 0, y: 0, z: -0.25}
+  offsetPos: {x: 0, y: 0, z: 0}
 --- !u!114 &114817042062655294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -795,8 +795,8 @@ MonoBehaviour:
   - {fileID: 4443813212159416}
   - {fileID: 4582457198238146}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114996604208291348
