@@ -32,6 +32,10 @@ public class NetworkedShield : Photon.MonoBehaviour
                     reflect = true;
             }
         }
+        else
+        {
+
+        }
         
 
         if (photonView.isMine)
@@ -51,12 +55,12 @@ public class NetworkedShield : Photon.MonoBehaviour
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.isWriting)
+        if (stream.isWriting && !photonView.isMine)
         {
 
             stream.SendNext(reflectID);
         }
-        else
+        else if(stream.isReading && !photonView.isMine)
         {
             reflectID = (int)stream.ReceiveNext();
 
