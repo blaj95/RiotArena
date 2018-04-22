@@ -2,60 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
- public class NetworkedShield : Photon.MonoBehaviour
- {
-        public NetworkedPlayerController playerScript;
-        public GameObject player;
-       
-        public bool reflect;
+public class NetworkedShield : Photon.MonoBehaviour
+{
+    public NetworkedPlayerController playerScript;
+    public GameObject player;
 
-        public void OnCollisionEnter(Collision collision)
+    public bool reflect;
+
+    public void OnCollisionEnter(Collision collision)
+    {
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetButton("LSelectTrigger"))
         {
-            
-        }
-
-        private void Update()
-        {
-            if (Input.GetButton("LSelectTrigger"))
-            {
-                reflect = false;
-                if(photonView.isMine)
-                photonView.RPC("SetReflectFalse",PhotonTargets.All);
-            }
-            else
-            {
-                reflect = true;
-                
-                photonView.RPC("SetReflectTrue", PhotonTargets.All);
-        }
-
+            reflect = false;
             if (photonView.isMine)
-            {
-                player = GameObject.Find("WeaponLobbyPlayer(Clone)");
-                playerScript = player.GetComponent<NetworkedPlayerController>();
-                
-            }
-           
-                
+                photonView.RPC("SetReflectFalse", PhotonTargets.All);
         }
+        else
+        {
+            reflect = true;
+
+            photonView.RPC("SetReflectTrue", PhotonTargets.All);
+        }
+
+        if (photonView.isMine)
+        {
+            player = GameObject.Find("WeaponLobbyPlayer(Clone)");
+            playerScript = player.GetComponent<NetworkedPlayerController>();
+
+        }
+
+
+    }
 
     public void AddBullet()
     {
         playerScript.currentBulletsOut--;
     }
 
-    [PunRPC]
-    void SetReflectTrue()
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (photonView.isMine)
-            reflect = true;
-    }
+        if (stream.isWriting)
+        {
 
-    [PunRPC]
-    void SetReflectFalse()
-    {
-        if (photonView.isMine)
-            reflect = false;
+            stream.SendNext(reflect);
+        }
+        else
+        {
+            reflect = (bool)stream.ReceiveNext();
+
+        }
     }
 }
-
