@@ -89,15 +89,18 @@ public class BulletNeworked : Photon.MonoBehaviour
         {
             OnShieldHit(collision);
         }
-        else //if the bullet hits anything else
+        else if (collision.transform.tag == "Wall") //if the bullet hits walls
         {
 
             foreach (ContactPoint contact in collision.contacts)
             {
                 vel = Vector3.Reflect(vel, contact.normal);
             }
-            _damage = _damage + damageIncrementor;
-            bulletSpeed = bulletSpeed + bulletSpeedIncrease;
+            LVLUpBullet();
+        }
+        else
+        {
+            Destroy(gameObject);
         }
       
     }
@@ -116,7 +119,7 @@ public class BulletNeworked : Photon.MonoBehaviour
     public void LVLUpBullet()
     {
         _damage = _damage + damageIncrementor;
-        bulletSpeed = bulletSpeed * speedMultiplyer;
+        //bulletSpeed = bulletSpeed * speedMultiplyer;
 
     }
     
