@@ -40,10 +40,10 @@ GameObject:
   - component: {fileID: 114575913777977490}
   - component: {fileID: 114392715345812902}
   - component: {fileID: 114136424568587988}
-  - component: {fileID: 136235298416480214}
+  - component: {fileID: 136251508586885748}
   m_Layer: 0
   m_Name: WeaponLobbyPlayer
-  m_TagString: Player
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1468909487123634}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.098, z: 0}
+  m_LocalPosition: {x: 0, y: 1.098, z: -5.539}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4434077971949208}
@@ -270,8 +270,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 1
+  instantiationId: 1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114392715345812902
@@ -289,7 +289,6 @@ MonoBehaviour:
   rightHand: {fileID: 0}
   weaponTip: {fileID: 0}
   shield: {fileID: 0}
-  bullet: {fileID: 0}
   bulletPrefab: {fileID: 1784763736437710, guid: 7ffbae9672e183f4288826e8093bfd9a,
     type: 2}
   bulletCount: {fileID: 0}
@@ -321,7 +320,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1545212743379924}
   m_Enabled: 1
---- !u!136 &136235298416480214
+--- !u!136 &136251508586885748
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -331,6 +330,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3
-  m_Height: 1
+  m_Height: 1.89
   m_Direction: 1
-  m_Center: {x: -0.08, y: 0.06, z: -0.32}
+  m_Center: {x: 0, y: -0.67, z: -0.2}

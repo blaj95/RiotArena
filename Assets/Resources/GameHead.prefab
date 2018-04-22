@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 114130311314432150}
   - component: {fileID: 114449654484765204}
   - component: {fileID: 114211882605371008}
-  - component: {fileID: 136031696858278662}
   m_Layer: 0
   m_Name: GameHead
   m_TagString: Head
@@ -194,8 +193,8 @@ MonoBehaviour:
   - {fileID: 4501672114669044}
   - {fileID: 114211882605371008}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 0
-  instantiationId: -1
+  viewIdField: 2
+  instantiationId: 2
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114211882605371008
@@ -227,16 +226,3 @@ MonoBehaviour:
   rnd:
   - {fileID: 23838256001005816}
   - {fileID: 23048491534984556}
---- !u!136 &136031696858278662
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1296662693251908}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.83
-  m_Height: 4.8
-  m_Direction: 1
-  m_Center: {x: 0, y: -1.87, z: -0.2}

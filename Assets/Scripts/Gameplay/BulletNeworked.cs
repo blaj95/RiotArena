@@ -83,6 +83,7 @@ public class BulletNeworked : Photon.MonoBehaviour
     {
         if (collision.transform.tag == "Head")   // Checking for damaging from head collision where the players hit box is
         {
+            OnPlayerHit(collision);
             Destroy(gameObject);
         }
         else if(collision.transform.tag == "Shield")
@@ -137,16 +138,12 @@ public class BulletNeworked : Photon.MonoBehaviour
         GameObject hit = hitPlayer.gameObject;
         PhotonView hitView = hit.GetPhotonView();
         PlayerStats hitStats = hit.GetComponent<PlayerStats>();
-
-        if (hitPlayer.gameObject != _shooter && hitStats)
-        {
-            print("Player hit!");
-            // Only deal damage on shooter client
-            if (PhotonNetwork.isMasterClient)
-                hitStats.TakeDamage(_damage, _shooter);
-            
-            Destroy(gameObject);
-        }
+        print("Player hit!");
+        // Only deal damage on shooter client
+        if (PhotonNetwork.isMasterClient)
+        hitStats.TakeDamage(_damage, _shooter);
+        Destroy(gameObject);
+        
 
     }
     protected virtual void OnShieldHit(Collision hitShield)

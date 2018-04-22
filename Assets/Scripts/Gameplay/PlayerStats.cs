@@ -30,4 +30,23 @@ public class PlayerStats : Photon.MonoBehaviour {
         print("In take damage function. Damage to be taken: " + amount);
         photonView.RPC("RPC_TakeDamage", PhotonTargets.All, amount, source.GetPhotonView().viewID);
     }
+
+    [PunRPC]
+    private void RPC_TakeDamage(float amount)
+    {
+            if (amount < 0)
+            {
+                Debug.LogWarning("Cannot take negative damage.");
+                return;
+            }
+            playerHealth -= amount;
+
+            if (playerHealth <= 0)
+            {
+                Debug.Log(gameObject.name + " hp <= 0");
+                //Die();
+            }
+            Debug.Log("Player hp: " + playerHealth);
+        
+    }
 }
