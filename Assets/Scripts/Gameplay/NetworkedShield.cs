@@ -6,7 +6,7 @@ public class NetworkedShield : Photon.MonoBehaviour
 {
     public NetworkedPlayerController playerScript;
     public GameObject player;
-
+    public int reflectID;
     public bool reflect;
 
     public void OnCollisionEnter(Collision collision)
@@ -20,12 +20,16 @@ public class NetworkedShield : Photon.MonoBehaviour
         {
             if (Input.GetButton("LSelectTrigger"))
             {
+                reflectID = 0;
+                if(reflectID == 0)
                 reflect = false;
-               
+                
             }
             else
             {
-                reflect = true;
+                reflectID = 1;
+                if (reflectID == 1)
+                    reflect = true;
             }
         }
         
@@ -50,11 +54,11 @@ public class NetworkedShield : Photon.MonoBehaviour
         if (stream.isWriting)
         {
 
-            stream.SendNext(reflect);
+            stream.SendNext(reflectID);
         }
         else
         {
-            reflect = (bool)stream.ReceiveNext();
+            reflectID = (int)stream.ReceiveNext();
 
         }
     }
