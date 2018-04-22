@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: 1000
+  health: {fileID: 0}
 --- !u!114 &114202239474924692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,14 +290,16 @@ MonoBehaviour:
   weaponTip: {fileID: 0}
   shield: {fileID: 0}
   bullet: {fileID: 0}
+  bulletPrefab: {fileID: 1784763736437710, guid: 7ffbae9672e183f4288826e8093bfd9a,
+    type: 2}
   bulletCount: {fileID: 0}
+  currentBulletsOut: 0
   bulletsLeft: 0
   bulletsFired: 0
   maxBullets: 20
   damage: 1
   playerID: 1
   rateOfFire: -1
-  blist: []
 --- !u!114 &114575913777977490
 MonoBehaviour:
   m_ObjectHideFlags: 1

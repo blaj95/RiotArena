@@ -18,7 +18,10 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     GameObject shield = null;
 
     [SerializeField]
-    GameObject bullet = null;
+    GameObject bullet;
+
+    [SerializeField]
+    public GameObject bulletPrefab;
 
     public Text bulletCount;
 
@@ -95,7 +98,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
             isShooting = true;
 
             nextFire = Time.time + rateOfFire;
-            GameObject newBullet = PhotonNetwork.Instantiate("Bullet", weaponTip.transform.position + weaponTip.transform.forward, weaponTip.transform.rotation, 0);
+            GameObject newBullet = Instantiate(bulletPrefab, weaponTip.transform.position + weaponTip.transform.forward, weaponTip.transform.rotation);
             newBullet.GetComponent<BulletNeworked>().FireBullet(weaponTip, damage, playerID);
 
             bulletsFired++;
