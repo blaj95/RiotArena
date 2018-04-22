@@ -53,6 +53,7 @@ public class NetworkedShield : Photon.MonoBehaviour
 
     public void AddBullet()
     {
+        if(photonView.isMine)
         playerScript.currentBulletsOut--;
     }
 
