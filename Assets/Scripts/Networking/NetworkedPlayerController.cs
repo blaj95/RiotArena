@@ -64,7 +64,6 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
 
         }
-
         if (Input.GetButtonDown("RSelectTrigger") && photonView.isMine)
         {
             photonView.RPC("FireWeapon", PhotonTargets.All, null);
@@ -83,8 +82,6 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     [PunRPC]
     void FireWeapon()
     {
-        if (photonView.isMine)
-        {
             if (Time.time < nextFire)
             {
                 Debug.Log("Whoa there Partner, its not like the bullets are teleporting into the chamber");
@@ -100,10 +97,11 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
             nextFire = Time.time + rateOfFire;
             GameObject newBullet = Instantiate(bulletPrefab, weaponTip.transform.position + weaponTip.transform.forward, weaponTip.transform.rotation);
             newBullet.GetComponent<BulletNeworked>().FireBullet(weaponTip, damage, playerID);
+            newBullet.GetComponent<BulletNeworked>().GetShooter(gameObject);
 
             bulletsFired++;
             currentBulletsOut++;
             bulletsLeft = maxBullets - currentBulletsOut;
-        }
+        
     }
-    }
+}

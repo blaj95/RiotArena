@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class BulletNeworked : Photon.MonoBehaviour
 {
-    public PlayerStats myStats;
+    protected PlayerStats myStats;
     public PlayerStats otherStats;
-    public NetworkedShield myShield;
+    protected NetworkedShield myShield;
     public NetworkedShield otherShield;
-    public NetworkedPlayerController myPlayer;
+    protected NetworkedPlayerController myPlayer;
     public NetworkedPlayerController otherPlayer;
 
     Rigidbody rigidB;
 
-    public GameObject player;
+    protected GameObject player;
+    protected GameObject _shooter;
 
     private float fraction;
 
@@ -31,7 +32,7 @@ public class BulletNeworked : Photon.MonoBehaviour
 
     bool fired = false;
     public int _damage = 2;
-    int _ownerID = -1;
+    int _ownerID;
 
     #region Unity CallBacks
     // Use this for initialization
@@ -50,8 +51,8 @@ public class BulletNeworked : Photon.MonoBehaviour
         if (photonView.isMine)
         {
             player = GameObject.Find("WeaponLobbyPlayer(Clone)");
-            myStats = player.GetComponent<PlayerStats>();
-            myPlayer = player.GetComponent<NetworkedPlayerController>();
+            //myStats = player.GetComponent<PlayerStats>();
+            //myPlayer = player.GetComponent<NetworkedPlayerController>();
             myShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
         }
         //else
@@ -190,6 +191,13 @@ public class BulletNeworked : Photon.MonoBehaviour
         _damage = _damage + damageIncrementor;
         bulletSpeed = bulletSpeed * speedMultiplyer;
 
+    }
+    
+    public virtual void GetShooter(GameObject shooter)
+    {
+        _shooter = shooter;
+        myStats = shooter.GetComponent<PlayerStats>();
+        myPlayer = _shooter.GetComponent<NetworkedPlayerController>();
     }
     #endregion
 
