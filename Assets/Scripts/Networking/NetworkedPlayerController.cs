@@ -77,7 +77,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
                 }
                 else
                 {
-                    photonView.RPC("FireWeapon", PhotonTargets.All, weaponTip.transform.forward, weaponTip.transform.rotation);
+                    photonView.RPC("FireWeapon", PhotonTargets.All, weaponTip.transform.position + weaponTip.transform.forward, weaponTip.transform.rotation);
                     isShooting = true;
                     nextFire = Time.time + rateOfFire;
                     bulletsFired++;
@@ -100,9 +100,9 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
 
     [PunRPC]
-    void FireWeapon(Vector3 shootPos, Vector3 shootRot)
+    void FireWeapon(Vector3 shootPos, Quaternion shootRot)
     {
-            GameObject newBullet = Instantiate(bulletPrefab, shootPos, Quaternion.Euler(shootRot));
+            GameObject newBullet = Instantiate(bulletPrefab, shootPos, shootRot);
             newBullet.GetComponent<BulletNeworked>().FireBullet(weaponTip, damage, playerID);
             newBullet.GetComponent<BulletNeworked>().GetShooter(gameObject);   
     }
