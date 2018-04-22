@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class BulletNeworked : Photon.MonoBehaviour
 {
+    [SerializeField]
     protected PlayerStats myStats;
-    public PlayerStats otherStats;
+    // public PlayerStats otherStats;
+    [SerializeField]
     protected NetworkedShield myShield;
-    public NetworkedShield otherShield;
+    // public NetworkedShield otherShield;
+    [SerializeField]
     protected NetworkedPlayerController myPlayer;
-    public NetworkedPlayerController otherPlayer;
+    //public NetworkedPlayerController otherPlayer;
 
     Rigidbody rigidB;
 
-    protected GameObject player;
+    
+   // protected GameObject player;
+
+    [SerializeField]
     protected GameObject _shooter;
 
     private float fraction;
@@ -48,13 +54,12 @@ public class BulletNeworked : Photon.MonoBehaviour
 
     private void Update()
     {
-        if (photonView.isMine)
-        {
-            player = GameObject.Find("WeaponLobbyPlayer(Clone)");
-            //myStats = player.GetComponent<PlayerStats>();
-            //myPlayer = player.GetComponent<NetworkedPlayerController>();
-            myShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
-        }
+
+        // player = GameObject.Find("WeaponLobbyPlayer(Clone)");
+        //myStats = player.GetComponent<PlayerStats>();
+        //myPlayer = player.GetComponent<NetworkedPlayerController>();
+
+
         //else
         //{
         //    player = GameObject.Find("WeaponLobbyPlayer(Clone)");
@@ -62,7 +67,7 @@ public class BulletNeworked : Photon.MonoBehaviour
         //    otherPlayer = player.GetComponent<NetworkedPlayerController>();
         //    otherShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
         //}
-
+        myShield = GameObject.Find("ControllerLeftShieldNew(Clone)").GetComponent<NetworkedShield>();
         if (bulletSpeed > speedCap)
         {
             bulletSpeed = speedCap;
@@ -216,11 +221,11 @@ public class BulletNeworked : Photon.MonoBehaviour
         myPlayer.bulletsLeft++;
     }
 
-    [PunRPC]
-    private void collectBulletYou() //function to change playerscript bullet stats
-    {
-        otherPlayer.bulletsLeft++;
-    }
+    //[PunRPC]
+    //private void collectBulletYou() //function to change playerscript bullet stats
+    //{
+    //    otherPlayer.bulletsLeft++;
+    //}
 
     [PunRPC]
     private void maxBulletsPlusMe()
@@ -228,11 +233,11 @@ public class BulletNeworked : Photon.MonoBehaviour
         myPlayer.maxBullets++;
     }
 
-    [PunRPC]
-    private void maxBulletsPlusYou()
-    {
-        otherPlayer.maxBullets++;
-    }
+    //[PunRPC]
+    //private void maxBulletsPlusYou()
+    //{
+    //    otherPlayer.maxBullets++;
+    //}
 
     [PunRPC]
     private void myBulletCaught()
@@ -240,9 +245,9 @@ public class BulletNeworked : Photon.MonoBehaviour
         myPlayer.currentBulletsOut--;
     }
 
-    private void yourBulletCaught()
-    {
-        otherPlayer.currentBulletsOut--;
-    }
+    //private void yourBulletCaught()
+    //{
+    //    otherPlayer.currentBulletsOut--;
+    //}
     #endregion
 }
