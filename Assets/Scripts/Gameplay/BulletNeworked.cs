@@ -154,7 +154,7 @@ public class BulletNeworked : Photon.MonoBehaviour
         GameObject hit = hitShield.gameObject;
         PhotonView hitView = hit.GetPhotonView();
        
-        shieldScript = hitShield.gameObject.GetComponent<NetworkedShield>();
+        shieldScript = hit.gameObject.GetComponent<NetworkedShield>();
         if (shieldScript.reflect == true)
         {
             foreach (ContactPoint contact in hitShield.contacts)
@@ -171,11 +171,6 @@ public class BulletNeworked : Photon.MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
     }
     #endregion
 
