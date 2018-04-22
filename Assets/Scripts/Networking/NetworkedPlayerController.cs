@@ -104,6 +104,6 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     {
             GameObject newBullet = Instantiate(bulletPrefab, shootPos, shootRot);
             newBullet.GetComponent<BulletNeworked>().FireBullet(weaponTip, damage, playerID);
-            newBullet.GetComponent<BulletNeworked>().GetShooter(gameObject);   
+            newBullet.GetComponent<BulletNeworked>().GetShooter(gameObject, shield);   
     }
 }

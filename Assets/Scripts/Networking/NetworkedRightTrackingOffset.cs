@@ -17,6 +17,7 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
 
     public Vector3 OffsetRotation;
     public GameObject weaponTip;
+    public Vector3 offsetPos;
 
 
     // Use this for initialization
@@ -68,7 +69,7 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
 
             netPlayer = GameObject.Find("WeaponLobbyPlayer(Clone)");
             weaponTip = GameObject.Find("ControllerRightWeapon(Clone)/Rtip");
-            transform.localPosition = rightHand.transform.localPosition + netPlayer.transform.localPosition;
+            transform.localPosition = rightHand.transform.localPosition + netPlayer.transform.localPosition + offsetPos;
             transform.localRotation = rightHand.transform.localRotation * Quaternion.Euler(OffsetRotation);
            
 

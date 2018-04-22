@@ -6,8 +6,6 @@ using UnityEngine;
     public class NetworkedShield : Photon.MonoBehaviour
     {
         public NetworkedPlayerController playerScript;
-        public NetworkedPlayerController otherPlayerScript;
-        public BulletNeworked bulletNet;
         public GameObject player;
        
         public bool reflect = true;
@@ -35,5 +33,10 @@ using UnityEngine;
                 
             }
         }
+
+    public void AddBullet()
+    {
+        playerScript.currentBulletsOut--;
+    }
     }
 
