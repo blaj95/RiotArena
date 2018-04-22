@@ -16,18 +16,19 @@ public class NetworkedShield : Photon.MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButton("LSelectTrigger"))
+        if (photonView.isMine)
         {
-            reflect = false;
-            if (photonView.isMine)
-                photonView.RPC("SetReflectFalse", PhotonTargets.All);
+            if (Input.GetButton("LSelectTrigger"))
+            {
+                reflect = false;
+               
+            }
+            else
+            {
+                reflect = true;
+            }
         }
-        else
-        {
-            reflect = true;
-
-            photonView.RPC("SetReflectTrue", PhotonTargets.All);
-        }
+        
 
         if (photonView.isMine)
         {
