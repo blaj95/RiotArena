@@ -14,6 +14,9 @@ public class BulletNeworked : Photon.MonoBehaviour
     protected NetworkedPlayerController myPlayer;
     //public NetworkedPlayerController otherPlayer;
 
+    [SerializeField]
+    protected NetworkedShield shieldScript;
+
     Rigidbody rigidB;
 
     
@@ -21,6 +24,10 @@ public class BulletNeworked : Photon.MonoBehaviour
 
     [SerializeField]
     protected GameObject _shooter;
+
+    [SerializeField]
+    protected GameObject _myShield;
+
 
     private float fraction;
 
@@ -100,7 +107,19 @@ public class BulletNeworked : Photon.MonoBehaviour
         }
         else if(collision.transform.tag == "Shield")
         {
-            return;
+            shieldScript = collision.gameObject.GetComponent<NetworkedShield>();
+           if(shieldScript.reflect == true)
+           {
+                foreach (ContactPoint contact in collision.contacts)
+                {
+                    vel = Vector3.Reflect(vel, contact.normal);
+                }
+            }
+           else if(shieldScript.reflect == false)
+           {
+                Destroy(gameObject);
+           }
+                   
         }
         else //if the bullet hits anything else
         {
@@ -201,8 +220,10 @@ public class BulletNeworked : Photon.MonoBehaviour
     public virtual void GetShooter(GameObject shooter)
     {
         _shooter = shooter;
+        
         myStats = shooter.GetComponent<PlayerStats>();
         myPlayer = _shooter.GetComponent<NetworkedPlayerController>();
+      
     }
     #endregion
 
