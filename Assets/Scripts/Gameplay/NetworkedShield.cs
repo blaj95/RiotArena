@@ -23,29 +23,32 @@ public class NetworkedShield : Photon.MonoBehaviour
                 reflectID = 0;
                 if(reflectID == 0)
                 reflect = false;
-                
+                if (photonView.isMine)
+                {
+                    photonView.RPC("ReflectFalse", PhotonTargets.Others);
+                }
             }
             else
             {
                 reflectID = 1;
                 if (reflectID == 1)
                     reflect = true;
+                if (photonView.isMine)
+                {
+                    photonView.RPC("ReflectTrue", PhotonTargets.Others);
+                }
             }
         }
         else
         {
 
         }
-        
-
         if (photonView.isMine)
         {
             player = GameObject.Find("WeaponLobbyPlayer(Clone)");
             playerScript = player.GetComponent<NetworkedPlayerController>();
 
         }
-
-
     }
 
     public void AddBullet()
@@ -53,17 +56,15 @@ public class NetworkedShield : Photon.MonoBehaviour
         playerScript.currentBulletsOut--;
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    [PunRPC]
+    void ReflectTrue()
     {
-        if (stream.isWriting && !photonView.isMine)
-        {
-
-            stream.SendNext(reflectID);
-        }
-        else if(stream.isReading && !photonView.isMine)
-        {
-            reflectID = (int)stream.ReceiveNext();
-
-        }
+        reflect = true;
     }
+    [PunRPC]
+    void ReflectFalse()
+    {
+        reflect = false;
+    }
+
 }
