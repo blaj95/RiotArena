@@ -54,4 +54,6 @@ MonoBehaviour:
   - myBulletCaught
   - SetReflectFalse
   - SetReflectTrue
+  - ReflectFalse
+  - ReflectTrue
   DisableAutoOpenWizard: 1
