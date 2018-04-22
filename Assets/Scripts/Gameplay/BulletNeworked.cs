@@ -74,7 +74,6 @@ public class BulletNeworked : Photon.MonoBehaviour
     {
         if (fired)
         {
-            //transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
             rigidB.MovePosition(transform.localPosition + vel * bulletSpeed * Time.deltaTime);
             rigidB.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         }
@@ -93,8 +92,7 @@ public class BulletNeworked : Photon.MonoBehaviour
         }
         else if(collision.transform.tag == "Shield")
         {
-            shieldScript = collision.gameObject.GetComponent<NetworkedShield>();
-            Debug.Log(shieldScript.gameObject.ToString());
+           shieldScript = collision.gameObject.GetComponent<NetworkedShield>();
            if(shieldScript.reflect == true)
            {
                 foreach (ContactPoint contact in collision.contacts)
@@ -105,6 +103,10 @@ public class BulletNeworked : Photon.MonoBehaviour
            else if(shieldScript.reflect == false)
            {
                 shieldScript.AddBullet();
+                Destroy(gameObject);
+           }
+           else
+           {
                 Destroy(gameObject);
            }
                    
