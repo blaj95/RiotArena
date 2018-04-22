@@ -114,6 +114,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1526077848951552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4882199746636474}
+  m_Layer: 0
+  m_Name: Rtip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1619548158799190
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +266,7 @@ Transform:
   - {fileID: 4891087104042456}
   - {fileID: 4420128029618254}
   m_Father: {fileID: 4337090232799404}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4295599782821008
 Transform:
@@ -276,6 +291,7 @@ Transform:
   m_LocalPosition: {x: 0.3094658, y: 0.65, z: 4.945772}
   m_LocalScale: {x: 6.5, y: 6.5, z: 6.5}
   m_Children:
+  - {fileID: 4882199746636474}
   - {fileID: 4067030609663058}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -358,6 +374,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4067030609663058}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4882199746636474
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1526077848951552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0089, z: 0.06357}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4337090232799404}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4891087104042456
 Transform:
@@ -812,7 +841,7 @@ MonoBehaviour:
   rightHand: {fileID: 0}
   OffsetRotation: {x: 45, y: 0, z: 0}
   weaponTip: {fileID: 0}
-  offsetPos: {x: 0, y: 0, z: -0.25}
+  offsetPos: {x: 0, y: 0, z: 0}
 --- !u!114 &114432268474645112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -856,10 +885,10 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114267621691165404}
   - {fileID: 4337090232799404}
-  - {fileID: 0}
+  - {fileID: 4882199746636474}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!222 &222807098377331386

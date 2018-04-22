@@ -57,11 +57,11 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
         {
             rightHand = GameObject.Find("ControllerRightWeapon(Clone)");
 
-            weaponTip = GameObject.Find("ControllerRightWeapon(Clone)/Rtip");
+            weaponTip = GameObject.Find("RightController(Clone)/Rtip");
 
             shield = GameObject.Find("ControllerLeftShieldNew(Clone)");
 
-            bulletCount = GameObject.Find("ControllerRightWeapon(Clone)/Canvas/Text").gameObject.GetComponent<Text>();
+            bulletCount = GameObject.Find("RightController(Clone)/GunParent/CyberGun/Canvas/Text").gameObject.GetComponent<Text>();
            
             if (Input.GetButtonDown("RSelectTrigger"))
             {
