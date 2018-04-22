@@ -52,4 +52,6 @@ MonoBehaviour:
   - maxBulletsPlusMe
   - maxBulletsPlusYou
   - myBulletCaught
+  - SetReflectFalse
+  - SetReflectTrue
   DisableAutoOpenWizard: 1
