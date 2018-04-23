@@ -43,7 +43,7 @@ public class BulletNeworked : Photon.MonoBehaviour
 
 
     bool fired = false;
-    public int _damage = 2;
+    public float _damage = 2;
     int _ownerID;
 
     #region Unity CallBacks
@@ -92,12 +92,18 @@ public class BulletNeworked : Photon.MonoBehaviour
         }
         else if (collision.transform.tag == "Wall") //if the bullet hits walls
         {
-
             foreach (ContactPoint contact in collision.contacts)
             {
                 vel = Vector3.Reflect(vel, contact.normal);
             }
             LVLUpBullet();
+        }
+        else if(collision.transform.tag == "Bullet")
+        {
+            foreach (ContactPoint contact in collision.contacts)
+            {
+                vel = Vector3.Reflect(vel, contact.normal);
+            }
         }
         else
         {
@@ -108,7 +114,7 @@ public class BulletNeworked : Photon.MonoBehaviour
     #endregion
 
     #region My Functions
-    public void FireBullet(GameObject parent, int damage, int ownerID)
+    public void FireBullet(GameObject parent, float damage, int ownerID)
     {
         fired = true;
         transform.rotation = parent.transform.rotation;
@@ -141,7 +147,7 @@ public class BulletNeworked : Photon.MonoBehaviour
         print("Player hit!");
         // Only deal damage on shooter client
         if (PhotonNetwork.isMasterClient)
-        hitStats.TakeDamage(_damage, _shooter);
+        hitStats.TakeDamage(_damage);
         Destroy(gameObject);
         
 

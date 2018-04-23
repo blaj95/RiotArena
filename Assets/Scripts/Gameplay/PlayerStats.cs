@@ -25,10 +25,10 @@ public class PlayerStats : Photon.MonoBehaviour {
          
     }
 
-    public void TakeDamage(float amount, GameObject source)
+    public void TakeDamage(float amount)
     {
         print("In take damage function. Damage to be taken: " + amount);
-        photonView.RPC("RPC_TakeDamage", PhotonTargets.All, amount, source.GetPhotonView().viewID);
+        photonView.RPC("RPC_TakeDamage", PhotonTargets.All, amount);
     }
 
     [PunRPC]
