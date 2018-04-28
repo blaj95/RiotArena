@@ -34,11 +34,7 @@ public class LobbyManager : Photon.PunBehaviour
             {
                 PhotonNetwork.LoadLevel(2);
             }
-
-
         }	
-        
-
 	}
 
     void Awake()

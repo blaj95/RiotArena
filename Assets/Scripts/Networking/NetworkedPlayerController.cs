@@ -53,6 +53,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (photonView.isMine)
         {
             rightHand = GameObject.Find("ControllerRightWeapon(Clone)");
