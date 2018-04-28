@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameState : MonoBehaviour {
 
@@ -18,11 +20,34 @@ public class GameState : MonoBehaviour {
     public GameObject Spawn;
     public GameObject player;
     public bool spawnable;
+
+    public bool masterStart = false;
+    public bool playerStart = false;
+
+    public string winnerName;
+
+    public Text winText;
+
+    public static GameState instance = null;
     // Use this for initialization
     void Start ()
     {
-        DontDestroyOnLoad(this);	
+       
 	}
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if(instance!= this)
+        {
+            Destroy(gameObject);
+        }
+       
+    }
 
     // Update is called once per frame
     void Update()
@@ -68,13 +93,20 @@ public class GameState : MonoBehaviour {
 
             if (masterStats.playerHealth <= 0 || notMasterStats.playerHealth <= 0)
             {
+                if (masterStats.playerHealth <= 0)
+                    winnerName = "Player 2";
+                else if (notMasterStats.playerHealth <= 0)
+                    winnerName = "Player 1";
                 GameOver();
             }
         }
         else if (currentScene.name == "GameOverScene")
         {
+            winText = GameObject.Find("EndUI/Text").GetComponent<Text>();
+            winText.text = "Winner" + Environment.NewLine + winnerName;
             if (spawnable)
             {
+
                 MasterSpawn = GameObject.Find("SpawnMaster");
                 Spawn = GameObject.Find("Spawn");
                 if (PhotonNetwork.isMasterClient)
@@ -95,6 +127,13 @@ public class GameState : MonoBehaviour {
                     Instantiate(player, Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 0, 0));
                 }
                 spawnable = false;
+            }
+        }
+        if (masterStart == true && playerStart == true)
+        {
+            if (PhotonNetwork.isMasterClient)
+            {
+                PhotonNetwork.LoadLevel(2);
             }
         }
     }

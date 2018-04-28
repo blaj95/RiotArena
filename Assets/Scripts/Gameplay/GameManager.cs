@@ -8,40 +8,43 @@ public class GameManager : Photon.PunBehaviour
     public GameObject player;
     public GameObject MasterSpawn;
     public GameObject Spawn;
-
+    public bool spawnable;
     // Use this for initialization
     void Start ()
     {
-       
-       
+        
+
     }
 	
 	// Update is called once per frame
 	void Awake ()
     {
-        
         PhotonNetwork.automaticallySyncScene = true;
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        spawnable = true;
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {   
-        if (PhotonNetwork.isMasterClient)
+    void Update()
+    {
+        if (spawnable)
         {
-            GameObject theplayer = PhotonNetwork.Instantiate("WeaponLobbyPlayer", MasterSpawn.transform.position, MasterSpawn.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
-            PhotonNetwork.Instantiate("ControllerLeftShieldNew", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
-            PhotonNetwork.Instantiate("RightController", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
-            PhotonNetwork.Instantiate("GameHead", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
-            Instantiate(player, MasterSpawn.transform.position, MasterSpawn.transform.rotation * Quaternion.Euler(0, 0, 0));
+            if (PhotonNetwork.isMasterClient)
+            {
+                GameObject theplayer = PhotonNetwork.Instantiate("WeaponLobbyPlayer", MasterSpawn.transform.position, MasterSpawn.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
+                PhotonNetwork.Instantiate("ControllerLeftShieldNew", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
+                PhotonNetwork.Instantiate("RightController", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
+                PhotonNetwork.Instantiate("GameHead", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
+                Instantiate(player, MasterSpawn.transform.position, MasterSpawn.transform.rotation * Quaternion.Euler(0, 0, 0));
 
-        }
-        else
-        {
-            GameObject theplayer = PhotonNetwork.Instantiate("WeaponLobbyPlayer", Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
-            PhotonNetwork.Instantiate("ControllerLeftShieldNew", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
-            PhotonNetwork.Instantiate("RightController", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
-            PhotonNetwork.Instantiate("GameHead", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
-            Instantiate(player, Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 180, 0));
+            }
+            else
+            {
+                GameObject theplayer = PhotonNetwork.Instantiate("WeaponLobbyPlayer", Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
+                PhotonNetwork.Instantiate("ControllerLeftShieldNew", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
+                PhotonNetwork.Instantiate("RightController", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
+                PhotonNetwork.Instantiate("GameHead", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
+                Instantiate(player, Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 180, 0));
+            }
+            spawnable = false;
         }
     }
 
