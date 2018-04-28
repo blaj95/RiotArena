@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - Head
   - Shield
+  - Pilar
   layers:
   - Default
   - TransparentFX

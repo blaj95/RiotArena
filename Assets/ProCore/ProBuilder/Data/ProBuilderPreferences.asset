@@ -13,6 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Bool_keys:
   - pbEnableBackfaceSelection
+  - pbShowMover
+  - pbShowDetail
+  - pbShowTrigger
+  - pbShowCollider
+  - pbUVMaterialPreview
   m_Int_keys:
   - pbHandleAlignment
   - pbDefaultEditLevel
@@ -26,7 +31,7 @@ MonoBehaviour:
   m_String_keys: []
   m_Color_keys: []
   m_Material_keys: []
-  m_Bool_values: 01
+  m_Bool_values: 010101010101
   m_Int_values: 0200000000000000020000000200000000000000
   m_Float_values:
   - 0

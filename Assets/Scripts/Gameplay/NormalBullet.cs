@@ -7,7 +7,7 @@ public class NormalBullet : MonoBehaviour
     public float bulletSpeed = 1000f;
 
 
-    bool fired = false;
+    public bool fired = false;
     int _damage = 1;
     int _ownerID = -1;
 
@@ -34,7 +34,7 @@ public class NormalBullet : MonoBehaviour
         if(fired)
         {
             //transform.position += transform.forward * (bulletSpeed * Time.deltaTime);
-            rigidbody.MovePosition(rigidbody.position + vel * bulletSpeed * Time.deltaTime);
+            rigidbody.MovePosition(rigidbody.position + (vel * bulletSpeed) * Time.deltaTime);
         }
         Debug.DrawRay(transform.position, Vector3.forward, Color.red);
         Debug.DrawRay(transform.position, Vector3.up, Color.yellow);
@@ -62,6 +62,7 @@ public class NormalBullet : MonoBehaviour
         foreach(ContactPoint contact in collision.contacts)
         {
             vel = Vector3.Reflect(vel, contact.normal);
+            transform.LookAt(Vector3.Reflect(((transform.position -contact.point).normalized * -2), contact.normal));
         }
         
     }
