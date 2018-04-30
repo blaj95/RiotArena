@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: ce424dae85cf9eb4796bdb0f1039f0ba
+timeCreated: 1525126575
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: arenaSpace
+    100004: centerBase
+    100006: centerCore
+    100008: Corner1
+    100010: Corner2
+    100012: Corner3
+    100014: Corner4
+    100016: cornerPlatform1
+    100018: cornerPlatform1 1
+    100020: cornerPlatform1 2
+    100022: cornerPlatform1 3
+    100024: cornerWall1
+    100026: cornerWall1 1
+    100028: cornerWall1 2
+    100030: cornerWall1 3
+    100032: curvedBarricade1
+    100034: curvedBarricade2
+    100036: standingBarricade1
+    100038: standingBarricade2
+    400000: //RootNode
+    400002: arenaSpace
+    400004: centerBase
+    400006: centerCore
+    400008: Corner1
+    400010: Corner2
+    400012: Corner3
+    400014: Corner4
+    400016: cornerPlatform1
+    400018: cornerPlatform1 1
+    400020: cornerPlatform1 2
+    400022: cornerPlatform1 3
+    400024: cornerWall1
+    400026: cornerWall1 1
+    400028: cornerWall1 2
+    400030: cornerWall1 3
+    400032: curvedBarricade1
+    400034: curvedBarricade2
+    400036: standingBarricade1
+    400038: standingBarricade2
+    2100000: arena_NeonMat
+    2100002: orbCore_material
+    2300000: arenaSpace
+    2300002: centerBase
+    2300004: centerCore
+    2300006: cornerPlatform1
+    2300008: cornerPlatform1 1
+    2300010: cornerPlatform1 2
+    2300012: cornerPlatform1 3
+    2300014: cornerWall1
+    2300016: cornerWall1 1
+    2300018: cornerWall1 2
+    2300020: cornerWall1 3
+    2300022: curvedBarricade1
+    2300024: curvedBarricade2
+    2300026: standingBarricade1
+    2300028: standingBarricade2
+    3300000: arenaSpace
+    3300002: centerBase
+    3300004: centerCore
+    3300006: cornerPlatform1
+    3300008: cornerPlatform1 1
+    3300010: cornerPlatform1 2
+    3300012: cornerPlatform1 3
+    3300014: cornerWall1
+    3300016: cornerWall1 1
+    3300018: cornerWall1 2
+    3300020: cornerWall1 3
+    3300022: curvedBarricade1
+    3300024: curvedBarricade2
+    3300026: standingBarricade1
+    3300028: standingBarricade2
+    4300000: arenaSpace
+    4300002: centerBase
+    4300004: centerCore
+    4300006: standingBarricade1
+    4300008: standingBarricade2
+    4300010: curvedBarricade1
+    4300012: curvedBarricade2
+    4300014: cornerWall1
+    4300016: cornerPlatform1
+    4300018: cornerWall1
+    4300020: cornerPlatform1
+    4300022: cornerWall1
+    4300024: cornerPlatform1
+    4300026: cornerWall1
+    4300028: cornerPlatform1
+    6400000: arenaSpace
+    6400002: centerBase
+    6400004: centerCore
+    6400006: cornerPlatform1
+    6400008: cornerPlatform1 1
+    6400010: cornerPlatform1 2
+    6400012: cornerPlatform1 3
+    6400014: cornerWall1
+    6400016: cornerWall1 1
+    6400018: cornerWall1 2
+    6400020: cornerWall1 3
+    6400022: curvedBarricade1
+    6400024: curvedBarricade2
+    6400026: standingBarricade1
+    6400028: standingBarricade2
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
