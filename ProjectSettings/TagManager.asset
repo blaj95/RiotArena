@@ -13,6 +13,8 @@ TagManager:
   - Head
   - Shield
   - Pilar
+  - MasterLever
+  - ClientLever
   layers:
   - Default
   - TransparentFX
