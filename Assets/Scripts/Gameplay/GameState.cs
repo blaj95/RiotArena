@@ -58,7 +58,7 @@ public class GameState : MonoBehaviour {
         currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == "Arena")
         {
-            players = (GameObject.FindGameObjectsWithTag("Head"));
+            players = (GameObject.FindGameObjectsWithTag("Body"));
             foreach (GameObject p in players)
             {
                 if (p.GetPhotonView().isMine)

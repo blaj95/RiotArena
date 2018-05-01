@@ -86,6 +86,13 @@ public class BulletNeworked : Photon.MonoBehaviour
             OnPlayerHit(collision);
             Destroy(gameObject);
         }
+        else if(collision.transform.tag == "Head")
+        {
+            Debug.Log("Boom HEADSHOT");
+            
+            OnPlayerHeadshot(collision);
+            Destroy(gameObject);
+        }
         else if(collision.transform.tag == "Shield")
         {
             OnShieldHit(collision);
@@ -143,15 +150,26 @@ public class BulletNeworked : Photon.MonoBehaviour
     {
         GameObject hit = hitPlayer.gameObject;
         PhotonView hitView = hit.GetPhotonView();
-        PlayerStats hitStats = hit.GetComponent<PlayerStats>();
+        PlayerStats hitStats = hit.GetComponentInParent<PlayerStats>();
         print("Player hit!");
         // Only deal damage on shooter client
         if (PhotonNetwork.isMasterClient)
-        hitStats.TakeDamage(_damage);
+            hitStats.TakeDamage(_damage);
         Destroy(gameObject);
-        
-
     }
+
+    protected virtual void OnPlayerHeadshot(Collision hitPlayer)
+    {
+        GameObject hit = hitPlayer.gameObject;
+        PhotonView hitView = hit.GetPhotonView();
+        Headshot headShot = hit.GetComponent<Headshot>();
+        //print("Player hit!");
+        //// Only deal damage on shooter client
+        if (PhotonNetwork.isMasterClient)
+            headShot.OnHeadshot(_damage * 2);
+        Destroy(gameObject);
+    }
+
     protected virtual void OnShieldHit(Collision hitShield)
     {
         GameObject hit = hitShield.gameObject;
