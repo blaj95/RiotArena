@@ -180,7 +180,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171366657608622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -267,8 +267,7 @@ MonoBehaviour:
   disableGO:
   - {fileID: 1635661751042838}
   disableRend: []
-  disableMyGO:
-  - {fileID: 0}
+  disableMyGO: []
   myMesh:
   - {fileID: 23529602615784078}
 --- !u!114 &114379926506997014
