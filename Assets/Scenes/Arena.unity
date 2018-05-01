@@ -4933,7 +4933,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh21500
+  m_Name: pb_Mesh28744
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -15750,6 +15750,22 @@ Prefab:
     - target: {fileID: 6400026, guid: ce424dae85cf9eb4796bdb0f1039f0ba, type: 3}
       propertyPath: m_CookingOptions
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: ce424dae85cf9eb4796bdb0f1039f0ba, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100018, guid: ce424dae85cf9eb4796bdb0f1039f0ba, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100022, guid: ce424dae85cf9eb4796bdb0f1039f0ba, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: ce424dae85cf9eb4796bdb0f1039f0ba, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce424dae85cf9eb4796bdb0f1039f0ba, type: 3}

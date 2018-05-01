@@ -21,5 +21,11 @@ public class GameBodyTracking : Photon.MonoBehaviour {
 
             transform.position = myhead.transform.position + bodyOffset;
         }
+        else
+        {
+            myhead = GameObject.Find("GameHead(Clone)");
+
+            transform.position = myhead.transform.position + bodyOffset;
+        }
     }
 }
