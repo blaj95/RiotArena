@@ -153,7 +153,7 @@ MonoBehaviour:
   vel: {x: 0, y: 0, z: 0}
   damageIncrementor: 1
   speedMultiplyer: 1
-  _damage: 0
+  _damage: 1
 --- !u!135 &135574366344338636
 SphereCollider:
   m_ObjectHideFlags: 1
