@@ -33,7 +33,7 @@ public class GameBodyTracking : Photon.MonoBehaviour
         else
         {
             transform.localPosition = Vector3.Lerp(onUpdateRightPos, correctRightPos, fraction);
-            transform.localRotation = Quaternion.Lerp(onUpdateRightRot, correctRightRot, fraction);
+            //transform.localRotation = Quaternion.Lerp(onUpdateRightRot, correctRightRot, fraction);
 
         }
     }
