@@ -16,6 +16,7 @@ TagManager:
   - MasterLever
   - ClientLever
   - Body
+  - GamePlayer
   layers:
   - Default
   - TransparentFX
