@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: BluePillar
   m_Shader: {fileID: 4800000, guid: f41b97872ce3bba439516a22765e895b, type: 3}
-  m_ShaderKeywords: _AA_ON _EMISSION _METALLICGLOSSMAP _MODE_DEFAULT _NORMALMAP _QUAD_ON
+  m_ShaderKeywords: _AA_ON _EMISSION _METALLICGLOSSMAP _MODE_DEFAULT _NORMALMAP _PARALLAXMAP
     _WLIGHT_SURFACE _WSTYLE_DEFAULT _WUV_UV0
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -37,11 +37,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 2800000, guid: 32d057b58f349cc44a8f182dfd5c3f50, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 32d057b58f349cc44a8f182dfd5c3f50, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: be8ab5e3f0388754f848e9426cf125a1, type: 3}
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 39395ebdb931063409a6aa54dcc8492d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WMask:
@@ -78,7 +78,7 @@ Material:
     - _GDist: 0.35
     - _GEmission: 0
     - _GPower: 0.5
-    - _GlossMapScale: 1
+    - _GlossMapScale: 0
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Glow: 0
@@ -86,8 +86,8 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.02
-    - _Quad: 1
+    - _Parallax: 0.0589
+    - _Quad: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -102,12 +102,12 @@ Material:
     - _WOpacity: 1
     - _WParam: 0
     - _WStyle: 0
-    - _WThickness: 0.11253
+    - _WThickness: 0.049500003
     - _WTransparency: 1
     - _WUV: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.8352942, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0.8352942, b: 1, a: 1}
     - _GColor: {r: 0, g: 0, b: 0, a: 1}
-    - _WColor: {r: 1, g: 0, b: 0, a: 1}
+    - _WColor: {r: 0, g: 0, b: 0, a: 1}
