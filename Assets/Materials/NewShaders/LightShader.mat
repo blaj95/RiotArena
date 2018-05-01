@@ -6,11 +6,11 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: RampMat
+  m_Name: LightShader
   m_Shader: {fileID: 4800000, guid: f41b97872ce3bba439516a22765e895b, type: 3}
-  m_ShaderKeywords: _AA_ON _ALPHABLEND_ON _MODE_DEFAULT _WLIGHT_SURFACE _WSTYLE_DEFAULT
-    _WUV_UV0
-  m_LightmapFlags: 4
+  m_ShaderKeywords: _AA_ON _ALPHABLEND_ON _EMISSION _GLOW_ON _MODE_DEFAULT _WLIGHT_SURFACE
+    _WSTYLE_DEFAULT _WUV_UV0
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -38,11 +38,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: -5.5, y: 4.43}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 264a5b5b86765a1449bb66f28b56dfdc, type: 3}
-        m_Scale: {x: -5.5, y: 4.43}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -75,14 +75,14 @@ Material:
     - _FMode: 1
     - _FPow: 5
     - _Fade: 0
-    - _Fold: 3
+    - _Fold: 7
     - _GDist: 0.35
     - _GEmission: 0
     - _GPower: 0.5
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Glow: 0
+    - _Glow: 1
     - _Limits: 1
     - _Metallic: 0
     - _Mode: 2
@@ -96,19 +96,19 @@ Material:
     - _UVSec: 0
     - _WEmission: 0
     - _WGloss: 0
-    - _WInvert: 0
+    - _WInvert: 2
     - _WLight: 0
     - _WMetal: 0
     - _WMode: 0
     - _WOpacity: 1
     - _WParam: 0
     - _WStyle: 0
-    - _WThickness: 0.05
-    - _WTransparency: 1
+    - _WThickness: 0.13200001
+    - _WTransparency: 0.3
     - _WUV: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.67466885, g: 0.7058823, b: 0.1401384, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 0.95862055, b: 1, a: 1}
+    - _EmissionColor: {r: 0.9485294, g: 0.6904736, b: 0.6904736, a: 1}
     - _GColor: {r: 0, g: 0, b: 0, a: 1}
-    - _WColor: {r: 0, g: 0, b: 1, a: 1}
+    - _WColor: {r: 1, g: 1, b: 1, a: 1}
