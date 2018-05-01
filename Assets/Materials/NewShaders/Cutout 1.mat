@@ -6,15 +6,16 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Emission
+  m_Name: Cutout
   m_Shader: {fileID: 4800000, guid: f41b97872ce3bba439516a22765e895b, type: 3}
-  m_ShaderKeywords: _AA_ON _CHANNEL_UV3 _EMISSION _MODE_DEFAULT _WLIGHT_SURFACE _WSTYLE_DEFAULT
-    _WUV_UV0
+  m_ShaderKeywords: WFS_TWOSIDED _CHANNEL_UV3 _EMISSION _MODE_DEFAULT _WLIGHT_SURFACE
+    _WSTYLE_DEFAULT _WUV_UV0
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -64,7 +65,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AASmooth: 1.5
+    - _AASmooth: 0
     - _BumpScale: 1
     - _Channel: 0
     - _Cull: 2
@@ -75,7 +76,7 @@ Material:
     - _FMode: 1
     - _FPow: 5
     - _Fade: 0
-    - _Fold: 3
+    - _Fold: 19
     - _GDist: 0.35
     - _GEmission: 0
     - _GPower: 0.5
@@ -85,7 +86,7 @@ Material:
     - _Glow: 0
     - _Limits: 1
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Quad: 0
@@ -94,7 +95,7 @@ Material:
     - _SrcBlend: 1
     - _TwoSided: 1
     - _UVSec: 0
-    - _WEmission: 1.91
+    - _WEmission: 0
     - _WGloss: 0
     - _WInvert: 0
     - _WLight: 0
@@ -103,12 +104,12 @@ Material:
     - _WOpacity: 1
     - _WParam: 0
     - _WStyle: 0
-    - _WThickness: 0.052140005
+    - _WThickness: 0.10164
     - _WTransparency: 1
     - _WUV: 0
-    - _ZWrite: 4
+    - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GColor: {r: 0, g: 0, b: 0, a: 1}
-    - _WColor: {r: 0, g: 1, b: 0.832, a: 1}
+    - _WColor: {r: 0, g: 0.753, b: 0.753, a: 1}
