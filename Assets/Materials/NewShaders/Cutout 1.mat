@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Cutout
+  m_Name: Cutout 1
   m_Shader: {fileID: 4800000, guid: f41b97872ce3bba439516a22765e895b, type: 3}
-  m_ShaderKeywords: WFS_TWOSIDED _CHANNEL_UV3 _EMISSION _MODE_DEFAULT _WLIGHT_SURFACE
+  m_ShaderKeywords: WFS_TWOSIDED _CHANNEL_UV3 _EMISSION _MODE_DEFAULT _WLIGHT_OVERLAY
     _WSTYLE_DEFAULT _WUV_UV0
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -69,7 +69,7 @@ Material:
     - _BumpScale: 1
     - _Channel: 0
     - _Cull: 2
-    - _Cutoff: 0.5
+    - _Cutoff: 0.3
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FDist: 0.1
@@ -97,19 +97,19 @@ Material:
     - _UVSec: 0
     - _WEmission: 0
     - _WGloss: 0
-    - _WInvert: 0
-    - _WLight: 0
+    - _WInvert: 2
+    - _WLight: 1
     - _WMetal: 0
     - _WMode: 0
-    - _WOpacity: 1
+    - _WOpacity: 0.577
     - _WParam: 0
     - _WStyle: 0
-    - _WThickness: 0.10164
+    - _WThickness: 0.07326
     - _WTransparency: 1
     - _WUV: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.30983785, g: 0, b: 0.6911765, a: 1}
     - _GColor: {r: 0, g: 0, b: 0, a: 1}
-    - _WColor: {r: 0, g: 0.753, b: 0.753, a: 1}
+    - _WColor: {r: 0.36100402, g: 0, b: 0.46323532, a: 0.577}
