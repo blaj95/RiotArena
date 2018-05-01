@@ -29,6 +29,10 @@ public class NetworkDisable : Photon.MonoBehaviour {
             {
                 rnd.enabled = false;
             }
+            foreach (MeshRenderer mr in myMesh)
+            {
+                mr.enabled = true;
+            }
         }
         else
         {
@@ -39,7 +43,7 @@ public class NetworkDisable : Photon.MonoBehaviour {
 
             foreach (MeshRenderer mr in myMesh)
             {
-                mr.enabled = false;
+                
             }
         }
 	}
