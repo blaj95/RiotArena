@@ -41,9 +41,10 @@ GameObject:
   - component: {fileID: 136540481740547414}
   - component: {fileID: 23529602615784078}
   - component: {fileID: 114976159640949366}
+  - component: {fileID: 114239884538001270}
   m_Layer: 0
   m_Name: Body (1)
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,6 +240,19 @@ MonoBehaviour:
   AlternateRightController: {fileID: 0}
   TouchpadTouchedOverride: {fileID: 0}
   GLTFMaterial: {fileID: 2100000, guid: 2ac78523d661e954c83d799f582b22e8, type: 2}
+--- !u!114 &114239884538001270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171366657608622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01a58dfba522df43a8bcc10be61da20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myhead: {fileID: 0}
+  bodyOffset: {x: 0, y: -0.7, z: 0}
 --- !u!114 &114308584359816636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,7 +267,10 @@ MonoBehaviour:
   disableGO:
   - {fileID: 1635661751042838}
   disableRend: []
-  disableMyGO: []
+  disableMyGO:
+  - {fileID: 0}
+  myMesh:
+  - {fileID: 23529602615784078}
 --- !u!114 &114379926506997014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,8 +295,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114625028633862174
@@ -369,8 +386,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!124 &124439480538899724

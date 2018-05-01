@@ -7,6 +7,7 @@ public class NetworkDisable : Photon.MonoBehaviour {
     public GameObject[] disableGO;
     public Renderer[] disableRend;
     public GameObject[] disableMyGO;
+    public MeshRenderer[] myMesh;
 
     // Use this for initialization
     void Start () {
@@ -34,6 +35,11 @@ public class NetworkDisable : Photon.MonoBehaviour {
             foreach (GameObject go in disableMyGO)
             {
                 go.SetActive(false);
+            }
+
+            foreach (MeshRenderer mr in myMesh)
+            {
+                mr.enabled = false;
             }
         }
 	}

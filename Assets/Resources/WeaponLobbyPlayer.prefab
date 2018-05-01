@@ -77,9 +77,10 @@ GameObject:
   - component: {fileID: 136588837831638766}
   - component: {fileID: 23401235811297902}
   - component: {fileID: 114155924210328808}
+  - component: {fileID: 114333638820448926}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Body
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,8 +277,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 3
-  instantiationId: 3
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114202239474924692
@@ -345,6 +346,19 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &114333638820448926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571482658570432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e0d9631bdf5ab842afbccdc6be7c82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myhead: {fileID: 0}
+  bodyOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &114383856156212124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,8 +383,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114392715345812902
@@ -413,6 +427,8 @@ MonoBehaviour:
   - {fileID: 1545212743379924}
   disableRend: []
   disableMyGO: []
+  myMesh:
+  - {fileID: 23401235811297902}
 --- !u!124 &124457101446109032
 Behaviour:
   m_ObjectHideFlags: 1

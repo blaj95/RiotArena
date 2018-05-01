@@ -15,6 +15,7 @@ TagManager:
   - Pilar
   - MasterLever
   - ClientLever
+  - Body
   layers:
   - Default
   - TransparentFX
