@@ -32,7 +32,7 @@ public class LobbyManager : Photon.PunBehaviour
         {
             if (PhotonNetwork.isMasterClient)
             {
-                PhotonNetwork.LoadLevel(2);
+                PhotonNetwork.LoadLevel(4);
             }
         }	
 	}
