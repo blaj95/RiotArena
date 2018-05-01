@@ -24,7 +24,7 @@ public class PlayerMasterReady : Photon.MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "RightNet")
+        if (other.tag == "MasterLever")
             masterReady = true;
         photonView.RPC("MasterisReady", PhotonTargets.All);
     }
@@ -32,7 +32,7 @@ public class PlayerMasterReady : Photon.MonoBehaviour {
     public void OnTriggerExit(Collider other)
     {
 
-        if (other.tag == "RightNet")
+        if (other.tag == "MasterLever")
             masterReady = false;
         photonView.RPC("MasterisNotReady", PhotonTargets.All);
     }
