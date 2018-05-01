@@ -58,7 +58,7 @@ public class GameState : MonoBehaviour {
         currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == "TestGame")
         {
-            players = (GameObject.FindGameObjectsWithTag("GamePlayer"));
+            players = (GameObject.FindGameObjectsWithTag("Player"));
             foreach (GameObject p in players)
             {
               if (PhotonNetwork.isMasterClient)
