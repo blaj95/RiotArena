@@ -156,6 +156,43 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05add782b446ce94dbdc4ebca05e391c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &8126367 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1778944423024072, guid: 05add782b446ce94dbdc4ebca05e391c,
+    type: 2}
+  m_PrefabInternal: {fileID: 8126366}
+--- !u!114 &8126368 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114436719578787112, guid: 05add782b446ce94dbdc4ebca05e391c,
+    type: 2}
+  m_PrefabInternal: {fileID: 8126366}
+  m_Script: {fileID: 11500000, guid: f9f45d1ed661e1b458f231a2678259cc, type: 3}
+--- !u!114 &8126369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 8126367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 8126368}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 2
+  instantiationId: 2
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &378189052
 GameObject:
   m_ObjectHideFlags: 0
@@ -5128,7 +5165,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh29826
+  m_Name: pb_Mesh26978
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
