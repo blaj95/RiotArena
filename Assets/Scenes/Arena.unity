@@ -165,12 +165,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1778944423024072, guid: 05add782b446ce94dbdc4ebca05e391c,
     type: 2}
   m_PrefabInternal: {fileID: 8126366}
---- !u!114 &8126368 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114436719578787112, guid: 05add782b446ce94dbdc4ebca05e391c,
-    type: 2}
-  m_PrefabInternal: {fileID: 8126366}
-  m_Script: {fileID: 11500000, guid: f9f45d1ed661e1b458f231a2678259cc, type: 3}
 --- !u!114 &8126369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,12 +180,12 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 3
+  synchronization: 0
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 8126368}
+  - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 2
   instantiationId: 2

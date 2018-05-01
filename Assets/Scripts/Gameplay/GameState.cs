@@ -61,34 +61,18 @@ public class GameState : MonoBehaviour {
             players = (GameObject.FindGameObjectsWithTag("GamePlayer"));
             foreach (GameObject p in players)
             {
-                if (p.GetPhotonView().isMine)
-                {
-                    if (PhotonNetwork.isMasterClient)
-                    {
+              if (PhotonNetwork.isMasterClient)
+              {
                         master = p;
                         masterCon = p.GetComponent<NetworkedPlayerController>();
                         masterStats = p.GetComponent<PlayerStats>();
-                    }
-                    else
-                    {
-                        notMaster = p;
-                        notMasterCon = p.GetComponent<NetworkedPlayerController>();
-                    }
-                }
-                else
-                {
-                    if (PhotonNetwork.isMasterClient)
-                    {
-                        master = p;
-                        masterCon = p.GetComponent<NetworkedPlayerController>();
-                    }
-                    else
-                    {
+              }
+              else
+              {
                         notMaster = p;
                         notMasterCon = p.GetComponent<NetworkedPlayerController>();
                         notMasterStats = p.GetComponent<PlayerStats>();
-                    }
-                }
+              }
             }
 
             if (masterStats.playerHealth <= 0 || notMasterStats.playerHealth <= 0)
@@ -97,6 +81,7 @@ public class GameState : MonoBehaviour {
                     winnerName = "Player 2";
                 else if (notMasterStats.playerHealth <= 0)
                     winnerName = "Player 1";
+
                 GameOver();
             }
         }
