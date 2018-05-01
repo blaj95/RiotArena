@@ -19,17 +19,20 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
     public GameObject weaponTip;
     public Vector3 offsetPos;
 
+    public LineRenderer laser;
+
 
     // Use this for initialization
     void Start()
     {
-
         correctRightPos = transform.position;
         onUpdateRightPos = transform.position;
 
         correctRightRot = transform.rotation;
         onUpdateRightRot = transform.rotation;
         rightHand = GameObject.FindWithTag("RightLocal");
+
+        
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -66,13 +69,22 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
     {
         if (photonView.isMine)
         {
-
             netPlayer = GameObject.Find("WeaponLobbyPlayer(Clone)");
             weaponTip = GameObject.Find("RightController(Clone)/Rtip");
             transform.localPosition = rightHand.transform.localPosition + netPlayer.transform.localPosition + offsetPos;
             transform.localRotation = rightHand.transform.localRotation * Quaternion.Euler(OffsetRotation);
-           
 
+            laser = GetComponentInChildren<LineRenderer>();
+
+            if (Input.GetKeyDown("joystick button 17"))
+            {
+                laser.enabled = true;
+            }
+            else if (Input.GetKeyUp("joystick button 17"))
+            {
+                laser.enabled = false;
+               
+            }
         }
 
         fraction = fraction + Time.deltaTime * 10;
@@ -93,8 +105,10 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
             //Debug.Log(hit.transform.gameObject.name);
             if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
             {
+                
                 if (Input.GetKeyUp("joystick button 17"))
                 {
+                   
                     Debug.Log("Teleport!");
                     netPlayer.transform.position = hit.point;
                 }
