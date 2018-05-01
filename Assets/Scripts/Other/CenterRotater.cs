@@ -38,9 +38,9 @@ public class CenterRotater : MonoBehaviour
     private void Update()
     {
         float rnd = Mathf.PingPong(speed, Time.time);
-        transform.Rotate(Vector3.up, speed * Time.deltaTime);//Yaw
-        transform.Rotate(Vector3.forward, speed * Time.deltaTime);//Roll
-        transform.Rotate(Vector3.left, speed * Time.deltaTime);//Pitch
+        transform.Rotate(rotateVec, speed * Time.deltaTime);//Yaw
+        transform.Rotate(rotateVec, speed * Time.deltaTime);//Roll
+        transform.Rotate(rotateVec, speed * Time.deltaTime);//Pitch
 
     }
 

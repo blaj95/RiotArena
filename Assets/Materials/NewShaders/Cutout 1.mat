@@ -104,12 +104,12 @@ Material:
     - _WOpacity: 1
     - _WParam: 0
     - _WStyle: 0
-    - _WThickness: 0.07326
+    - _WThickness: 0.165
     - _WTransparency: 1
     - _WUV: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _EmissionColor: {r: 0.30983785, g: 0, b: 0.6911765, a: 1}
+    - _EmissionColor: {r: 0.2570995, g: 0, b: 0.5735294, a: 1}
     - _GColor: {r: 1, g: 0, b: 0, a: 1}
     - _WColor: {r: 0.8206897, g: 0, b: 1, a: 1}
