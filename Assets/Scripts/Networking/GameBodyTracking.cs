@@ -53,7 +53,7 @@ public class GameBodyTracking : Photon.MonoBehaviour
         else
         {
             Vector3 pos = Vector3.zero;
-            Quaternion rot = Quaternion.identity;
+            //Quaternion rot = Quaternion.identity;
 
             stream.Serialize(ref pos);
             // stream.Serialize(ref rot);
