@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameBodyTracking : Photon.MonoBehaviour {
-
+public class GameBodyTracking : Photon.MonoBehaviour
+{
     public GameObject player;
     public GameObject netPlayer;
     public GameObject rightHand;
@@ -34,7 +34,7 @@ public class GameBodyTracking : Photon.MonoBehaviour {
         {
             transform.localPosition = Vector3.Lerp(onUpdateRightPos, correctRightPos, fraction);
             transform.localRotation = Quaternion.Lerp(onUpdateRightRot, correctRightRot, fraction);
-            
+
         }
     }
 
@@ -43,11 +43,11 @@ public class GameBodyTracking : Photon.MonoBehaviour {
         if (stream.isWriting)
         {
             Vector3 pos = transform.localPosition;
-           // Quaternion rot = transform.localRotation;
+            // Quaternion rot = transform.localRotation;
             stream.SendNext(transform.position);
-           // stream.SendNext(transform.rotation);
+            // stream.SendNext(transform.rotation);
             stream.Serialize(ref pos);
-           // stream.Serialize(ref rot);
+            // stream.Serialize(ref rot);
 
         }
         else
@@ -56,12 +56,12 @@ public class GameBodyTracking : Photon.MonoBehaviour {
             Quaternion rot = Quaternion.identity;
 
             stream.Serialize(ref pos);
-           // stream.Serialize(ref rot);
+            // stream.Serialize(ref rot);
 
             correctRightPos = pos;
-           // correctRightRot = rot;
+            // correctRightRot = rot;
             onUpdateRightPos = transform.localPosition;
-           // onUpdateRightRot = transform.localRotation;
+            // onUpdateRightRot = transform.localRotation;
             fraction = 0;
 
         }
