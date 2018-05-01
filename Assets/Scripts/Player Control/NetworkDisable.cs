@@ -6,9 +6,10 @@ public class NetworkDisable : Photon.MonoBehaviour {
 
     public GameObject[] disableGO;
     public Renderer[] disableRend;
+    public GameObject[] disableMyGO;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
 		
 	}
@@ -26,6 +27,13 @@ public class NetworkDisable : Photon.MonoBehaviour {
             foreach(Renderer rnd in disableRend)
             {
                 rnd.enabled = false;
+            }
+        }
+        else
+        {
+            foreach (GameObject go in disableMyGO)
+            {
+                go.SetActive(false);
             }
         }
 	}
