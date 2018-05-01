@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMasterReady : Photon.MonoBehaviour {
 
     public bool masterReady = false;
-
+    public GameObject buttonModel;
     LobbyManager lobbyMng;
 
     
@@ -14,6 +14,7 @@ public class PlayerMasterReady : Photon.MonoBehaviour {
     void Start()
     {
         lobbyMng = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
+        buttonModel = GetComponentInChildren<MeshRenderer>().gameObject;
     }
 
     // Update is called once per frame
@@ -28,8 +29,17 @@ public class PlayerMasterReady : Photon.MonoBehaviour {
         {
             masterReady = true;
             photonView.RPC("MasterisReady", PhotonTargets.All);
+            buttonModel.transform.Translate(Vector3.back * .07f, Space.World);
         }
             
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "RightNet")
+        {
+          
+        }
     }
 
     public void OnTriggerExit(Collider other)
@@ -38,6 +48,7 @@ public class PlayerMasterReady : Photon.MonoBehaviour {
         {
             masterReady = false;
             photonView.RPC("MasterisNotReady", PhotonTargets.All);
+            buttonModel.transform.Translate(Vector3.forward * .07f, Space.World);
         }
     }
 
