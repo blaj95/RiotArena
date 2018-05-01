@@ -251,6 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01a58dfba522df43a8bcc10be61da20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  netPlayer: {fileID: 0}
+  rightHand: {fileID: 0}
   myhead: {fileID: 0}
   bodyOffset: {x: 0, y: -0.7, z: 0}
 --- !u!114 &114308584359816636
@@ -378,12 +381,13 @@ MonoBehaviour:
   group: 0
   OwnerShipWasTransfered: 0
   prefixBackup: -1
-  synchronization: 0
+  synchronization: 3
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
   ownershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 4647530430757460}
+  - {fileID: 114239884538001270}
   ObservedComponentsFoldoutOpen: 1
   viewIdField: 0
   instantiationId: -1
