@@ -56,7 +56,7 @@ public class GameState : MonoBehaviour {
         PhotonNetwork.automaticallySyncScene = true;
 
         currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "TestGame")
+        if (currentScene.name == "Arena")
         {
             players = (GameObject.FindGameObjectsWithTag("GamePlayer"));
             foreach (GameObject p in players)
