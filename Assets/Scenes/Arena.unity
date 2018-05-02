@@ -15324,7 +15324,6 @@ GameObject:
   - component: {fileID: 1358829618}
   - component: {fileID: 1358829617}
   - component: {fileID: 1358829616}
-  - component: {fileID: 1358829619}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -15386,32 +15385,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1358829619
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1358829615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9f45d1ed661e1b458f231a2678259cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: []
-  master: {fileID: 0}
-  notMaster: {fileID: 0}
-  masterCon: {fileID: 0}
-  notMasterCon: {fileID: 0}
-  masterStats: {fileID: 0}
-  notMasterStats: {fileID: 0}
-  MasterSpawn: {fileID: 0}
-  Spawn: {fileID: 0}
-  player: {fileID: 0}
-  spawnable: 0
-  masterStart: 0
-  playerStart: 0
-  winnerName: 
-  winText: {fileID: 0}
 --- !u!1 &1420625537
 GameObject:
   m_ObjectHideFlags: 0

@@ -37,16 +37,16 @@ public class GameState : MonoBehaviour {
 
     private void Awake()
     {
-        //if(instance == null)
-        //{
-        //    instance = this;
-        //    DontDestroyOnLoad(gameObject);
-        //}
-        //else if(instance!= this)
-        //{
-        //    Destroy(gameObject);
-        //}
-       
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     // Update is called once per frame
