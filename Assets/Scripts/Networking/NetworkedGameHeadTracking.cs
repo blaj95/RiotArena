@@ -63,7 +63,7 @@ public class NetworkedGameHeadTracking : Photon.MonoBehaviour
         if (photonView.isMine)
         {
 
-            netPlayer = GameObject.Find("WeaponLobbyPlayer(Clone)");
+            netPlayer = GameObject.Find("NewLobbyPlayer(Clone)");
 
             transform.localPosition = head.transform.localPosition + netPlayer.transform.localPosition;
             transform.localRotation = head.transform.localRotation;

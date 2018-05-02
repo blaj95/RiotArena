@@ -69,7 +69,7 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
     {
         if (photonView.isMine)
         {
-            netPlayer = GameObject.Find("WeaponLobbyPlayer(Clone)");
+            netPlayer = GameObject.Find("NewLobbyPlayer(Clone)");
             weaponTip = GameObject.Find("RightController(Clone)/Rtip");
             transform.localPosition = rightHand.transform.localPosition + netPlayer.transform.localPosition + offsetPos;
             transform.localRotation = rightHand.transform.localRotation * Quaternion.Euler(OffsetRotation);

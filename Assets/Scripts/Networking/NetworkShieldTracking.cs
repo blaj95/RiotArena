@@ -63,7 +63,7 @@ public class NetworkShieldTracking : Photon.MonoBehaviour, IPunObservable
         if (photonView.isMine)
         {
 
-            netPlayer = GameObject.Find("WeaponLobbyPlayer(Clone)");
+            netPlayer = GameObject.Find("NewLobbyPlayer(Clone)");
             transform.localPosition = leftHand.transform.localPosition + netPlayer.transform.localPosition;
             transform.localRotation = leftHand.transform.localRotation * Quaternion.Euler(OffsetRotation);
             transform.Rotate(0, 180, 0);
