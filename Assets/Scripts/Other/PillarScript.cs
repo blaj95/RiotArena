@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PillarScript : MonoBehaviour {
 
-    public float myRand = Random.Range(1,10);
+    public float myRand;
 	// Use this for initialization
 	void Start ()
     {
