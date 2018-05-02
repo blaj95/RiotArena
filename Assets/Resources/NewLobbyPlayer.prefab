@@ -356,7 +356,8 @@ MonoBehaviour:
   maxBullets: 20
   damage: 1
   playerID: 1
-  rateOfFire: -1
+  rateOfFire: 1
+  bulletRegenTimer: 3
 --- !u!114 &114948102474121364
 MonoBehaviour:
   m_ObjectHideFlags: 1

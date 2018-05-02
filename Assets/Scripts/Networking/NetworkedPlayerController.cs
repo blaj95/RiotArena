@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
+using UnityEngine.SceneManagement;
 
 
 public class NetworkedPlayerController : Photon.MonoBehaviour
@@ -30,8 +31,8 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     public int maxBullets;
     public float damage =1;
 
-    
 
+    Scene currScene;
 
     public int playerID = 1;
 
@@ -40,13 +41,13 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     public float rateOfFire = -1.0f;
     float nextFire = 1.0f;
 
-    public float nextBullet;
+    
     public float bulletRegenTimer;
     
     
     void Start()
     {
-
+        InvokeRepeating("RegenBullet", 2.0f, bulletRegenTimer);
     }
 
     private void Awake()
@@ -57,7 +58,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        currScene = SceneManager.GetActiveScene();
         if (photonView.isMine)
         {
             rightHand = GameObject.Find("ControllerRightWeapon(Clone)");
@@ -87,7 +88,6 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
                     nextFire = Time.time + rateOfFire;
                     bulletsFired++;
                     currentBulletsOut++;
-                    
                 }
                 
             }
@@ -97,18 +97,18 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
             {
                 bulletsLeft = 0;
             }
-
-            if(nextBullet <= Time.time)
-            {
-                nextBullet = Time.time + bulletRegenTimer;
-                bulletsLeft++;
-            }
         }
       
 
         
     }
 
+    void RegenBullet()
+    {
+        bulletsLeft = bulletsLeft + 1;
+        maxBullets = maxBullets + 1;
+        Debug.Log("ADD BULLET");
+    }
 
     [PunRPC]
     void FireWeapon(Vector3 shootPos, Quaternion shootRot)
