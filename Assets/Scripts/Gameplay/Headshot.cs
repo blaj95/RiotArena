@@ -16,7 +16,7 @@ public class Headshot : Photon.MonoBehaviour {
     {
         if (photonView.isMine)
         {
-            myStats = GameObject.Find("WeaponLobbyPlayer(Clone)").GetComponent<PlayerStats>();
+            myStats = GameObject.Find("NewLobbyPlayer(Clone)").GetComponent<PlayerStats>();
         }
 	}
 

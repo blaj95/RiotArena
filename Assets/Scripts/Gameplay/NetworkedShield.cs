@@ -45,7 +45,7 @@ public class NetworkedShield : Photon.MonoBehaviour
         }
         if (photonView.isMine)
         {
-            player = GameObject.Find("WeaponLobbyPlayer(Clone)");
+            player = GameObject.Find("NewLobbyPlayer(Clone)");
             playerScript = player.GetComponent<NetworkedPlayerController>();
 
         }
