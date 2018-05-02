@@ -18,6 +18,10 @@ public class Headshot : Photon.MonoBehaviour {
         {
             myStats = GameObject.Find("NewLobbyPlayer(Clone)").GetComponent<PlayerStats>();
         }
+        else
+        {
+            myStats = GameObject.Find("NewLobbyPlayer(Clone)").GetComponent<PlayerStats>();
+        }
 	}
 
     public void OnHeadshot(float amount)
