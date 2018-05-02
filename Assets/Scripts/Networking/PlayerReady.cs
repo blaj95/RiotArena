@@ -29,7 +29,7 @@ public class PlayerReady : Photon.MonoBehaviour {
         {
             notmasterReady = true;
             photonView.RPC("notMasterisReady", PhotonTargets.All);
-            buttonModel.transform.Translate(Vector3.back * .07f, Space.World);
+            buttonModel.transform.Translate(Vector3.forward * .07f, Space.World);
         }
     }
 
@@ -40,7 +40,7 @@ public class PlayerReady : Photon.MonoBehaviour {
         {
             notmasterReady = false;
             photonView.RPC("notMasterisNotReady", PhotonTargets.All);
-            buttonModel.transform.Translate(Vector3.forward * .07f, Space.World);
+            buttonModel.transform.Translate(Vector3.back * .07f, Space.World);
         }
     }
 
