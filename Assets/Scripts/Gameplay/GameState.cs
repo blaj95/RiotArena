@@ -37,15 +37,15 @@ public class GameState : MonoBehaviour {
 
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if(instance!= this)
-        {
-            Destroy(gameObject);
-        }
+        //if(instance == null)
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        //else if(instance!= this)
+        //{
+        //    Destroy(gameObject);
+        //}
        
     }
 
@@ -63,15 +63,19 @@ public class GameState : MonoBehaviour {
             {
               if (PhotonNetwork.isMasterClient)
               {
+                    if (p.GetPhotonView())
+                    {
                         master = p;
                         masterCon = p.GetComponent<NetworkedPlayerController>();
                         masterStats = p.GetComponent<PlayerStats>();
-              }
-              else
-              {
+                    }
+                    else
+                    {
                         notMaster = p;
                         notMasterCon = p.GetComponent<NetworkedPlayerController>();
                         notMasterStats = p.GetComponent<PlayerStats>();
+                    }
+
               }
             }
 
