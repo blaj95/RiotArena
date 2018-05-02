@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Bodi</author>
+      <authoring_tool>Adobe Photoshop</authoring_tool>
+      <comments>Photoshop Build Version - 20180206.r.254 x6</comments>
+    </contributor>
+    <created>2018-05-02T02:28:51Z</created>
+    <modified>2018-05-02T02:28:51Z</modified>
+    <unit meter="0.001" name="meter"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_lights>
+    <light id="Infinite_Light_2" name="Infinite_Light_1">
+      <technique_common>
+        <directional>
+          <color>1 1 1</color>
+        </directional>
+      </technique_common>
+      <extra>
+        <technique profile="MAX3D">
+          <aspect_ratio>1</aspect_ratio>
+          <overshoot>1</overshoot>
+          <decay_type>0</decay_type>
+          <decay_start>10</decay_start>
+          <use_near_attenuation>1</use_near_attenuation>
+          <use_far_attenuation>1</use_far_attenuation>
+          <near_attenuation_start>1</near_attenuation_start>
+          <near_attenuation_end>2</near_attenuation_end>
+          <far_attenuation_start>5</far_attenuation_start>
+          <far_attenuation_end>10</far_attenuation_end>
+        </technique>
+        <technique profile="FCOLLADA">
+          <constant_attenuation>1</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+          <falloff_angle>5</falloff_angle>
+          <falloff_exponent>1</falloff_exponent>
+          <intensity>0.9</intensity>
+          <outer_cone>5</outer_cone>
+        </technique>
+      </extra>
+    </light>
+    <light id="Image_Based_Light_2" name="Image_Based_Light_1">
+      <technique_common>
+        <directional>
+          <color>0.1 0.1 0.1</color>
+        </directional>
+      </technique_common>
+      <extra>
+        <technique profile="FCOLLADA">
+          <constant_attenuation>1</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0</quadratic_attenuation>
+          <falloff_angle>5</falloff_angle>
+          <falloff_exponent>1</falloff_exponent>
+          <intensity>1</intensity>
+          <outer_cone>5</outer_cone>
+        </technique>
+      </extra>
+      <extra type="adobe_light_type">
+        <technique profile="ADOBE">
+          <type>
+            <imageBased>1</imageBased>
+          </type>
+        </technique>
+      </extra>
+    </light>
+  </library_lights>
+  <library_images>
+    <image id="Default_IBL0002.tif">
+      <init_from>./Default%20IBL0002.tif</init_from>
+      <extra>
+        <technique profile="MAYA">
+          <dgnode_type>kFile</dgnode_type>
+        </technique>
+      </extra>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="t_Front_Inflation_Material" name="t_Front_Inflation_Material">
+      <instance_effect url="#t_Front_Inflation_Material-fx"/>
+    </material>
+    <material id="t_Front_Bevel_Material" name="t_Front_Bevel_Material">
+      <instance_effect url="#t_Front_Bevel_Material-fx"/>
+    </material>
+    <material id="t_Extrusion_Material" name="t_Extrusion_Material">
+      <instance_effect url="#t_Extrusion_Material-fx"/>
+    </material>
+    <material id="t_Back_Bevel_Material" name="t_Back_Bevel_Material">
+      <instance_effect url="#t_Back_Bevel_Material-fx"/>
+    </material>
+    <material id="t_Back_Inflation_Material" name="t_Back_Inflation_Material">
+      <instance_effect url="#t_Back_Inflation_Material-fx"/>
+    </material>
+    <material id="Ground_Plane_Material" name="Ground_Plane_Material">
+      <instance_effect url="#Ground_Plane_Material-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="t_Front_Inflation_Material-fx" name="t_Front_Inflation_Material">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0 0 0 1</color>
+            </diffuse>
+            <specular>
+              <color>0.2 0.2 0.2 1</color>
+            </specular>
+            <shininess>
+              <float>0.2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0 0 0</diffuse_color>
+              <specular_color>0.2 0.2 0.2</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>0.2</shininess>
+              <roughness>0</roughness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="t_Front_Bevel_Material-fx" name="t_Front_Bevel_Material">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0 0 0 1</color>
+            </diffuse>
+            <specular>
+              <color>0.2 0.2 0.2 1</color>
+            </specular>
+            <shininess>
+              <float>0.2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0 0 0</diffuse_color>
+              <specular_color>0.2 0.2 0.2</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>0.2</shininess>
+              <roughness>0</roughness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="t_Extrusion_Material-fx" name="t_Extrusion_Material">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0 0 0 1</color>
+            </diffuse>
+            <specular>
+              <color>0.2 0.2 0.2 1</color>
+            </specular>
+            <shininess>
+              <float>0.2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0 0 0</diffuse_color>
+              <specular_color>0.2 0.2 0.2</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>0.2</shininess>
+              <roughness>0</roughness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="t_Back_Bevel_Material-fx" name="t_Back_Bevel_Material">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0 0 0 1</color>
+            </diffuse>
+            <specular>
+              <color>0.2 0.2 0.2 1</color>
+            </specular>
+            <shininess>
+              <float>0.2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0 0 0</diffuse_color>
+              <specular_color>0.2 0.2 0.2</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>0.2</shininess>
+              <roughness>0</roughness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="t_Back_Inflation_Material-fx" name="t_Back_Inflation_Material">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color>0 0 0 1</color>
+            </diffuse>
+            <specular>
+              <color>0.2 0.2 0.2 1</color>
+            </specular>
+            <shininess>
+              <float>0.2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA"/>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0 0 0</diffuse_color>
+              <specular_color>0.2 0.2 0.2</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>0.2</shininess>
+              <roughness>0</roughness>
+            </colors>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="Ground_Plane_Material-fx" name="Ground_Plane_Material">
+      <profile_COMMON>
+        <newparam sid="Default_IBL0002_tif-surface">
+          <surface type="2D">
+            <init_from>Default_IBL0002.tif</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="Default_IBL0002_tif-sampler">
+          <sampler2D>
+            <source>Default_IBL0002_tif-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NONE</minfilter>
+            <magfilter>NONE</magfilter>
+            <mipfilter>NONE</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>1 1 1 1</color>
+            </ambient>
+            <diffuse>
+              <color>0 0 0 1</color>
+            </diffuse>
+            <specular>
+              <color>1 1 1 1</color>
+            </specular>
+            <shininess>
+              <float>0.2</float>
+            </shininess>
+            <reflective>
+              <color>1 1 1 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>0.6</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </phong>
+          <extra>
+            <technique profile="FCOLLADA">
+              <imagebased>
+                <texture texture="Default_IBL0002_tif-sampler" texcoord="UVSET0">
+                  <extra>
+                    <technique profile="MAX3D">
+                      <amount>1</amount>
+                    </technique>
+                  </extra>
+                  <extra type="texture_offset">
+                    <technique profile="ADOBE">
+                      <offsets>
+                        <offsetu>0</offsetu>
+                        <offsetv>0</offsetv>
+                        <scaleu>1</scaleu>
+                        <scalev>1</scalev>
+                        <angle>0</angle>
+                      </offsets>
+                    </technique>
+                  </extra>
+                </texture>
+              </imagebased>
+            </technique>
+          </extra>
+        </technique>
+        <extra type="material_overlay">
+          <technique profile="ADOBE">
+            <colors>
+              <diffuse_color>0 0 0</diffuse_color>
+              <specular_color>1 1 1</specular_color>
+              <reflectivity_factor>0</reflectivity_factor>
+              <shininess>0.2</shininess>
+              <roughness>0</roughness>
+            </colors>
+          </technique>
+        </extra>
+        <extra type="adobe_gp_material">
+          <technique profile="ADOBE">
+            <gp_material>
+              <is_gp_material>1</is_gp_material>
+            </gp_material>
+          </technique>
+        </extra>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>1</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="t1" name="t">
+      <mesh>
+        <source id="t1-positions">
+          <float_array id="t1-positions-array" count="180">1118.3 763.508 0 1055.1 700.405 0 1086.19 961.25 0 1055.4 930.503 0 981.303 930.505 0 1012.05 961.252 0 981.303 992 0 1222.05 961.252 0 1252.8 992 0 1252.8 930.505 0 1181.4 930.505 0 1181.4 700.405 0 1150.65 961.252 0 1118.4 929.002 0 1055.1 700.405 0 1055.4 930.503 0 1055.1 700.405 -271.495 1055.4 930.503 -271.495 1055.4 930.503 0 981.303 930.505 0 1055.4 930.503 -271.495 981.303 930.505 -271.495 981.303 930.505 0 981.303 992 0 981.303 930.505 -271.495 981.303 992 -271.495 981.303 992 0 1252.8 992 0 981.303 992 -271.495 1252.8 992 -271.495 1252.8 992 0 1252.8 930.505 0 1252.8 992 -271.495 1252.8 930.505 -271.495 1252.8 930.505 0 1181.4 930.505 0 1252.8 930.505 -271.495 1181.4 930.505 -271.495 1181.4 930.505 0 1181.4 700.405 0 1181.4 930.505 -271.495 1181.4 700.405 -271.495 1181.4 700.405 0 1055.1 700.405 0 1181.4 700.405 -271.495 1055.1 700.405 -271.495 1118.3 763.508 -271.495 1055.1 700.405 -271.495 1086.19 961.25 -271.495 1055.4 930.503 -271.495 981.303 930.505 -271.495 1012.05 961.252 -271.495 981.303 992 -271.495 1222.05 961.252 -271.495 1252.8 992 -271.495 1252.8 930.505 -271.495 1181.4 930.505 -271.495 1181.4 700.405 -271.495 1150.65 961.252 -271.495 1118.4 929.002 -271.495</float_array>
+          <technique_common>
+            <accessor source="#t1-positions-array" count="60" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="t1-normals">
+          <float_array id="t1-normals-array" count="180">0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 -0.998312 0.0013 0 -0.998312 0.0013 0 -0.998312 0.0013 0 -0.998312 0.0013 0 -0.000036 -1 0 -0.000036 -1 0 -0.000036 -1 0 -0.000036 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 -0.000011 0 1 -0.000011 0 1 -0.000011 0 1 -0.000011 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#t1-normals-array" count="60" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="t1-texcoords">
+          <float_array id="t1-texcoords-array" count="120">0.504585 0.216406 0.271828 0 0.386338 0.894549 0.272932 0.789101 0 0.78911 0.113253 0.894553 0 1 0.886743 0.894555 1 1 1 0.78911 0.737019 0.78911 0.737009 0 0.623769 0.894555 0.504964 0.783956 1 1 0.795736 1 1 0 0.795736 0 0.795736 1 0.729956 1 0.795736 0 0.729956 0 0.729956 1 0.675366 1 0.729956 0 0.675366 0 0.675366 1 0.434353 1 0.675366 0 0.434353 0 0.434353 1 0.379763 1 0.434353 0 0.379763 0 0.379763 1 0.316381 1 0.379763 0 0.316381 0 0.316381 1 0.112115 1 0.316381 0 0.112115 0 0.112115 1 0.000000 1 0.112115 0 0.000000 0 0.504585 0.216406 0.271828 0 0.386338 0.894549 0.272932 0.789101 0 0.78911 0.113253 0.894553 0 1 0.886743 0.894555 1 1 1 0.78911 0.737019 0.78911 0.737009 0 0.623769 0.894555 0.504964 0.783956</float_array>
+          <technique_common>
+            <accessor source="#t1-texcoords-array" count="60" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="t1-vertices">
+          <input semantic="POSITION" source="#t1-positions"/>
+        </vertices>
+        <triangles material="t_Front_Inflation_Material" count="18">
+          <input semantic="VERTEX" source="#t1-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#t1-normals" offset="0"/>
+          <input semantic="TEXCOORD" source="#t1-texcoords" offset="0"/>
+          <p>2 3 13 4 3 5 6 4 5 7 8 12 9 8 7 12 10 7 11 10 0 1 11 0 13 3 0 1 0 3 2 5 3 12 8 2 13 12 2 8 6 2 5 2 6 9 7 10 0 10 13 12 13 10</p>
+        </triangles>
+        <triangles material="t_Front_Bevel_Material" count="1">
+          <input semantic="VERTEX" source="#t1-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#t1-normals" offset="0"/>
+          <input semantic="TEXCOORD" source="#t1-texcoords" offset="0"/>
+          <p>0 0 0</p>
+        </triangles>
+        <triangles material="t_Extrusion_Material" count="16">
+          <input semantic="VERTEX" source="#t1-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#t1-normals" offset="0"/>
+          <input semantic="TEXCOORD" source="#t1-texcoords" offset="0"/>
+          <p>16 14 15 16 15 17 20 18 19 20 19 21 24 22 23 24 23 25 28 26 27 28 27 29 32 30 31 32 31 33 36 34 35 36 35 37 40 38 39 40 39 41 44 42 43 44 43 45</p>
+        </triangles>
+        <triangles material="t_Back_Bevel_Material" count="1">
+          <input semantic="VERTEX" source="#t1-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#t1-normals" offset="0"/>
+          <input semantic="TEXCOORD" source="#t1-texcoords" offset="0"/>
+          <p>0 0 0</p>
+        </triangles>
+        <triangles material="t_Back_Inflation_Material" count="18">
+          <input semantic="VERTEX" source="#t1-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#t1-normals" offset="0"/>
+          <input semantic="TEXCOORD" source="#t1-texcoords" offset="0"/>
+          <p>49 48 59 49 50 51 50 52 51 54 53 58 54 55 53 56 58 53 56 57 46 57 47 46 49 59 46 46 47 49 51 48 49 54 58 48 58 59 48 52 54 48 48 51 52 53 55 56 56 46 59 59 58 56</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="DefaultScene">
+      <node id="Infinite_Light_1" name="Infinite_Light_1" type="NODE">
+        <lookat>1135 989.24 57.4618 1134.92 988.647 56.6606 0 1 0</lookat>
+        <instance_light url="#Infinite_Light_2"/>
+      </node>
+      <node id="Image_Based_Light_1" name="Image_Based_Light_1" type="NODE">
+        <instance_light url="#Image_Based_Light_2"/>
+      </node>
+      <node id="t" name="t" type="NODE">
+        <matrix>0.003333 0 0 -3.7235 0 0.003333 0 -27.023 0 0 0.003333 0.452492 0 0 0 1</matrix>
+        <instance_geometry url="#t1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="t_Front_Inflation_Material" target="#t_Front_Inflation_Material"/>
+              <instance_material symbol="t_Front_Bevel_Material" target="#t_Front_Bevel_Material"/>
+              <instance_material symbol="t_Extrusion_Material" target="#t_Extrusion_Material"/>
+              <instance_material symbol="t_Back_Bevel_Material" target="#t_Back_Bevel_Material"/>
+              <instance_material symbol="t_Back_Inflation_Material" target="#t_Back_Inflation_Material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <extra type="pivot_use">
+          <technique profile="ADOBE">
+            <use_pivot>
+              <needPivot>0</needPivot>
+            </use_pivot>
+          </technique>
+        </extra>
+      </node>
+      <extra type="render_settings">
+        <technique profile="ADOBE">
+          <faces>
+            <render_faces>1</render_faces>
+            <face_style>4</face_style>
+            <face_color>1 1 1</face_color>
+            <texture_type>0</texture_type>
+            <anti_alias_quality>1</anti_alias_quality>
+            <show_reflections>1</show_reflections>
+            <show_refractions>1</show_refractions>
+            <show_shadows>1</show_shadows>
+            <remove_backfaces>0</remove_backfaces>
+          </faces>
+          <edges>
+            <render_edges>0</render_edges>
+            <line_style>1</line_style>
+            <line_color>0 0 0</line_color>
+            <line_width>1</line_width>
+            <crease_value>0</crease_value>
+            <remove_backface_lines>0</remove_backface_lines>
+            <remove_hidden_lines>1</remove_hidden_lines>
+          </edges>
+          <vertices>
+            <render_vertices>0</render_vertices>
+            <vertex_style>1</vertex_style>
+            <vertex_color>0 0 0</vertex_color>
+            <vertex_radius>1</vertex_radius>
+            <remove_backface_vertices>0</remove_backface_vertices>
+            <remove_hidden_vertices>1</remove_hidden_vertices>
+          </vertices>
+          <volumes>
+            <render_volume>0</render_volume>
+            <volume_style>2097152</volume_style>
+            <transfer_function0/>
+            <transfer_function1/>
+            <transfer_function2/>
+            <transfer_function3/>
+            <gradient_enhancement>1</gradient_enhancement>
+            <opacity_scale>1</opacity_scale>
+          </volumes>
+          <stereo>
+            <render_stereo>0</render_stereo>
+            <stereo_style>16384</stereo_style>
+            <stereo_offset>5</stereo_offset>
+            <stereo_line_spacing>40</stereo_line_spacing>
+          </stereo>
+          <internal>
+            <projection>0</projection>
+            <blend_unlit>0</blend_unlit>
+          </internal>
+        </technique>
+      </extra>
+      <extra type="background_image_type">
+        <technique profile="ADOBE">
+          <type>
+            <image_type>0</image_type>
+          </type>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#DefaultScene"/>
+  </scene>
+</COLLADA>
