@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerReady : Photon.MonoBehaviour {
 
     public bool notmasterReady = false;
-
+    public GameObject buttonModel;
     LobbyManager lobbyMng;
 
 
@@ -14,6 +14,7 @@ public class PlayerReady : Photon.MonoBehaviour {
 	void Start ()
     {
         lobbyMng = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
+        buttonModel = GetComponentInChildren<MeshRenderer>().gameObject;
     }
 	
 	// Update is called once per frame
@@ -28,6 +29,7 @@ public class PlayerReady : Photon.MonoBehaviour {
         {
             notmasterReady = true;
             photonView.RPC("notMasterisReady", PhotonTargets.All);
+            buttonModel.transform.Translate(Vector3.back * .07f, Space.World);
         }
     }
 
@@ -38,6 +40,7 @@ public class PlayerReady : Photon.MonoBehaviour {
         {
             notmasterReady = false;
             photonView.RPC("notMasterisNotReady", PhotonTargets.All);
+            buttonModel.transform.Translate(Vector3.forward * .07f, Space.World);
         }
     }
 
