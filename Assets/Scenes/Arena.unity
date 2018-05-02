@@ -15324,6 +15324,7 @@ GameObject:
   - component: {fileID: 1358829618}
   - component: {fileID: 1358829617}
   - component: {fileID: 1358829616}
+  - component: {fileID: 1358829619}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -15353,8 +15354,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 2
+  instantiationId: 2
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &1358829617
@@ -15384,6 +15385,114 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1358829619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1358829615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f45d1ed661e1b458f231a2678259cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+  master: {fileID: 0}
+  notMaster: {fileID: 0}
+  masterCon: {fileID: 0}
+  notMasterCon: {fileID: 0}
+  masterStats: {fileID: 0}
+  notMasterStats: {fileID: 0}
+  MasterSpawn: {fileID: 0}
+  Spawn: {fileID: 0}
+  player: {fileID: 0}
+  spawnable: 0
+  masterStart: 0
+  playerStart: 0
+  winnerName: 
+  winText: {fileID: 0}
+--- !u!1 &1420625537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1420625540}
+  - component: {fileID: 1420625539}
+  - component: {fileID: 1420625538}
+  m_Layer: 0
+  m_Name: GameState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1420625538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1420625537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f45d1ed661e1b458f231a2678259cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
+  master: {fileID: 0}
+  notMaster: {fileID: 0}
+  masterCon: {fileID: 0}
+  notMasterCon: {fileID: 0}
+  masterStats: {fileID: 0}
+  notMasterStats: {fileID: 0}
+  MasterSpawn: {fileID: 0}
+  Spawn: {fileID: 0}
+  player: {fileID: 1553099672058840, guid: 6dafd2b9a4ad4af4d82b54e13e527445, type: 2}
+  spawnable: 0
+  masterStart: 0
+  playerStart: 0
+  winnerName: 
+  winText: {fileID: 0}
+--- !u!114 &1420625539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1420625537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 1
+  instantiationId: 1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!4 &1420625540
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1420625537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -64.651794, y: -31.251825, z: 6.677297}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1554882190
 GameObject:
