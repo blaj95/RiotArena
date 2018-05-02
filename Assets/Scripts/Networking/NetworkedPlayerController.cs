@@ -39,6 +39,10 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
     public float rateOfFire = -1.0f;
     float nextFire = 1.0f;
+
+    public float nextBullet;
+    public float bulletRegenTimer;
+    
     
     void Start()
     {
@@ -92,6 +96,12 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
             if (bulletsLeft <= 0)
             {
                 bulletsLeft = 0;
+            }
+
+            if(nextBullet <= Time.time)
+            {
+                nextBullet = Time.time + bulletRegenTimer;
+                bulletsLeft++;
             }
         }
       
