@@ -63,20 +63,17 @@ public class GameState : MonoBehaviour {
             {
               if (PhotonNetwork.isMasterClient)
               {
-                    if (p.GetPhotonView())
-                    {
-                        master = p;
-                        masterCon = p.GetComponent<NetworkedPlayerController>();
-                        masterStats = p.GetComponent<PlayerStats>();
-                    }
-                    else
+                    master = p;
+                    masterCon = p.GetComponent<NetworkedPlayerController>();
+                    masterStats = p.GetComponent<PlayerStats>();
+                    if(p.GetPhotonView().isMine == false)
                     {
                         notMaster = p;
                         notMasterCon = p.GetComponent<NetworkedPlayerController>();
                         notMasterStats = p.GetComponent<PlayerStats>();
                     }
-
               }
+              
             }
 
             if (masterStats.playerHealth <= 0 || notMasterStats.playerHealth <= 0)
