@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Headshot : Photon.MonoBehaviour {
 
-    PlayerStats myStats;
+    public PlayerStats myStats;
 	// Use this for initialization
 	void Start ()
     {
@@ -23,5 +23,6 @@ public class Headshot : Photon.MonoBehaviour {
     public void OnHeadshot(float amount)
     {
         myStats.TakeDamage(amount);
+        Debug.Log("Calling on headshot");
     }
 }
