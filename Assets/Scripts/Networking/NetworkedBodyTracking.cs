@@ -26,7 +26,7 @@ public class NetworkedBodyTracking : Photon.MonoBehaviour {
     {
         if (photonView.isMine)
         {
-            myhead = GameObject.Find("GameHead(Clone)");
+            myhead = GameObject.FindWithTag("Head");
 
             transform.position = myhead.transform.position + bodyOffset;
         }
