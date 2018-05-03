@@ -45,21 +45,20 @@ public class PlayerStats : Photon.MonoBehaviour {
                 {
                     playerHealth = maxHealth;
                     lives = lives - 1;
-                    atZero =false;
+                    atZero = false;
                     //teleport logic
                 }
-                
+
             }
             else if (lives == 0)
             {
-                photonView.RPC("RPC_IsDead", PhotonTargets.All);
+                isDead = true;
+                if (isDead == true)
+                {
+                    photonView.RPC("RPC_IsDead", PhotonTargets.All);
+                }
             }
-
-            state = GameObject.Find("GameState").GetComponent<GameState>();
-
-        }
-         
-        
+        }  
     }
 
     public void TakeDamage(float amount)
