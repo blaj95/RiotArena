@@ -76,11 +76,12 @@ public class GameState : MonoBehaviour {
               
             }
 
-            if (masterStats.playerHealth <= 0 || notMasterStats.playerHealth <= 0)
+            
+            if (masterStats.isDead == true || notMasterStats.isDead == true)
             {
-                if (masterStats.playerHealth <= 0)
+                if (masterStats.isDead == true)
                     winnerName = "Player 2";
-                else if (notMasterStats.playerHealth <= 0)
+                else if (notMasterStats.isDead == true)
                     winnerName = "Player 1";
 
                 GameOver();

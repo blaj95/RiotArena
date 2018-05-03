@@ -578,7 +578,7 @@ PlayerSettings:
   metroCertificateNotAfter: 80e10b6e7ff1d401
   metroApplicationDescription: RiotMR
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: RiotMR
   metroCommandLineArgsFile: 
   metroTileShowName: 0
   metroMediumTileShowName: 0
@@ -612,7 +612,7 @@ PlayerSettings:
       Proximity: False
       RemovableStorage: False
       SharedUserCertificates: False
-      SpatialPerception: False
+      SpatialPerception: True
       UserAccountInformation: False
       VideosLibrary: False
       VoipCall: False

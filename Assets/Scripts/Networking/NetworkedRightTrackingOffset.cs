@@ -21,6 +21,11 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
 
     public LineRenderer laser;
 
+    public GameObject laserBase;
+    public GameObject gslidePointA;
+    public GameObject gslidePointB;
+
+    public float laserMoveSpeed;
 
     // Use this for initialization
     void Start()
@@ -30,9 +35,16 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
 
         correctRightRot = transform.rotation;
         onUpdateRightRot = transform.rotation;
-        rightHand = GameObject.FindWithTag("RightLocal");
+        if (photonView.isMine)
+        {
+            rightHand = GameObject.FindWithTag("RightLocal");
+            laserBase = GameObject.FindWithTag("LaserPoint");
+            gslidePointA = GameObject.FindWithTag("SlideA");
+            gslidePointB = GameObject.FindWithTag("SlideB");
+        }
 
-        
+
+
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -79,11 +91,14 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
             if (Input.GetKeyDown("joystick button 17"))
             {
                 laser.enabled = true;
+                float step = laserMoveSpeed * Time.deltaTime;
+                laserBase.transform.position = Vector3.MoveTowards(laserBase.transform.position, gslidePointA.transform.position, step);
             }
             else if (Input.GetKeyUp("joystick button 17"))
             {
                 laser.enabled = false;
-               
+                float step = laserMoveSpeed * Time.deltaTime;
+                laserBase.transform.position = Vector3.MoveTowards(laserBase.transform.position, gslidePointB.transform.position, step);
             }
         }
 

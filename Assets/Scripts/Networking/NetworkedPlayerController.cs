@@ -43,8 +43,9 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
 
     
     public float bulletRegenTimer;
+
     
-    
+
     void Start()
     {
         InvokeRepeating("RegenBullet", 2.0f, bulletRegenTimer);

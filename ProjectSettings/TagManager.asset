@@ -17,6 +17,9 @@ TagManager:
   - ClientLever
   - Body
   - GamePlayer
+  - LaserPoint
+  - SlideA
+  - SlideB
   layers:
   - Default
   - TransparentFX

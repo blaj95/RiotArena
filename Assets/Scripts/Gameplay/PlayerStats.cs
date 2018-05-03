@@ -6,23 +6,52 @@ using UnityEngine.UI;
 public class PlayerStats : Photon.MonoBehaviour {
 
     public float playerHealth;
+    public float maxHealth;
     public Text health;
+    public int lives;
+    public  bool atZero;
+    public bool isDead;
+
 
     // Use this for initialization
     void Start ()
     {
 		
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void Awake()
+    {
+        playerHealth = maxHealth;
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         if (photonView.isMine)
         {
             health = GameObject.Find("ControllerLeftShieldNew(Clone)/Canvas/Text").gameObject.GetComponent<Text>();
             health.text = playerHealth.ToString();
+
+            if (playerHealth <= 0)
+            {
+                atZero = true;
+                if (atZero == true && lives > 0)
+                {
+                    playerHealth = maxHealth;
+                    lives = lives - 1;
+                    atZero =false;
+                    //teleport logic
+                }
+                
+            }
+            else if (lives == 0)
+            {
+                isDead = true;
+            }
+
         }
          
+        
     }
 
     public void TakeDamage(float amount)

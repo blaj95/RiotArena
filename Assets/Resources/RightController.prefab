@@ -129,6 +129,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1536264182598184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4965518926683808}
+  m_Layer: 0
+  m_Name: SlidePointB
+  m_TagString: SlideB
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1569502054762258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4051560405874894}
+  m_Layer: 0
+  m_Name: SlidePointA
+  m_TagString: SlideA
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1619548158799190
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +273,7 @@ GameObject:
   - component: {fileID: 120113509060371086}
   m_Layer: 0
   m_Name: LaserPointer
-  m_TagString: Untagged
+  m_TagString: LaserPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,6 +295,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4051560405874894
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1569502054762258}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0088, y: 0.013538507, z: 0.010769183}
+  m_LocalScale: {x: 0.009433532, y: 0.0027437126, z: 0.015537259}
+  m_Children: []
+  m_Father: {fileID: 4337090232799404}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4067030609663058
 Transform:
   m_ObjectHideFlags: 1
@@ -285,7 +328,7 @@ Transform:
   - {fileID: 4891087104042456}
   - {fileID: 4420128029618254}
   m_Father: {fileID: 4337090232799404}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4086088690060976
 Transform:
@@ -294,8 +337,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1880571638782284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0062360303, y: 0.013538507, z: 0.010769183}
-  m_LocalScale: {x: 0.015537259, y: 0.0027437126, z: 0.015537259}
+  m_LocalPosition: {x: 0.002300001, y: 0.013538507, z: 0.010769183}
+  m_LocalScale: {x: 0.009433531, y: 0.0027437126, z: 0.015537259}
   m_Children: []
   m_Father: {fileID: 4337090232799404}
   m_RootOrder: 0
@@ -324,6 +367,8 @@ Transform:
   m_LocalScale: {x: 6.5, y: 6.5, z: 6.5}
   m_Children:
   - {fileID: 4086088690060976}
+  - {fileID: 4965518926683808}
+  - {fileID: 4051560405874894}
   - {fileID: 4882199746636474}
   - {fileID: 4067030609663058}
   m_Father: {fileID: 0}
@@ -419,7 +464,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4337090232799404}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4891087104042456
 Transform:
@@ -446,6 +491,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4067030609663058}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4965518926683808
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536264182598184}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0023, y: 0.013538507, z: 0.010769183}
+  m_LocalScale: {x: 0.009433532, y: 0.0027437126, z: 0.015537259}
+  m_Children: []
+  m_Father: {fileID: 4337090232799404}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23000145559247840
 MeshRenderer:
@@ -495,7 +553,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0c53a9cae9d5b124091ba09e3695412d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -929,6 +987,10 @@ MonoBehaviour:
   weaponTip: {fileID: 0}
   offsetPos: {x: 0, y: 0, z: 0}
   laser: {fileID: 0}
+  laserBase: {fileID: 0}
+  gslidePointA: {fileID: 0}
+  gslidePointB: {fileID: 0}
+  laserMoveSpeed: 0.5
 --- !u!114 &114432268474645112
 MonoBehaviour:
   m_ObjectHideFlags: 1

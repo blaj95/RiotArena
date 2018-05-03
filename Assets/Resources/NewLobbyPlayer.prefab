@@ -330,8 +330,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be581e053b9012c41832d38d5e57e1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 1000
+  playerHealth: 2
+  maxHealth: 200
   health: {fileID: 0}
+  lives: 2
+  atZero: 0
+  isDead: 0
 --- !u!114 &114462766139067856
 MonoBehaviour:
   m_ObjectHideFlags: 1
