@@ -12,7 +12,6 @@ public class PlayerStats : Photon.MonoBehaviour {
     public int lives;
     public  bool atZero;
     public bool isDead;
-
     public GameState state;
 
 
@@ -25,6 +24,7 @@ public class PlayerStats : Photon.MonoBehaviour {
     private void Awake()
     {
         playerHealth = maxHealth;
+        state = GameObject.Find("GameState").GetComponent<GameState>();
         photonView.RPC("RPC_IsDeadReset", PhotonTargets.All);
     }
 
@@ -38,7 +38,7 @@ public class PlayerStats : Photon.MonoBehaviour {
             health.text = playerHealth.ToString();
             liveText.text = lives.ToString();
 
-            state = GameObject.Find("GameState").GetComponent<GameState>();
+            
 
             if (playerHealth <= 0)
             {
@@ -55,10 +55,12 @@ public class PlayerStats : Photon.MonoBehaviour {
             else if (lives == 0)
             {
                 isDead = true;
-                if (isDead == true)
-                {
-                    photonView.RPC("RPC_IsDead", PhotonTargets.All);
-                }
+                
+            }
+
+            if (isDead == true)
+            {
+                photonView.RPC("RPC_IsDead", PhotonTargets.All);
             }
         }  
     }
