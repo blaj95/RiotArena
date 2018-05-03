@@ -38,6 +38,8 @@ public class PlayerStats : Photon.MonoBehaviour {
             health.text = playerHealth.ToString();
             liveText.text = lives.ToString();
 
+            state = GameObject.Find("GameState").GetComponent<GameState>();
+
             if (playerHealth <= 0)
             {
                 atZero = true;

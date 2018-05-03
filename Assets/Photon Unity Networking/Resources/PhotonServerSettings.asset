@@ -57,4 +57,6 @@ MonoBehaviour:
   - ReflectFalse
   - ReflectTrue
   - RPC_TakeDamage
+  - RPC_IsDead
+  - RPC_IsDeadReset
   DisableAutoOpenWizard: 1
