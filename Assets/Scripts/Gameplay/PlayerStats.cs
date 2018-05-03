@@ -33,6 +33,7 @@ public class PlayerStats : Photon.MonoBehaviour {
     {
         if (photonView.isMine)
         {
+            state = GameObject.Find("GameState").GetComponent<GameState>();
             health = GameObject.Find("ControllerLeftShieldNew(Clone)/Canvas/HealthText").gameObject.GetComponent<Text>();
             liveText = GameObject.Find("ControllerLeftShieldNew(Clone)/Canvas/LivesText").gameObject.GetComponent<Text>();
             health.text = playerHealth.ToString();
