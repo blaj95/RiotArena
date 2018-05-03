@@ -8,6 +8,7 @@ public class PlayerStats : Photon.MonoBehaviour {
     public float playerHealth;
     public float maxHealth;
     public Text health;
+    public Text liveText;
     public int lives;
     public  bool atZero;
     public bool isDead;
@@ -29,8 +30,10 @@ public class PlayerStats : Photon.MonoBehaviour {
     {
         if (photonView.isMine)
         {
-            health = GameObject.Find("ControllerLeftShieldNew(Clone)/Canvas/Text").gameObject.GetComponent<Text>();
+            health = GameObject.Find("ControllerLeftShieldNew(Clone)/Canvas/HealthText").gameObject.GetComponent<Text>();
+            liveText = GameObject.Find("ControllerLeftShieldNew(Clone)/Canvas/LivesText").gameObject.GetComponent<Text>();
             health.text = playerHealth.ToString();
+            liveText.text = lives.ToString();
 
             if (playerHealth <= 0)
             {

@@ -28,7 +28,7 @@ public class GameState : MonoBehaviour {
 
     public Text winText;
 
-    public static GameState instance = null;
+    public static GameState instance;
     // Use this for initialization
     void Start ()
     {
@@ -37,12 +37,10 @@ public class GameState : MonoBehaviour {
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (instance != this)
+         instance = this;
+         DontDestroyOnLoad(gameObject);
+        
+        if (instance != this)
         {
             Destroy(gameObject);
         }
