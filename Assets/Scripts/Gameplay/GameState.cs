@@ -28,6 +28,9 @@ public class GameState : MonoBehaviour {
 
     public Text winText;
 
+    public bool masterDead = false;
+    public bool nonMasterDead = false;
+
     public static GameState instance;
     // Use this for initialization
     void Start ()
@@ -75,11 +78,11 @@ public class GameState : MonoBehaviour {
             }
 
             
-            if (masterStats.isDead == true || notMasterStats.isDead == true)
+            if (masterDead == true || nonMasterDead == true)
             {
-                if (masterStats.isDead == true)
+                if (masterDead == true)
                     winnerName = "Player 2";
-                else if (notMasterStats.isDead == true)
+                else if (nonMasterDead == true)
                     winnerName = "Player 1";
 
                 GameOver();

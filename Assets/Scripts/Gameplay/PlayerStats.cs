@@ -13,6 +13,8 @@ public class PlayerStats : Photon.MonoBehaviour {
     public  bool atZero;
     public bool isDead;
 
+    public GameState state;
+
 
     // Use this for initialization
     void Start ()
@@ -23,6 +25,7 @@ public class PlayerStats : Photon.MonoBehaviour {
     private void Awake()
     {
         playerHealth = maxHealth;
+        photonView.RPC("RPC_IsDeadReset", PhotonTargets.All);
     }
 
     // Update is called once per frame
@@ -49,8 +52,10 @@ public class PlayerStats : Photon.MonoBehaviour {
             }
             else if (lives == 0)
             {
-                isDead = true;
+                photonView.RPC("RPC_IsDead", PhotonTargets.All);
             }
+
+            state = GameObject.Find("GameState").GetComponent<GameState>();
 
         }
          
@@ -78,7 +83,32 @@ public class PlayerStats : Photon.MonoBehaviour {
                 Debug.Log(gameObject.name + " hp <= 0");
                 //Die();
             }
-            Debug.Log("Player hp: " + playerHealth);
-        
+            Debug.Log("Player hp: " + playerHealth);   
+    }
+
+    [PunRPC]
+    private void RPC_IsDead()
+    {
+        if (PhotonNetwork.isMasterClient)
+        {
+            state.masterDead = true;
+        }
+        else
+        {
+            state.nonMasterDead = true;
+        }
+    }
+
+    [PunRPC]
+    private void RPC_IsDeadReset()
+    {
+        if (PhotonNetwork.isMasterClient)
+        {
+            state.masterDead = false;
+        }
+        else
+        {
+            state.nonMasterDead = false;
+        }
     }
 }
