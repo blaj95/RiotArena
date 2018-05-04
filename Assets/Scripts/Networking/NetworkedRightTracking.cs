@@ -62,7 +62,7 @@ public class NetworkedRightTracking : Photon.MonoBehaviour, IPunObservable
         if (photonView.isMine)
         {
 
-            netPlayer = GameObject.Find("LobbyPlayer(Clone)");
+            netPlayer = GameObject.Find("NewLobbyPlayer(Clone)");
 
             transform.localPosition = rightHand.transform.localPosition + netPlayer.transform.localPosition;
             transform.localRotation = rightHand.transform.localRotation;
