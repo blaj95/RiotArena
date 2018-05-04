@@ -44,7 +44,7 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
     
     public float bulletRegenTimer;
 
-    
+    public AudioSource shootSound;
 
     void Start()
     {
@@ -62,14 +62,15 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
         currScene = SceneManager.GetActiveScene();
         if (photonView.isMine)
         {
-            rightHand = GameObject.Find("ControllerRightWeapon(Clone)");
+            rightHand = GameObject.Find("RightController(Clone)");
 
             weaponTip = GameObject.Find("RightController(Clone)/Rtip");
 
             shield = GameObject.Find("ControllerLeftShieldNew(Clone)");
 
             bulletCount = GameObject.Find("RightController(Clone)/GunParent/CyberGun/Canvas/Text").gameObject.GetComponent<Text>();
-           
+
+            shootSound = rightHand.GetComponent<AudioSource>();
             if (Input.GetButtonDown("RSelectTrigger"))
             {
                 if (Time.time < nextFire)
@@ -89,6 +90,8 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
                     nextFire = Time.time + rateOfFire;
                     bulletsFired++;
                     currentBulletsOut++;
+                    shootSound.Play();
+
                 }
                 
             }
