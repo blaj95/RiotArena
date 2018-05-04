@@ -95,7 +95,7 @@ Material:
     - _SrcBlend: 1
     - _TwoSided: 1
     - _UVSec: 0
-    - _WEmission: 0
+    - _WEmission: 0.31
     - _WGloss: 0
     - _WInvert: 0
     - _WLight: 0
