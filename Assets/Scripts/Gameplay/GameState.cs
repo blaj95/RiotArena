@@ -99,20 +99,22 @@ public class GameState : MonoBehaviour {
                 Spawn = GameObject.Find("Spawn");
                 if (PhotonNetwork.isMasterClient)
                 {
+                    Instantiate(player, MasterSpawn.transform.position, MasterSpawn.transform.rotation * Quaternion.Euler(0, 180, 0));
                     GameObject theplayer = PhotonNetwork.Instantiate("NewLobbyPlayer", MasterSpawn.transform.position, MasterSpawn.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
                     PhotonNetwork.Instantiate("ControllerLeft", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
                     PhotonNetwork.Instantiate("ControllerRight", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
                     PhotonNetwork.Instantiate("GameHead", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
-                    Instantiate(player, MasterSpawn.transform.position, MasterSpawn.transform.rotation * Quaternion.Euler(0, 180, 0));
+                    
 
                 }
                 else
                 {
+                    Instantiate(player, Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 0, 0));
                     GameObject theplayer = PhotonNetwork.Instantiate("NewLobbyPlayer", Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
                     PhotonNetwork.Instantiate("ControllerLeft", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
                     PhotonNetwork.Instantiate("ControllerRight", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 180, 0), 0);
                     PhotonNetwork.Instantiate("GameHead", player.transform.position, player.transform.rotation * Quaternion.Euler(0, 0, 0), 0);
-                    Instantiate(player, Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 0, 0));
+                   // Instantiate(player, Spawn.transform.position, Spawn.transform.rotation * Quaternion.Euler(0, 0, 0));
                 }
 
                 spawnable = false;
