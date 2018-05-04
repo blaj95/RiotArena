@@ -182,9 +182,12 @@ public class BulletNeworked : Photon.MonoBehaviour
             {
                 vel = Vector3.Reflect(vel, contact.normal);
             }
+            hitShield.gameObject.GetComponent<AudioSource>().Play();
         }
         else if (shieldScript.reflect == false)
         {
+            GameObject handle = hitShield.transform.GetChild(0).gameObject;
+            handle.GetComponent<AudioSource>().Play();
             shieldScript.AddBullet();
             Destroy(gameObject);
             

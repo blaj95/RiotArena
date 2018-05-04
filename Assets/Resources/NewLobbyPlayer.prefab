@@ -522,7 +522,7 @@ MonoBehaviour:
   rightHand: {fileID: 0}
   weaponTip: {fileID: 0}
   shield: {fileID: 0}
-  bulletPrefab: {fileID: 1784763736437710, guid: 7ffbae9672e183f4288826e8093bfd9a,
+  bulletPrefab: {fileID: 1708063920814948, guid: 7ffbae9672e183f4288826e8093bfd9a,
     type: 2}
   bulletCount: {fileID: 0}
   currentBulletsOut: 0
