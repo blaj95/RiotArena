@@ -29,8 +29,8 @@ public class RightHandTracking : Photon.MonoBehaviour {
         //transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand) * Quaternion.Euler(OffsetRotation);
         //---------------------------------------------------------------------------------------------------------------------
 
-        transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
-        transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
+        transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch) + player.transform.position;
+        transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch) * Quaternion.Euler(OffsetRotation);
 
         Vector3 fwd = new Vector3();
 

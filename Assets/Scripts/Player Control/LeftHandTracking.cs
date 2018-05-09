@@ -19,7 +19,13 @@ public class LeftHandTracking : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        transform.position = InputTracking.GetLocalPosition(XRNode.LeftHand) + player.transform.position;
-        transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand) * Quaternion.Euler(OffsetRotation);
+        //BYE BYE STUPID WMR TRACKING
+        //------------------------------------------------------------------------------------------------------------
+        //transform.position = InputTracking.GetLocalPosition(XRNode.LeftHand) + player.transform.position;
+        //transform.rotation = InputTracking.GetLocalRotation(XRNode.LeftHand) * Quaternion.Euler(OffsetRotation);
+        //------------------------------------------------------------------------------------------------------------
+
+        transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch) + player.transform.position; ;
+        transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch) * Quaternion.Euler(OffsetRotation);
     }
 }
