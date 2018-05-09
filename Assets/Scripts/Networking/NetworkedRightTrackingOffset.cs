@@ -88,13 +88,15 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
 
             laser = GetComponentInChildren<LineRenderer>();
 
-            if (Input.GetKeyDown("joystick button 17"))
+            //if (Input.GetKeyDown("joystick button 17"))
+            if(OVRInput.GetDown(OVRInput.Button.One))
             {
                 laser.enabled = true;
                 float step = laserMoveSpeed * Time.deltaTime;
                 laserBase.transform.position = Vector3.MoveTowards(laserBase.transform.position, gslidePointA.transform.position, step);
             }
-            else if (Input.GetKeyUp("joystick button 17"))
+            // else if (Input.GetKeyUp("joystick button 17"))
+            if(OVRInput.GetUp(OVRInput.Button.One))
             {
                 laser.enabled = false;
                 float step = laserMoveSpeed * Time.deltaTime;
@@ -121,9 +123,9 @@ public class NetworkedRightTrackingOffset : Photon.MonoBehaviour, IPunObservable
             if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Floor"))
             {
                 
-                if (Input.GetKeyUp("joystick button 17"))
-                {
-                   
+                if (OVRInput.GetDown(OVRInput.Button.One))
+                { 
+
                     Debug.Log("Teleport!");
                     netPlayer.transform.position = hit.point;
                 }

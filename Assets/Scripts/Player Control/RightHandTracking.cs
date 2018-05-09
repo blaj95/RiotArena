@@ -54,7 +54,8 @@ public class RightHandTracking : Photon.MonoBehaviour {
                     Renderer rend = start.GetComponent<Renderer>();
                     rend.material.color = Color.green;
 
-                    if (Input.GetButtonDown("RSelectTrigger"))
+                    //if (Input.GetButtonDown("RSelectTrigger"))
+                    if(OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
                     {
                         Debug.Log("Selecting Start!");
                         PhotonNetwork.LoadLevel("PlayerLoadScene");

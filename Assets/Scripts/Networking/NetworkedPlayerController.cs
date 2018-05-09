@@ -71,7 +71,8 @@ public class NetworkedPlayerController : Photon.MonoBehaviour
             bulletCount = GameObject.Find("RightController(Clone)/Canvas/Text").gameObject.GetComponent<Text>();
 
             shootSound = rightHand.GetComponent<AudioSource>();
-            if (Input.GetButtonDown("RSelectTrigger"))
+            //if (Input.GetButtonDown("RSelectTrigger"))
+            if(OVRInput.Get(OVRInput.Button.SecondaryIndexTrigger))
             {
                 if (Time.time < nextFire)
                 {
