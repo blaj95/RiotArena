@@ -33,7 +33,8 @@ namespace Riot
 
         private void Update()
         {
-            if(Input.GetButton("LSelectTrigger" ) == true)
+            //if(Input.GetButton("LSelectTrigger") == true)
+            if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
             {
                 reflect = false;
             }
