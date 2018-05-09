@@ -23,8 +23,14 @@ public class RightHandTracking : Photon.MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        transform.position = InputTracking.GetLocalPosition(XRNode.RightHand) + player.transform.position;
-        transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand) * Quaternion.Euler(OffsetRotation);
+        // BYE BYE STUPID WMR TRACKING
+        //---------------------------------------------------------------------------------------------------------------------
+        //transform.position = InputTracking.GetLocalPosition(XRNode.RightHand) + player.transform.position;
+        //transform.rotation = InputTracking.GetLocalRotation(XRNode.RightHand) * Quaternion.Euler(OffsetRotation);
+        //---------------------------------------------------------------------------------------------------------------------
+
+        transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+        transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
 
         Vector3 fwd = new Vector3();
 
